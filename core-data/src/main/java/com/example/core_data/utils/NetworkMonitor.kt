@@ -5,7 +5,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.annotation.RequiresPermission
-import javax.inject.Inject
 
 class NetworkMonitor (private val context: Context) : INetworkMonitor {
     @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)

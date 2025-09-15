@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_internet_connection">No internet connection available</string>
+    <string name="unexpected_error">An unexpected error occurred</string>
+</resources>
+

@@ -52,6 +52,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // KOIN dependencies
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+
     // Firebase dependencies
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
@@ -61,6 +66,11 @@ dependencies {
     implementation(project(":authentication:data"))
     implementation(project(":authentication:domain"))
     implementation(project(":authentication:ui"))
+
+    // Core modules
+    implementation(project(":core-data"))
+    implementation(project(":core-domain"))
+    implementation(project(":core-ui"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
