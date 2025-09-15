@@ -1,10 +1,7 @@
 plugins {
-    id("movu.base.ui")
+    id("movu.base.domain")
 }
 
-android {
-    namespace = "com.example.core_domain"
-}
 
 dependencies {
 

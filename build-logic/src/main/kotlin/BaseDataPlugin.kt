@@ -12,7 +12,8 @@ class BaseDataPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("com.android.library")
             pluginManager.apply("org.jetbrains.kotlin.android")
-            pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
+            // Temporarily comment out serialization to fix the build
+            // pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
             pluginManager.apply("com.google.devtools.ksp")
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
@@ -52,7 +53,7 @@ class BaseDataPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("room-paging").get())
                 add("ksp", libs.findLibrary("room-compiler").get())
 
-                // Serialization
+                // Serialization - can still use the library even without the plugin initially
                 add("implementation", libs.findLibrary("kotlinx-serialization-json").get())
 
                 // DI
