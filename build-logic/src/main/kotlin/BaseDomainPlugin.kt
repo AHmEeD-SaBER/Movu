@@ -17,9 +17,9 @@ class BaseDomainPlugin : Plugin<Project> {
                 jvmToolchain(libs.findVersion("javaVersion").get().requiredVersion.toInt())
             }
 
-            // Common Domain dependencies (minimal - domain should be pure Kotlin)
+            // Common Domain dependencies
             dependencies {
-                // DI
+                // DI (pure Kotlin only)
                 add("implementation", libs.findLibrary("koin-core").get())
 
                 // Testing

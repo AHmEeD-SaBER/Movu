@@ -33,7 +33,8 @@ class BaseUiPlugin : Plugin<Project> {
                 }
 
                 composeOptions {
-                    kotlinCompilerExtensionVersion = libs.findVersion("composeCompiler").get().requiredVersion
+                    kotlinCompilerExtensionVersion =
+                        libs.findVersion("composeCompiler").get().requiredVersion
                 }
             }
 
@@ -52,6 +53,11 @@ class BaseUiPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx-material3").get())
                 add("debugImplementation", libs.findLibrary("androidx-ui-tooling").get())
                 add("debugImplementation", libs.findLibrary("androidx-ui-test-manifest").get())
+
+                // Koin for DI
+                add("implementation", libs.findLibrary("koin-core").get())
+                add("implementation", libs.findLibrary("koin-android").get())
+                add("implementation", libs.findLibrary("koin-compose").get())
             }
         }
     }

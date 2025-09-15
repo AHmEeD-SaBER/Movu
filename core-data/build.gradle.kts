@@ -1,6 +1,5 @@
 plugins {
-    id("movu.base.ui")
-    alias(libs.plugins.google.gms.google.services)
+    id("movu.base.data")
 }
 
 android {
@@ -8,6 +7,5 @@ android {
 }
 
 dependencies {
-
     implementation(libs.firebase.auth)
 }
