@@ -23,6 +23,7 @@ firebase_bom = "34.2.0"
 firebase_auth = "24.0.1"
 firebase_auth_ui = "9.0.0"
 google_services = "4.4.3"
+splash = "1.0.0"
 
 # SDK / tool versions as strings — we treat them as "versions" so plugin code can read them
 compileSdk = "36"
@@ -75,7 +76,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
-
+androidx-splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

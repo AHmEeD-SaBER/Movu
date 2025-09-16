@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in_success">Welcome Back!</string>
+    <string name="sign_up_success">Account created successfully!</string>
+    <string name="sign_up_error">Failed to create account. Please try again.</string>
+
+    <!-- Email validation errors -->
+    <string name="error_email_required">Email is required</string>
+    <string name="error_email_invalid_format">Invalid email format</string>
+
+    <!-- Password validation errors -->
+    <string name="error_password_required">Password is required</string>
+    <string name="error_password_min_length">Password must be at least 6 characters</string>
+    <string name="error_password_max_length">Password must be less than 128 characters</string>
+    <string name="error_password_needs_digit">Password must contain at least one digit</string>
+    <string name="error_password_needs_letter">Password must contain at least one letter</string>
+    <string name="error_password_needs_uppercase">Password must contain at least one uppercase letter</string>
+    <string name="error_password_needs_lowercase">Password must contain at least one lowercase letter</string>
+
+    <!-- Confirm password validation errors -->
+    <string name="error_confirm_password_required">Please confirm your password</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+
+    <!-- Username validation errors -->
+    <string name="error_username_required">Username is required</string>
+    <string name="error_username_min_length">Username must be at least 3 characters</string>
+    <string name="error_username_max_length">Username must be less than 20 characters</string>
+    <string name="error_username_invalid_characters">Username can only contain letters, numbers, and underscores</string>
+    <string name="error_username_underscore_position">Username cannot start or end with underscore</string>
+    <string name="error_username_consecutive_underscores">Username cannot contain consecutive underscores</string>
+</resources>

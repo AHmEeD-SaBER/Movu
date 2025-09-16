@@ -14,6 +14,8 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "Movu"
 include(":app")
 include(":core-ui")
@@ -22,4 +24,8 @@ include(":core-domain")
 include(":authentication:data")
 include(":authentication:domain")
 include(":authentication:ui")
-include(":user-preferences")
+include(":firebase")
+include(":splash")
+include(":splash:data")
+include(":splash:domain")
+include(":splash:ui")

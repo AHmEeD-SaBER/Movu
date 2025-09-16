@@ -8,7 +8,10 @@ android {
 
 dependencies {
     // Domain module dependency
-    implementation(project(":authentication:domain"))
+    implementation(projects.authentication.domain)
+    implementation(projects.coreData)
+    implementation(projects.firebase)
+
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
