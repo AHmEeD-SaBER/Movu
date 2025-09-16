@@ -36,7 +36,7 @@ fun SignInRequest.toDomain(): DomainSignInRequest {
 fun <T, R> AuthResult<T>.toDomain(transform: (T) -> R): DomainAuthResult<R> {
     return when (this) {
         is AuthResult.Success -> DomainAuthResult.Success(transform(this.data))
-        is AuthResult.Error<*> -> DomainAuthResult.Error(this.exception)
+        is AuthResult.Error<*> -> DomainAuthResult.Error(this.exception as Int)
         is AuthResult.Loading -> DomainAuthResult.Loading
     }
 }
@@ -44,7 +44,7 @@ fun <T, R> AuthResult<T>.toDomain(transform: (T) -> R): DomainAuthResult<R> {
 fun AuthResult<User>.toDomainUser(): DomainAuthResult<DomainUser> {
     return when (this) {
         is AuthResult.Success -> DomainAuthResult.Success(this.data.toDomain())
-        is AuthResult.Error<*> -> DomainAuthResult.Error(this.exception)
+        is AuthResult.Error<*> -> DomainAuthResult.Error(this.exception as Int)
         is AuthResult.Loading -> DomainAuthResult.Loading
     }
 }

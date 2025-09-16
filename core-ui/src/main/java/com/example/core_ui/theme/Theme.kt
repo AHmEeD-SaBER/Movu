@@ -36,7 +36,7 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun SpotQTheme(
+fun MovuTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
