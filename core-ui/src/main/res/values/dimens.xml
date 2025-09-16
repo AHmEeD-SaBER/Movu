@@ -99,4 +99,6 @@
     <dimen name="spacing_medium_8">8dp</dimen>
     <dimen name="spacing_large_16">16dp</dimen>
     <dimen name="spacing_extra_large_24">24dp</dimen>
+    <dimen name="layout_height_100">100dp</dimen>
+    <dimen name="layout_width_200">200dp</dimen>
 </resources>

@@ -31,8 +31,11 @@
             <option value="$PROJECT_DIR$/core-domain" />
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/firebase" />
+            <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/splash" />
             <option value="$PROJECT_DIR$/splash/data" />
+            <option value="$PROJECT_DIR$/splash/domain" />
+            <option value="$PROJECT_DIR$/splash/ui" />
           </set>
         </option>
       </GradleProjectSettings>

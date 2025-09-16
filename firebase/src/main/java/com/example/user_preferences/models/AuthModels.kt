@@ -21,6 +21,5 @@ data class SignInRequest(
 sealed class AuthResult<out T> {
     data class Success<T>(val data: T) : AuthResult<T>()
     data class Error<T>(val exception: T) : AuthResult<Nothing>()
-    object Loading : AuthResult<Nothing>()
 }
 

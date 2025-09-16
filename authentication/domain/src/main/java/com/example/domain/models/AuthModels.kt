@@ -21,6 +21,5 @@ data class DomainSignInRequest(
 sealed class DomainAuthResult<out T> {
     data class Success<T>(val data: T) : DomainAuthResult<T>()
     data class Error(val exceptionRes: Int) : DomainAuthResult<Nothing>()
-    object Loading : DomainAuthResult<Nothing>()
 }
 

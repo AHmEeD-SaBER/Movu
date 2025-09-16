@@ -34,31 +34,37 @@ fun SplashScreen(
             .background(MaterialTheme.colorScheme.background)
             .padding(dimensionResource(R.dimen.padding_24)),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
+        verticalArrangement = Arrangement.Center
     ) {
 
         Image(
             painter = painterResource(R.drawable.movu_logo),
             contentDescription = stringResource(R.string.app_logo),
+            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
+            modifier = Modifier
+                .height(dimensionResource(R.dimen.layout_height_100))
+                .width(dimensionResource(R.dimen.layout_width_200))
         )
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium_8)))
 
-        if (state.isLoading) {
-            val composition by rememberLottieComposition(
-                LottieCompositionSpec.RawRes(R.raw.loader)
-            )
-            val progress by animateLottieCompositionAsState(
-                composition = composition,
-                iterations = LottieConstants.IterateForever
-            )
+        val composition by rememberLottieComposition(
+            LottieCompositionSpec.RawRes(R.raw.loader)
+        )
+        val progress by animateLottieCompositionAsState(
+            composition = composition,
+            iterations = LottieConstants.IterateForever
+        )
 
-            LottieAnimation(
-                composition = composition,
-                progress = { progress },
-            )
-        }
+        LottieAnimation(
+            composition = composition,
+            progress = { progress },
+            modifier = Modifier
+                .height(dimensionResource(R.dimen.layout_height_100))
+                .width(dimensionResource(R.dimen.layout_width_200))
+        )
     }
+
 
 }
 
