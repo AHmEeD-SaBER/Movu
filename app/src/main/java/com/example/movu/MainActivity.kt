@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.movu.ui.theme.MovuTheme
+import com.example.core_ui.theme.MovuTheme
 import com.example.navigation.MovuNavHost
 import com.example.navigation.Routes
 

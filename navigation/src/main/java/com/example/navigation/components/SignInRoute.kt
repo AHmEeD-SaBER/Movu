@@ -31,6 +31,7 @@ fun SignInRoute(
         signInViewModel.effect.collect { effect ->
             when (effect) {
                 is SignInContract.Effect.NavigateToSignUp -> {
+                    navController.navigateToSignUp()
                 }
                 is SignInContract.Effect.NavigateToHome -> {
                     navController.navigate(Routes.Home) {

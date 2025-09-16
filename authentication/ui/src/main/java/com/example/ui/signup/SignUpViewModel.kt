@@ -133,9 +133,6 @@ class SignUpViewModel(
                         )
                     }
                 }
-                is DomainAuthResult.Loading -> {
-                    setState { copy(isLoading = true) }
-                }
             }
         }
     }
