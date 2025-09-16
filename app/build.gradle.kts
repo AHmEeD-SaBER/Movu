@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -52,6 +53,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
     // KOIN dependencies
     implementation(libs.koin.core)
     implementation(libs.koin.android)
@@ -62,10 +67,19 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore.ktx)
 
+    // Project modules
+    implementation(project(":navigation"))
+    implementation(project(":firebase"))
+
     // Authentication module
     implementation(project(":authentication:data"))
     implementation(project(":authentication:domain"))
     implementation(project(":authentication:ui"))
+
+    // Splash module
+    implementation(project(":splash:data"))
+    implementation(project(":splash:domain"))
+    implementation(project(":splash:ui"))
 
     // Core modules
     implementation(project(":core-data"))

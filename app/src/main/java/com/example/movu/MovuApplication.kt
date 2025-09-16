@@ -1,8 +1,14 @@
 package com.example.movu
 
 import android.app.Application
+import authUiModule
 import com.example.core_data.di.coreDataModule
 import com.example.data.di.authDataModule
+import com.example.data.di.splashDataModule
+import com.example.domain.di.authDomainModule
+import com.example.domain.di.splashDomainModule
+import com.example.ui.di.splashUiModule
+import com.example.user_preferences.di.authDataModule as firebaseAuthDataModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,8 +21,19 @@ class MovuApplication : Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@MovuApplication)
             modules(
+                // Data layer modules
+                coreDataModule,
                 authDataModule,
-                coreDataModule
+                splashDataModule,
+                firebaseAuthDataModule,
+
+                // Domain layer modules
+                authDomainModule,
+                splashDomainModule,
+
+                // UI layer modules
+                authUiModule,
+                splashUiModule
             )
         }
     }
