@@ -6,14 +6,14 @@
 
     <!-- SignIn strings -->
     <string name="signin_title">Welcome Back</string>
-    <string name="signin_subtitle">Sign in to your account</string>
+    <string name="signin_subtitle">Your watchlist is waiting</string>
     <string name="action_signin">Sign In</string>
     <string name="have_an_account">Already Have An Account?</string>
     <string name="sign_in">Sign In</string>
 
     <!-- SignUp strings -->
     <string name="signup_title">Get Started</string>
-    <string name="signup_subtitle">Create your account</string>
+    <string name="signup_subtitle">Discover, rate, and share</string>
     <string name="action_signup">Sign Up</string>
 
     <!-- Field labels -->

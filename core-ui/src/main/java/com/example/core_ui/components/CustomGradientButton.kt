@@ -31,12 +31,13 @@ fun CustomGradientButton(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
     enabled: Boolean = true,
-    gradient: Brush = Brush.horizontalGradient(
+    gradient: Brush = Brush.linearGradient(
         colors = listOf(
+            MaterialTheme.colorScheme.inversePrimary,
             MaterialTheme.colorScheme.inversePrimary,
             MaterialTheme.colorScheme.primaryContainer,
             MaterialTheme.colorScheme.primary,
-            MaterialTheme.colorScheme.inversePrimary
+
         )
     ),
     disabledGradient: Brush = Brush.horizontalGradient(
@@ -45,12 +46,11 @@ fun CustomGradientButton(
             MaterialTheme.colorScheme.tertiary.copy(alpha = 0.6f)
         )
     ),
-    contentColor: Color = MaterialTheme.colorScheme.tertiary,
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(dimensionResource(R.dimen.layout_height_56))
+            .height(dimensionResource(R.dimen.layout_height_48))
             .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_12)))
             .background(
                 brush = if (enabled && !isLoading) gradient else disabledGradient
@@ -66,7 +66,7 @@ fun CustomGradientButton(
             )
         } else {
             CircularProgressIndicator(
-                color = contentColor
+                color = MaterialTheme.colorScheme.primary,
             )
         }
     }
@@ -79,7 +79,7 @@ fun CustomGradientButtonPreview() {
         CustomGradientButton(
             text = "Next",
             isLoading = false,
-            enabled = false,
+            enabled = true,
             onClick = { }
         )
     }
