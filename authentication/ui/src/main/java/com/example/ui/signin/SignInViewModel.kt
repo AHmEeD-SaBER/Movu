@@ -22,15 +22,20 @@ class SignInViewModel(
             is SignInContract.Event.OnEmailChanged -> {
                 handleEmailChanged(event.email)
             }
+
             is SignInContract.Event.OnPasswordChanged -> {
                 handlePasswordChanged(event.password)
             }
+
             is SignInContract.Event.OnSignInClick -> {
                 handleSignInClick()
             }
+
             is SignInContract.Event.OnSignUpNavigate -> {
                 handleSignUpNavigate()
             }
+
+            SignInContract.Event.TogglePasswordVisibility -> handleTogglePasswordVisibility()
         }
     }
 
@@ -87,6 +92,7 @@ class SignInViewModel(
                     setEffect { SignInContract.Effect.ShowSuccess(R.string.sign_in_success) }
                     setEffect { SignInContract.Effect.NavigateToHome }
                 }
+
                 is DomainAuthResult.Error -> {
                     setState { copy(isLoading = false) }
                     setEffect {
@@ -107,5 +113,13 @@ class SignInViewModel(
         val emailError = ValidationUtils.validateEmail(email)
         val passwordError = ValidationUtils.validateSignInPassword(password)
         return emailError == null && passwordError == null && email.isNotBlank() && password.isNotBlank()
+    }
+
+    private fun handleTogglePasswordVisibility() {
+        setState {
+            copy(
+                isPasswordVisible = !uiState.value.isPasswordVisible
+            )
+        }
     }
 }

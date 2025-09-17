@@ -46,7 +46,6 @@ fun SplashScreen(
                 .width(dimensionResource(R.dimen.layout_width_200))
         )
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium_8)))
 
         val composition by rememberLottieComposition(
             LottieCompositionSpec.RawRes(R.raw.loader)

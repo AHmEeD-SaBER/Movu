@@ -10,6 +10,6 @@ val Black = Color(0xFF000000)
 val BackgroundLight = Color(0xFFFFFFFF)
 val BackgroundDark = Color(0xFF000000)
 val ButtonLight = Black
-val ButtonDark = Accent
+val ButtonDark = Black
 val Yellow = Color(0xFFEFD700)
 

@@ -4,6 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val LightColors = lightColorScheme(
     primary = Accent,
@@ -12,12 +13,13 @@ private val LightColors = lightColorScheme(
     onPrimaryContainer = Black,
     secondary = SlateGray,
     onSecondary = White,
-    tertiary = ButtonLight,
-    onTertiary = White,
+    tertiary = Color.Gray,
+    onTertiary = Black,
     background = BackgroundLight,
     onBackground = SlateGray,
     surface = BackgroundLight,
-    onSurface = SlateGray
+    onSurface = SlateGray,
+    inversePrimary = AccentSecondary
 )
 
 private val DarkColors = darkColorScheme(
@@ -27,12 +29,13 @@ private val DarkColors = darkColorScheme(
     onPrimaryContainer = White,
     secondary = Accent,
     onSecondary = Black,
-    tertiary = ButtonDark,
-    onTertiary = White,
+    tertiary = Color.LightGray,
+    onTertiary = Black,
     background = BackgroundDark,
     onBackground = White,
     surface = BackgroundDark,
-    onSurface = White
+    onSurface = White,
+    inversePrimary = AccentSecondary
 )
 
 @Composable

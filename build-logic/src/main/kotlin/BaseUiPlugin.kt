@@ -58,6 +58,12 @@ class BaseUiPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("koin-core").get())
                 add("implementation", libs.findLibrary("koin-android").get())
                 add("implementation", libs.findLibrary("koin-compose").get())
+
+                // Test dependencies
+                add("testImplementation", libs.findLibrary("junit").get())
+                add("androidTestImplementation", libs.findLibrary("androidx-junit").get())
+                add("androidTestImplementation", libs.findLibrary("androidx-espresso-core").get())
+                add("androidTestImplementation", libs.findLibrary("androidx-ui-test-junit4").get())
             }
         }
     }

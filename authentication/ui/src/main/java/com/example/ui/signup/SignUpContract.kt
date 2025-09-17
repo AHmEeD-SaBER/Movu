@@ -14,6 +14,8 @@ class SignUpContract {
         data class OnConfirmPasswordChanged(val confirmPassword: String) : Event()
         object OnSignUpClick : Event()
         object OnSignInNavigate : Event()
+        object TogglePasswordVisibility : Event()
+        object ToggleConfirmPasswordVisibility : Event()
     }
 
     data class State(
@@ -26,7 +28,9 @@ class SignUpContract {
         val passwordError: Int? = null,
         val nameError: Int? = null,
         val confirmPasswordError: Int? = null,
-        val isSignUpEnabled: Boolean = false
+        val isSignUpEnabled: Boolean = false,
+        val isPasswordVisible: Boolean = false,
+        val isConfirmPasswordVisible: Boolean = false,
     ) : UiState
 
     sealed class Effect : UiEffect {
