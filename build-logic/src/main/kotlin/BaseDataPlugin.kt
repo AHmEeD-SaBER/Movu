@@ -63,6 +63,11 @@ class BaseDataPlugin : Plugin<Project> {
                 add("implementation", platform(libs.findLibrary("firebase-bom").get()))
                 add("implementation", libs.findLibrary("firebase-auth").get())
                 add("implementation", libs.findLibrary("firebase-firestore-ktx").get())
+
+                // Test dependencies
+                add("testImplementation", libs.findLibrary("junit").get())
+                add("androidTestImplementation", libs.findLibrary("androidx-junit").get())
+                add("androidTestImplementation", libs.findLibrary("androidx-espresso-core").get())
             }
         }
     }

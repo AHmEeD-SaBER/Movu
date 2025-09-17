@@ -12,6 +12,7 @@ class SignInContract {
         data class OnPasswordChanged(val password: String) : Event()
         object OnSignInClick : Event()
         object OnSignUpNavigate : Event()
+        object TogglePasswordVisibility : Event()
     }
 
     data class State(
@@ -20,7 +21,9 @@ class SignInContract {
         val isLoading: Boolean = false,
         val emailError: Int? = null,
         val passwordError: Int? = null,
-        val isSignInEnabled: Boolean = false
+        val isSignInEnabled: Boolean = false,
+        val isPasswordVisible: Boolean = false,
+        val isFormValid: Boolean = false
     ) : UiState
 
     sealed class Effect : UiEffect {

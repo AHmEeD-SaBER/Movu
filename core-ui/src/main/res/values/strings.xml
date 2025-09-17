@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_logo">Movu</string>
+    <string name="placeholder_email">Email</string>
+    <string name="signup_title">Get started free.</string>
+    <string name="signup_subtitle">Free forever. No credit card needed.</string>
+    <string name="label_name">Name</string>
+    <string name="placeholder_name">your name</string>
+    <string name="error_empty">Error</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="placeholder_password">********</string>
+    <string name="action_signup">Sign Up</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="show_password">Show Password</string>
+    <string name="label_confirm_password">Confirm Your Passowrd</string>
 </resources>

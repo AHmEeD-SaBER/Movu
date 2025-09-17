@@ -37,6 +37,12 @@ class SignUpViewModel(
             is SignUpContract.Event.OnSignInNavigate -> {
                 handleSignInNavigate()
             }
+            is SignUpContract.Event.TogglePasswordVisibility -> {
+                handleTogglePasswordVisibility()
+            }
+            is SignUpContract.Event.ToggleConfirmPasswordVisibility -> {
+                handleToggleConfirmPasswordVisibility()
+            }
         }
     }
 
@@ -141,6 +147,22 @@ class SignUpViewModel(
         setEffect { SignUpContract.Effect.NavigateToSignIn }
     }
 
+    private fun handleTogglePasswordVisibility() {
+        setState {
+            copy(
+                isPasswordVisible = !uiState.value.isPasswordVisible
+            )
+        }
+    }
+
+    private fun handleToggleConfirmPasswordVisibility() {
+        setState {
+            copy(
+                isConfirmPasswordVisible = !uiState.value.isConfirmPasswordVisible
+            )
+        }
+    }
+
     private fun validateForm(name: String, email: String, password: String, confirmPassword: String): Boolean {
         val nameError = ValidationUtils.validateName(name)
         val emailError = ValidationUtils.validateEmail(email)
@@ -150,3 +172,4 @@ class SignUpViewModel(
                name.isNotBlank() && email.isNotBlank() && password.isNotBlank() && confirmPassword.isNotBlank()
     }
 }
+
