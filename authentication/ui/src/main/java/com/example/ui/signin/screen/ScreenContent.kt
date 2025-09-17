@@ -36,8 +36,8 @@ fun ScreenContent(
     Column(
         modifier = modifier
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_32),
-                vertical = dimensionResource(R.dimen.padding_48)
+                horizontal = dimensionResource(R.dimen.padding_24),
+                vertical = dimensionResource(R.dimen.padding_32)
             )
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,

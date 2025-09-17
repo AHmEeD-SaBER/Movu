@@ -37,10 +37,10 @@ fun CustomTag(modifier: Modifier = Modifier, text: String, style: TextStyle = Ap
                 .matchParentSize()
                 .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_8)))
                 .background(
-                    Color.LightGray.copy(alpha = 0.5f)
+                    Color.LightGray.copy(alpha = 0.2f)
                 )
                 .blur(
-                    radius = 16.dp,
+                    radius = 10.dp,
                     edgeTreatment = BlurredEdgeTreatment.Unbounded
                 )
         )

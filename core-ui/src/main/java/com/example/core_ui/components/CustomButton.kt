@@ -32,7 +32,7 @@ fun CustomButton(
     Button(
         onClick = onClick,
         enabled = enabled && !isLoading,
-        modifier = modifier.fillMaxWidth().height(dimensionResource(R.dimen.layout_height_56)),
+        modifier = modifier.fillMaxWidth().height(dimensionResource(R.dimen.layout_height_48)),
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = MaterialTheme.colorScheme.onTertiary,

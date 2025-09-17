@@ -38,8 +38,8 @@ fun ScreenContent(
     Column(
         modifier = Modifier
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_32),
-                vertical = dimensionResource(R.dimen.padding_48)
+                horizontal = dimensionResource(R.dimen.padding_24),
+                vertical = dimensionResource(R.dimen.padding_32)
 
             )
             .verticalScroll(scrollState),
@@ -122,7 +122,7 @@ fun ScreenContent(
             }
         )
 
-        CustomButton(
+        CustomGradientButton(
             text = stringResource(R.string.action_signup),
             onClick = { onEvent(SignUpContract.Event.OnSignUpClick) },
             modifier = Modifier

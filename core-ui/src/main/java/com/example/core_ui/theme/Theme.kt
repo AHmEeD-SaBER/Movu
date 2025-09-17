@@ -25,7 +25,7 @@ private val LightColors = lightColorScheme(
 private val DarkColors = darkColorScheme(
     primary = Accent,
     onPrimary = White,
-    primaryContainer = Accent.copy(alpha = 0.7f),
+    primaryContainer = Accent.copy(alpha = 0.85f),
     onPrimaryContainer = White,
     secondary = Accent,
     onSecondary = Black,
