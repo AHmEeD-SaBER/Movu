@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.core_ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,4 +71,18 @@ fun CustomAppBar(
         }
 
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CustomAppBarPreview() {
+    CustomAppBar(
+        title = {
+            androidx.compose.material3.Text(text = "Title")
+        },
+        showSearchBar = true,
+        searchBar = {
+            androidx.compose.material3.Text(text = "Search Bar")
+        }
+    )
 }
