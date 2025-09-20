@@ -10,3 +10,4 @@ class GetMoviesUseCase(private val repository: IMoviesRepository) : IGetMoviesUs
         return repository.getMovies()
     }
 }
+

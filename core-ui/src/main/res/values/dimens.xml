@@ -107,4 +107,8 @@
     <dimen name="padding_48">48dp</dimen>
     <dimen name="layout_height_150">150dp</dimen>
     <dimen name="layout_width_250">250dp</dimen>
+    <dimen name="layout_width_32">32dp</dimen>
+    <dimen name="layout_height_17">17dp</dimen>
+    <dimen name="layout_height_270">270dp</dimen>
+    <dimen name="layout_width_180">180dp</dimen>
 </resources>
