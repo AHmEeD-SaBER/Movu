@@ -23,6 +23,7 @@ import com.example.core_ui.R as CoreUiR
 import com.example.domain.models.MediaItem
 import com.example.ui.R
 import coil.compose.AsyncImage
+import com.example.ui.utils.getFullPosterPath
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
@@ -41,7 +42,7 @@ fun VerticalMediaItemCard(
             )
     ) {
         AsyncImage(
-            model = mediaItem.image,
+            model = mediaItem.image.getFullPosterPath(),
             placeholder = painterResource(R.drawable.image_placeholder),
             contentDescription = mediaItem.title,
             modifier = Modifier.fillMaxSize(),
@@ -65,10 +66,9 @@ fun VerticalMediaItemCard(
                     vertical = dimensionResource(CoreUiR.dimen.padding_12)
                 ),
             title = mediaItem.title,
-            textAlign = TextAlign.Center,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            style = AppTypography.bt7,
+            style = AppTypography.bt1,
 
             )
     }

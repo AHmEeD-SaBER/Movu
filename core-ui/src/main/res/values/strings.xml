@@ -14,4 +14,7 @@
     <string name="hide_password">Hide Password</string>
     <string name="show_password">Show Password</string>
     <string name="label_confirm_password">Confirm Your Passowrd</string>
+    <string name="retry">Retry</string>
+    <string name="welcome">Welcome Back !</string>
+    <string name="action_search">Search</string>
 </resources>

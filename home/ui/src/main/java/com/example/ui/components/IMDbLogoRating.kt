@@ -29,7 +29,7 @@ fun IMDbLogoRating(modifier: Modifier = Modifier, rating: Double = 0.0) {
         modifier = modifier.background(
             color = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
             shape = RoundedCornerShape(
-                dimensionResource(CoreUiR.dimen.corner_radius_12)
+                dimensionResource(CoreUiR.dimen.corner_radius_8)
             )
         ).padding(dimensionResource(CoreUiR.dimen.padding_4))
     ) {
@@ -47,7 +47,7 @@ fun IMDbLogoRating(modifier: Modifier = Modifier, rating: Double = 0.0) {
             )
             Text(
                 text = rating.roundToOneDecimal(),
-                style = AppTypography.sh7,
+                style = AppTypography.bt4,
             )
         }
     }

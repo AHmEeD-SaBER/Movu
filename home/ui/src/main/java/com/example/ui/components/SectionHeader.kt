@@ -28,7 +28,7 @@ fun ListSectionHeader(
         Text(
             text = stringResource(header),
             modifier = Modifier.weight(1f),
-            style = AppTypography.sh2,
+            style = AppTypography.sh8,
         )
     }
 }
