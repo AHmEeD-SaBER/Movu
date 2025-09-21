@@ -1,9 +1,6 @@
 package com.example.ui.components
 
-import android.media.browse.MediaBrowser
-import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyRow
@@ -12,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.core_domain.MediaType
 import com.example.domain.models.MediaItem
-import com.example.domain.models.MediaType
 import com.example.ui.R
 import com.example.ui.home_screen.HomeContract
 

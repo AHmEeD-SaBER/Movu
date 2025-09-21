@@ -1,11 +1,11 @@
 package com.example.ui.home_screen
 
+import com.example.core_domain.MediaType
 import com.example.core_ui.base.UiEffect
 import com.example.core_ui.base.UiEvent
 import com.example.core_ui.base.UiState
 import com.example.domain.models.MediaError
 import com.example.domain.models.MediaItem
-import com.example.domain.models.MediaType
 
 class HomeContract {
     sealed class Events : UiEvent {

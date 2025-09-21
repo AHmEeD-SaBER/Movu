@@ -1,9 +1,9 @@
 package datasources.moviesremotedatasource
 
-import models.movies.MoviesResponse
+import com.example.core_data.models.movies.MoviesResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import network.IRetrofitService
+import com.example.core_data.network.IRetrofitService
 
 class MoviesRemoteDataSource(private val api: IRetrofitService) : IMoviesRemoteDataSource {
 

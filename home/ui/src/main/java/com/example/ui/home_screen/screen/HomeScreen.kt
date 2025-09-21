@@ -29,11 +29,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.core_domain.MediaType
 import com.example.core_ui.R
 import com.example.core_ui.components.CustomAppBar
 import com.example.core_ui.theme.AppTypography
 import com.example.domain.models.MediaItem
-import com.example.domain.models.MediaType
 import com.example.ui.components.ErrorSection
 import com.example.ui.components.MoviesSection
 import com.example.ui.components.RandomMovieBox
