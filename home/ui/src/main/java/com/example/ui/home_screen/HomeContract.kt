@@ -18,7 +18,7 @@ class HomeContract {
     sealed class State : UiState {
         data object Loading : State()
         data class Error(val error: MediaError) : State()
-        data class Success(val movies: List<MediaItem>, val tvShows: List<MediaItem>) : State()
+        data class Success(val movies: List<MediaItem>, val tvShows: List<MediaItem>, val randomMovie: MediaItem) : State()
         data object Idle : State()
     }
 
