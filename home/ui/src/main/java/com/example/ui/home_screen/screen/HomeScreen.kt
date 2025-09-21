@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
@@ -66,18 +68,17 @@ fun HomeScreen(
                     modifier = Modifier,
                     showNavigation = false,
                     title = {
-                        Row {
+                        Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_12)),) {
                             Image(
-                                painter = painterResource(R.drawable.m_logo),
+                                painter = painterResource(R.drawable.movu_logo),
                                 contentDescription = stringResource(R.string.app_logo),
-                                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_64)),
+                                modifier = Modifier.width(dimensionResource(R.dimen.icon_size_64)).height(dimensionResource(R.dimen.icon_size_32)),
                                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
                             Text(
                                 text = stringResource(R.string.welcome),
-                                modifier = Modifier
-                                    .align(Alignment.CenterVertically),
+
                                 style = AppTypography.bt2
                             )
                         }
@@ -87,9 +88,11 @@ fun HomeScreen(
                             painter = painterResource(R.drawable.search_outlined),
                             tint = MaterialTheme.colorScheme.primary,
                             contentDescription = stringResource(R.string.action_search),
-                            modifier = Modifier.clickable(
-                                onClick = { /* TODO: Implement search action */ }
-                            )
+                            modifier = Modifier
+                                .clickable(
+                                    onClick = { /* TODO: Implement search action */ }
+                                )
+                                .padding(end = dimensionResource(R.dimen.padding_12))
                         )
                     }
                 )
@@ -98,7 +101,7 @@ fun HomeScreen(
                 Column(
                     modifier = modifier.padding(
                         top = dimensionResource(R.dimen.spacing_medium_8),
-                        start = dimensionResource(R.dimen.padding_14)
+                        start = dimensionResource(R.dimen.padding_12)
                     )
                 ) {
 

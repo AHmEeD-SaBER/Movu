@@ -109,9 +109,10 @@
     <dimen name="layout_width_250">250dp</dimen>
     <dimen name="layout_width_32">32dp</dimen>
     <dimen name="layout_height_17">17dp</dimen>
-    <dimen name="layout_height_270">270dp</dimen>
+    <dimen name="layout_height_300">300dp</dimen>
     <dimen name="layout_width_180">180dp</dimen>
     <dimen name="layout_height_250">250dp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_14">14dp</dimen>
+    <dimen name="layout_width_100">100dp</dimen>
 </resources>
