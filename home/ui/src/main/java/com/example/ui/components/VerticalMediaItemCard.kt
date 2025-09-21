@@ -34,7 +34,7 @@ fun VerticalMediaItemCard(
 ) {
     Box(
         modifier = modifier
-            .height(dimensionResource(CoreUiR.dimen.layout_height_270))
+            .height(dimensionResource(CoreUiR.dimen.layout_height_300))
             .width(dimensionResource(CoreUiR.dimen.layout_width_180))
             .clickable { onItemClicked(mediaItem.id) }
             .clip(
@@ -68,7 +68,7 @@ fun VerticalMediaItemCard(
             title = mediaItem.title,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            style = AppTypography.bt1,
+            style = AppTypography.bt2,
 
             )
     }

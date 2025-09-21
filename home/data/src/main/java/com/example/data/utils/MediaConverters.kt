@@ -24,7 +24,8 @@ fun DataMovie.toDomainModel(): MediaItem {
         id = id ?: 0,
         title = title ?: "",
         rating = voteAverage ?: 0.0,
-        image = posterPath ?: ""
+        image = posterPath ?: "",
+        horizontalImage = backdropPath
     )
 }
 

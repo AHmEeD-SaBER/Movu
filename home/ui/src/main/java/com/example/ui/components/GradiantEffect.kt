@@ -22,6 +22,7 @@ fun GradiantEffect(
                 brush =
                     Brush.verticalGradient(
                         colors = listOf(
+//                            Color.Black,
                             Color.Transparent,
                             Color.Black
                         ),

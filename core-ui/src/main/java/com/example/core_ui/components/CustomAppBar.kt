@@ -37,7 +37,7 @@ fun CustomAppBar(
     },
     showNavigation: Boolean = true
 ) {
-    Column(modifier.background(Color.Transparent).padding(top = dimensionResource(R.dimen.padding_24))) {
+    Column(modifier.background(Color.Transparent).padding(top = dimensionResource(R.dimen.padding_48))) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()

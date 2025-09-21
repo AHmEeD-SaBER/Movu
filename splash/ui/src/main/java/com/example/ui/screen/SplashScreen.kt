@@ -43,7 +43,7 @@ fun SplashScreen(
             colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
             modifier = Modifier
                 .height(dimensionResource(R.dimen.layout_height_100))
-                .width(dimensionResource(R.dimen.layout_width_200))
+                .width(dimensionResource(R.dimen.layout_width_100))
         )
 
 

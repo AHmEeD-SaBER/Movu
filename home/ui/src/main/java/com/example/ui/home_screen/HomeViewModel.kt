@@ -66,12 +66,14 @@ class HomeViewModel(
                     }
                 }
 
+
+
                 setState {
                     when {
                         moviesError != null && tvError != null -> HomeContract.State.Error(moviesError)
-                        moviesError != null && tvError == null -> HomeContract.State.Success(moviesData, tvShowsData)
-                        moviesError == null && tvError != null -> HomeContract.State.Success(moviesData, tvShowsData)
-                        else -> HomeContract.State.Success(moviesData, tvShowsData)
+                        moviesError != null && tvError == null -> HomeContract.State.Success(moviesData, tvShowsData, moviesData.random())
+                        moviesError == null && tvError != null -> HomeContract.State.Success(moviesData, tvShowsData, moviesData.random())
+                        else -> HomeContract.State.Success(moviesData, tvShowsData, moviesData.random())
                     }
                 }
 

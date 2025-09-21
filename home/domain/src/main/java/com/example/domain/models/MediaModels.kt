@@ -17,7 +17,8 @@ data class MediaItem(
     val id: Int,
     val title: String,
     val rating: Double,
-    val image: String
+    val image: String,
+    val horizontalImage: String? = null,
 )
 
 interface MediaDetails {
