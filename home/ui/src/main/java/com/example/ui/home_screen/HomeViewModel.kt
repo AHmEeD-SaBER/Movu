@@ -1,11 +1,11 @@
 package com.example.ui.home_screen
 
 import androidx.lifecycle.viewModelScope
+import com.example.core_domain.MediaType
 import com.example.core_ui.base.BaseViewModel
 import com.example.domain.models.MediaError
 import com.example.domain.usecases.movies.IGetMoviesUseCase
 import com.example.domain.usecases.tv.IGetTvShowsUseCase
-import com.example.domain.models.MediaType
 import com.example.domain.models.MediaItem
 import com.example.domain.models.MediaResult
 import kotlinx.coroutines.launch

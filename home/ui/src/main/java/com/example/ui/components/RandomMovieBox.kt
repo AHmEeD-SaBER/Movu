@@ -15,10 +15,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
 import coil.compose.AsyncImage
+import com.example.core_domain.MediaType
 import com.example.core_ui.R
 import com.example.core_ui.theme.AppTypography
 import com.example.domain.models.MediaItem
-import com.example.domain.models.MediaType
 import com.example.ui.home_screen.HomeContract
 import com.example.ui.utils.getFullPosterPath
 

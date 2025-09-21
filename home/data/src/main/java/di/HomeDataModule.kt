@@ -1,23 +1,15 @@
 package di
 
-import com.example.domain.repositories.IMovieDetailsRepository
 import com.example.domain.repositories.IMoviesRepository
-import com.example.domain.repositories.ITvDetailsRepository
 import com.example.domain.repositories.ITvRepository
-import com.example.data.repositories.moviedetailsrepo.MovieDetailsRepository
 import com.example.data.repositories.moviesrepo.MoviesRepository
-import com.example.data.repositories.tvdetailsrepo.TvDetailsRepository
 import com.example.data.repositories.tvrepo.TvRepository
-import com.example.data.utils.Constants
-import datasources.moviedetailsdatasource.IMovieDetailsDataSource
-import datasources.moviedetailsdatasource.MovieDetailsDataSource
+import com.example.core_data.utils.Constants
 import datasources.moviesremotedatasource.IMoviesRemoteDataSource
 import datasources.moviesremotedatasource.MoviesRemoteDataSource
-import datasources.tvdetailsdatasource.ITvDetailsDataSource
-import datasources.tvdetailsdatasource.TvDetailsDataSource
+import com.example.core_data.network.IRetrofitService
 import datasources.tvremotedatasource.ITvRemoteDataSource
 import datasources.tvremotedatasource.TvRemoteDataSource
-import network.IRetrofitService
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -48,16 +40,9 @@ val homeDataModule = module {
         MoviesRemoteDataSource(api = get())
     }
 
-    single<IMovieDetailsDataSource> {
-        MovieDetailsDataSource(api = get())
-    }
 
     single<ITvRemoteDataSource> {
         TvRemoteDataSource(api = get())
-    }
-
-    single<ITvDetailsDataSource> {
-        TvDetailsDataSource(api = get())
     }
 
     // Repositories
@@ -68,12 +53,7 @@ val homeDataModule = module {
         )
     }
 
-    single<IMovieDetailsRepository> {
-        MovieDetailsRepository(
-            dataSource = get(),
-            networkMonitor = get()
-        )
-    }
+
 
     single<ITvRepository> {
         TvRepository(
@@ -82,10 +62,5 @@ val homeDataModule = module {
         )
     }
 
-    single<ITvDetailsRepository> {
-        TvDetailsRepository(
-            dataSource = get(),
-            networkMonitor = get()
-        )
-    }
+
 }

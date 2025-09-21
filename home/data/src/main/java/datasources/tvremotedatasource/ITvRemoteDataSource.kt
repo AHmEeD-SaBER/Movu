@@ -1,6 +1,6 @@
 package datasources.tvremotedatasource
 
-import models.tv.TvResponse
+import com.example.core_data.models.tv.TvResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ITvRemoteDataSource {

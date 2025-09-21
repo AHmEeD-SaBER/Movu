@@ -7,7 +7,7 @@ import com.example.domain.models.MediaItemsResponse
 import com.example.domain.models.MediaError
 import com.example.data.utils.toDomainModel
 import com.example.domain.repositories.IMoviesRepository
-import com.example.data.R
+import com.example.core_data.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

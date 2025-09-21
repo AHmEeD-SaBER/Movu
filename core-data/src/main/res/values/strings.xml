@@ -2,5 +2,14 @@
 <resources>
     <string name="no_internet_connection">No internet connection available</string>
     <string name="unexpected_error">An unexpected error occurred</string>
+    <!-- Media Error Messages - Titles -->
+    <string name="error_title_network">No Internet Connection</string>
+    <string name="error_title_no_data">No Data Available</string>
+    <string name="error_title_unknown">Something Went Wrong</string>
+
+    <!-- Media Error Messages - Subtitles -->
+    <string name="error_subtitle_network">Please check your network connection and try again.</string>
+    <string name="error_subtitle_no_data">No content is available at the moment. Please try again later.</string>
+    <string name="error_subtitle_unknown">An unexpected error occurred. Please try again.</string>
 </resources>
 

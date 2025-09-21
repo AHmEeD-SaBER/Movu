@@ -30,6 +30,10 @@
             <option value="$PROJECT_DIR$/core-data" />
             <option value="$PROJECT_DIR$/core-domain" />
             <option value="$PROJECT_DIR$/core-ui" />
+            <option value="$PROJECT_DIR$/details" />
+            <option value="$PROJECT_DIR$/details/data" />
+            <option value="$PROJECT_DIR$/details/domain" />
+            <option value="$PROJECT_DIR$/details/ui" />
             <option value="$PROJECT_DIR$/firebase" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/home/data" />
