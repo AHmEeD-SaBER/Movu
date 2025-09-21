@@ -12,6 +12,7 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.authentication.ui)
     implementation(projects.splash.ui)
+    implementation(projects.home.ui)
     
 
     // Navigation dependencies

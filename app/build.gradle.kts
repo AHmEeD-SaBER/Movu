@@ -86,6 +86,10 @@ dependencies {
     implementation(project(":core-domain"))
     implementation(project(":core-ui"))
 
+    implementation(projects.home.data)
+    implementation(projects.home.domain)
+    implementation(projects.home.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

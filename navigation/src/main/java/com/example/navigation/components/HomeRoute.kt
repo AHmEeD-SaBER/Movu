@@ -7,42 +7,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.example.navigation.Routes
+import com.example.ui.home_screen.HomeViewModel
+import com.example.ui.home_screen.screen.HomeScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeRoute(
     navController: NavHostController
 ) {
     val context = LocalContext.current
-
-    // Placeholder Home Screen - replace with your actual home screen implementation
-    Text("Home Screen - Replace with your HomeScreen composable")
-
-    // Example of how to handle navigation effects when you implement your HomeViewModel
-    /*
-    val homeViewModel: HomeViewModel = koinViewModel()
-    val state by homeViewModel.uiState.collectAsState()
-
+    val viewModel: HomeViewModel = koinViewModel()
+    val state by viewModel.uiState.collectAsState()
     HomeScreen(
         state = state,
-        onEvent = homeViewModel::handleEvent,
+        onEvent = viewModel::handleEvent,
         modifier = Modifier
     )
 
-    LaunchedEffect(homeViewModel) {
-        homeViewModel.effect.collect { effect ->
+    LaunchedEffect(viewModel) {
+        viewModel.effect.collect { effect ->
             when (effect) {
-                is HomeContract.Effect.NavigateToProfile -> {
-                    navController.navigate(Routes.Profile(userId = effect.userId))
+                is com.example.ui.home_screen.HomeContract.Effects.NavigateToDetail -> {
+                    Toast.makeText(
+                        context,
+                        "Navigate to detail of ${effect.mediaItemId} with ID ${effect.mediaItemId}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                is HomeContract.Effect.NavigateToMovieDetail -> {
-                    navController.navigate(Routes.MovieDetail(movieId = effect.movieId))
-                }
-                is HomeContract.Effect.ShowError -> {
-                    Toast.makeText(context, context.getString(effect.messageRes), Toast.LENGTH_SHORT).show()
-                }
-                // Add other effects as needed
             }
         }
     }
-    */
 }
