@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.core_ui.theme.MovuTheme
 import com.example.navigation.MovuNavHost
-import com.example.navigation.Routes
+import com.example.core_ui.base.Routes
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

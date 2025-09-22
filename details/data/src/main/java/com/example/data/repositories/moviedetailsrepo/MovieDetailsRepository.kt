@@ -4,14 +4,19 @@ import com.example.core_data.utils.INetworkMonitor
 import com.example.domain.repositories.IMovieDetailsRepository
 import com.example.core_data.R
 import com.example.data.data_sources.moviedetailsdatasource.IMovieDetailsDataSource
+import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
+import com.example.data.utils.toDomainModel
+import com.example.data.utils.toCredits
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.combine
 
 class MovieDetailsRepository(
     private val dataSource: IMovieDetailsDataSource,
+    private val creditsDataSource: ICreditsDataSource,
     private val networkMonitor: INetworkMonitor
 ) : IMovieDetailsRepository {
     override fun getMovieDetails(movieId: Int): Flow<DetailsResult<Movie>> = flow {
@@ -24,16 +29,22 @@ class MovieDetailsRepository(
                 return@flow
             }
 
-            dataSource.getMovieDetails(movieId).collect { movieDetailsResponse ->
+            // Combine movie details and credits
+            dataSource.getMovieDetails(movieId).combine(
+                creditsDataSource.getMovieCredits(movieId)
+            ) { movieDetailsResponse, creditsResponse ->
                 if (movieDetailsResponse.id == null || movieDetailsResponse.title.isNullOrEmpty()) {
-                    emit(DetailsResult.Error(DetailsError(
+                    DetailsResult.Error(DetailsError(
                         titleRes = R.string.error_title_no_data,
                         subtitleRes = R.string.error_subtitle_no_data
-                    )))
+                    ))
                 } else {
-                    val domainMovie = movieDetailsResponse.toDomainModel()
-                    emit(DetailsResult.Success(domainMovie))
+                    val credits = creditsResponse.toCredits()
+                    val domainMovie = movieDetailsResponse.toDomainModel(credits)
+                    DetailsResult.Success(domainMovie)
                 }
+            }.collect { result ->
+                emit(result)
             }
         } catch (e: Exception) {
             emit(DetailsResult.Error(DetailsError(

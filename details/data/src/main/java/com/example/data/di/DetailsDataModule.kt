@@ -4,6 +4,8 @@ import com.example.data.data_sources.moviedetailsdatasource.IMovieDetailsDataSou
 import com.example.data.data_sources.moviedetailsdatasource.MovieDetailsDataSource
 import com.example.data.data_sources.tvdetailsdatasource.ITvDetailsDataSource
 import com.example.data.data_sources.tvdetailsdatasource.TvDetailsDataSource
+import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
+import com.example.data.data_sources.creditsdatasource.CreditsDataSource
 import com.example.data.repositories.moviedetailsrepo.MovieDetailsRepository
 import com.example.data.repositories.tvdetailsrepo.TvDetailsRepository
 import com.example.domain.repositories.IMovieDetailsRepository
@@ -15,15 +17,19 @@ val detailsDataModule = module {
         MovieDetailsDataSource(api = get())
     }
 
-
-
     single<ITvDetailsDataSource> {
         TvDetailsDataSource(api = get())
     }
 
+    single<ICreditsDataSource> {
+        CreditsDataSource(api = get())
+    }
+
+
     single<ITvDetailsRepository> {
         TvDetailsRepository(
             dataSource = get(),
+            creditsDataSource = get(),
             networkMonitor = get()
         )
     }
@@ -31,6 +37,7 @@ val detailsDataModule = module {
     single<IMovieDetailsRepository> {
         MovieDetailsRepository(
             dataSource = get(),
+            creditsDataSource = get(),
             networkMonitor = get()
         )
     }

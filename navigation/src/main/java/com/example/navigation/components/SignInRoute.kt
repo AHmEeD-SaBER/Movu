@@ -5,7 +5,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import com.example.navigation.Routes
+import com.example.core_ui.base.Routes
 import com.example.navigation.navigateToHome
 import com.example.navigation.navigateToSignUp
 import com.example.ui.signin.SignInContract

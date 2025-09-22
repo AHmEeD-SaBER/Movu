@@ -10,9 +10,12 @@ android {
 
 dependencies {
     implementation(projects.coreUi)
+    implementation(projects.coreDomain)
     implementation(projects.authentication.ui)
     implementation(projects.splash.ui)
     implementation(projects.home.ui)
+    implementation(projects.details.ui)
+
     
 
     // Navigation dependencies

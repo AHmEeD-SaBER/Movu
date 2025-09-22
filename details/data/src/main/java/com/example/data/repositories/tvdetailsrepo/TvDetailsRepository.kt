@@ -4,15 +4,20 @@ package com.example.data.repositories.tvdetailsrepo
 import com.example.core_data.utils.INetworkMonitor
 import com.example.core_data.R
 import com.example.data.data_sources.tvdetailsdatasource.ITvDetailsDataSource
+import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
+import com.example.data.utils.toDomainModel
+import com.example.data.utils.toCredits
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Tv
 import com.example.domain.repositories.ITvDetailsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.combine
 
 class TvDetailsRepository(
     private val dataSource: ITvDetailsDataSource,
+    private val creditsDataSource: ICreditsDataSource,
     private val networkMonitor: INetworkMonitor
 ) : ITvDetailsRepository {
     override fun getTvDetails(tvId: Int): Flow<DetailsResult<Tv>> = flow {
@@ -25,16 +30,22 @@ class TvDetailsRepository(
                 return@flow
             }
 
-            dataSource.getTvDetails(tvId).collect { tvDetailsResponse ->
+            // Combine TV details and credits
+            dataSource.getTvDetails(tvId).combine(
+                creditsDataSource.getTvCredits(tvId)
+            ) { tvDetailsResponse, creditsResponse ->
                 if (tvDetailsResponse.id == null || tvDetailsResponse.name.isNullOrEmpty()) {
-                    emit(DetailsResult.Error(DetailsError(
+                    DetailsResult.Error(DetailsError(
                         titleRes = R.string.error_title_no_data,
                         subtitleRes = R.string.error_subtitle_no_data
-                    )))
+                    ))
                 } else {
-                    val domainTv = tvDetailsResponse.toDomainModel()
-                    emit(DetailsResult.Success(domainTv))
+                    val credits = creditsResponse.toCredits()
+                    val domainTv = tvDetailsResponse.toDomainModel(credits)
+                    DetailsResult.Success(domainTv)
                 }
+            }.collect { result ->
+                emit(result)
             }
         } catch (e: Exception) {
             emit(DetailsResult.Error(DetailsError(

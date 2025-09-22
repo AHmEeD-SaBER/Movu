@@ -2,6 +2,8 @@ package com.example.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder
+import com.example.core_domain.MediaType
+import com.example.core_ui.base.Routes
 
 // Extension functions for easier navigation using built-in NavController
 fun NavController.navigateToSplash() {
@@ -26,8 +28,8 @@ fun NavController.navigateToProfile(userId: String) {
     navigate(Routes.Profile(userId))
 }
 
-fun NavController.navigateToMovieDetail(movieId: String) {
-    navigate(Routes.MovieDetail(movieId))
+fun NavController.navigateToMovieDetail(mediaId: Int, mediaType: MediaType) {
+    navigate(Routes.Details(mediaId, mediaType))
 }
 
 // Navigation from Auth to SignIn/SignUp without clearing back stack
