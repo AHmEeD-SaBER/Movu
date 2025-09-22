@@ -1,10 +1,12 @@
 package com.example.domain.models
 
+import com.example.core_domain.CustomError
+
 // MediaError class to hold title and subtitle string resource IDs
 data class MediaError(
-    val titleRes: Int,
-    val subtitleRes: Int
-)
+    override val titleRes: Int,
+    override val subtitleRes: Int
+) : CustomError(titleRes, subtitleRes)
 
 // Custom result class similar to AuthResult
 sealed class MediaResult<out T> {

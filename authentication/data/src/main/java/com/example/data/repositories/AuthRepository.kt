@@ -1,6 +1,6 @@
 import com.example.core_data.utils.INetworkMonitor
-import com.example.data.utils.toData
-import com.example.data.utils.toDomain
+import com.example.authentication.data.utils.toData
+import com.example.authentication.data.utils.toDomain
 import com.example.domain.repositories.IAuthRepository
 import com.example.user_preferences.IAuthDataSource
 import com.movu.authentication.data.R

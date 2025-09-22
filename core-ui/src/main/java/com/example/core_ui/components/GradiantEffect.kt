@@ -1,4 +1,4 @@
-package com.example.ui.components
+package com.example.core_ui.components
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.background
@@ -13,7 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun GradiantEffect(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    color1: Color = Color.Transparent,
+    color2: Color = Color.Black,
 ) {
     Box(
         modifier = modifier
@@ -22,9 +24,9 @@ fun GradiantEffect(
                 brush =
                     Brush.verticalGradient(
                         colors = listOf(
-//                            Color.Black,
-                            Color.Transparent,
-                            Color.Black
+                            color1,
+                            color1,
+                            color2,
                         ),
                     )
             )

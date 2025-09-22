@@ -47,12 +47,12 @@ fun MovuNavHost(
             )
         }
 
-        // Movie Detail Screen
-        composable<Routes.MovieDetail> { backStackEntry ->
-            val movieDetail = backStackEntry.toRoute<Routes.MovieDetail>()
-            MovieDetailRoute(
-                navController = navController,
-                movieId = movieDetail.movieId
+        composable<Routes.Details> { backStackEntry ->
+            val details = backStackEntry.toRoute<Routes.Details>()
+            DetailsRoute(
+                mediaId = details.mediaId,
+                mediaType = details.mediaType,
+                navController = navController
             )
         }
     }

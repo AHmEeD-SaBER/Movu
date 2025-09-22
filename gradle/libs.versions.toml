@@ -27,6 +27,7 @@ splash = "1.0.1"
 lottie = "6.6.7"
 gson = "2.13.2"
 coil = "2.7.0"
+palette = "1.0.0"
 
 # SDK / tool versions as strings — we treat them as "versions" so plugin code can read them
 compileSdk = "36"
@@ -86,6 +87,7 @@ lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", versio
 androidx-compose-ui-lint = { group = "androidx.compose.ui", name = "ui-lint", version.ref = "uiLint" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "palette" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
