@@ -14,4 +14,5 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     // Coil
     implementation(libs.coil)
+    implementation(libs.palette.ktx)
 }

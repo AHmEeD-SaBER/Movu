@@ -117,4 +117,6 @@
     <dimen name="layout_width_100">100dp</dimen>
     <dimen name="layout_width_75">75dp</dimen>
     <dimen name="layout_height_400">400dp</dimen>
+    <dimen name="layout_height_280">280dp</dimen>
+    <dimen name="spacing_extra_x_large_48">48dp</dimen>
 </resources>

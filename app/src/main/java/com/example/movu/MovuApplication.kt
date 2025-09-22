@@ -4,10 +4,13 @@ import android.app.Application
 import authUiModule
 import com.example.core_data.di.coreDataModule
 import com.example.data.di.authDataModule
+import com.example.data.di.detailsDataModule
 import com.example.data.di.splashDataModule
 import com.example.domain.di.authDomainModule
+import com.example.domain.di.detailsDomainModule
 import com.example.domain.di.homeDomainModule
 import com.example.domain.di.splashDomainModule
+import com.example.ui.di.detailsUiModule
 import com.example.ui.di.homeUiModule
 import com.example.ui.di.splashUiModule
 import di.homeDataModule
@@ -41,6 +44,11 @@ class MovuApplication : Application() {
                 homeDataModule,
                 homeDomainModule,
                 homeUiModule,
+
+                detailsDataModule,
+                detailsDomainModule,
+                detailsUiModule
+
             )
         }
     }

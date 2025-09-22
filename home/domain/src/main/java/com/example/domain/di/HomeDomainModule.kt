@@ -10,6 +10,4 @@ import org.koin.dsl.module
 val homeDomainModule = module {
     factory<IGetMoviesUseCase> { GetMoviesUseCase(get()) }
     factory<IGetTvShowsUseCase> { GetTvShowsUseCase(get()) }
-
-
 }

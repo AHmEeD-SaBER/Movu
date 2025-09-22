@@ -1,4 +1,4 @@
-package com.example.data.utils
+package com.example.details.data.utils
 
 import com.example.core_data.models.moviedetails.MovieDetailsResponse
 import com.example.core_data.models.tvdetails.TvShowDetails

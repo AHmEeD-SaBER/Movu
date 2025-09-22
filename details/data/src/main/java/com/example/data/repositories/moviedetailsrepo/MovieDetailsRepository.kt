@@ -5,8 +5,8 @@ import com.example.domain.repositories.IMovieDetailsRepository
 import com.example.core_data.R
 import com.example.data.data_sources.moviedetailsdatasource.IMovieDetailsDataSource
 import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
-import com.example.data.utils.toDomainModel
-import com.example.data.utils.toCredits
+import com.example.details.data.utils.toDomainModel
+import com.example.details.data.utils.toCredits
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Movie

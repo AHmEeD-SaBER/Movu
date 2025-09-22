@@ -56,6 +56,7 @@ dependencies {
     // Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json)
 
     // KOIN dependencies
     implementation(libs.koin.core)
@@ -89,6 +90,10 @@ dependencies {
     implementation(projects.home.data)
     implementation(projects.home.domain)
     implementation(projects.home.ui)
+
+    implementation(projects.details.data)
+    implementation(projects.details.domain)
+    implementation(projects.details.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

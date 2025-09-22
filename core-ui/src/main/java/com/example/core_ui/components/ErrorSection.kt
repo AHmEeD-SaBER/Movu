@@ -1,4 +1,4 @@
-package com.example.ui.components
+package com.example.core_ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -16,14 +16,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import com.example.core_domain.CustomError
 import com.example.core_ui.R
 import com.example.core_ui.theme.AppTypography
-import com.example.domain.models.MediaError
 
 @Composable
 fun ErrorSection(
     modifier: Modifier = Modifier,
-    error: MediaError,
+    error: CustomError,
     onEvent: () -> Unit,
     drawableRes: Int? = null
 ) {

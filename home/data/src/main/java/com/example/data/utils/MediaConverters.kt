@@ -1,4 +1,4 @@
-package com.example.data.utils
+package com.example.home.data.utils
 
 import com.example.domain.models.*
 import com.example.core_data.models.movies.Movie as DataMovie

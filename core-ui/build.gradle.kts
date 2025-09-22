@@ -1,5 +1,6 @@
 plugins {
     id("movu.base.ui")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {

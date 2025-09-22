@@ -1,5 +1,7 @@
 package com.example.domain
 
+import com.example.core_domain.CustomError
+
 data class Credits(
     val cast: List<CastMember>,
     val crew: List<CrewMember>
@@ -65,6 +67,6 @@ sealed class DetailsResult<out T> {
 }
 
 data class DetailsError(
-    val titleRes: Int,
-    val subtitleRes: Int
-)
+    override val titleRes: Int,
+    override val subtitleRes: Int
+) : CustomError(titleRes, subtitleRes)

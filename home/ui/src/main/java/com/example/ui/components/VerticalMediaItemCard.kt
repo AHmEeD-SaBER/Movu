@@ -18,12 +18,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.core_ui.theme.AppTypography
 import com.example.core_ui.R as CoreUiR
 import com.example.domain.models.MediaItem
 import com.example.ui.R
 import coil.compose.AsyncImage
-import com.example.ui.utils.getFullPosterPath
+import com.example.core_ui.components.GradiantEffect
+import com.example.core_ui.components.IMDbLogoRating
+import com.example.core_ui.components.MediaTitle
+import com.example.core_ui.utils.getFullPosterPath
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
@@ -34,7 +38,7 @@ fun VerticalMediaItemCard(
 ) {
     Box(
         modifier = modifier
-            .height(dimensionResource(CoreUiR.dimen.layout_height_300))
+            .height(dimensionResource(CoreUiR.dimen.layout_height_280))
             .width(dimensionResource(CoreUiR.dimen.layout_width_180))
             .clickable { onItemClicked(mediaItem.id) }
             .clip(
@@ -43,7 +47,7 @@ fun VerticalMediaItemCard(
     ) {
         AsyncImage(
             model = mediaItem.image.getFullPosterPath(),
-            placeholder = painterResource(R.drawable.image_placeholder),
+            placeholder = painterResource(CoreUiR.drawable.image_placeholder),
             contentDescription = mediaItem.title,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
@@ -68,7 +72,8 @@ fun VerticalMediaItemCard(
             title = mediaItem.title,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            style = AppTypography.bt2,
+            textAlign = TextAlign.Center,
+            style = AppTypography.bt2.copy(color = androidx.compose.ui.graphics.Color.White, fontSize = 15.sp),
 
             )
     }

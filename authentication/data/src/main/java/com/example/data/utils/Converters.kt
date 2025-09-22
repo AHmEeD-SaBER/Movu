@@ -1,4 +1,4 @@
-package com.example.data.utils
+package com.example.authentication.data.utils
 
 import com.example.user_preferences.models.User
 import com.example.user_preferences.models.SignUpRequest
