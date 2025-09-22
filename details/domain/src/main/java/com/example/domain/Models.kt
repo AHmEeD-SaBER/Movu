@@ -1,5 +1,25 @@
 package com.example.domain
 
+data class Credits(
+    val cast: List<CastMember>,
+    val crew: List<CrewMember>
+)
+
+data class CastMember(
+    val id: Int,
+    val name: String,
+    val character: String,
+    val profilePath: String?
+)
+
+data class CrewMember(
+    val id: Int,
+    val name: String,
+    val job: String,
+    val department: String,
+    val profilePath: String?
+)
+
 interface MediaDetails {
     val id: Int
     val title: String
@@ -9,6 +29,7 @@ interface MediaDetails {
     val rating: Double
     val languages: List<String>
     val plot: String
+    val credits: Credits
 }
 
 data class Movie(
@@ -20,7 +41,8 @@ data class Movie(
     val length: Int,
     override val rating: Double,
     override val languages: List<String>,
-    override val plot: String
+    override val plot: String,
+    override val credits: Credits
 ) : MediaDetails
 
 data class Tv(
@@ -33,7 +55,8 @@ data class Tv(
     override val languages: List<String>,
     override val plot: String,
     val numberOfEpisodes: Int,
-    val numberOfSeasons: Int
+    val numberOfSeasons: Int,
+    override val credits: Credits
 ) : MediaDetails
 
 sealed class DetailsResult<out T> {
