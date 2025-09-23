@@ -40,7 +40,8 @@ fun DetailsScreen(
                 modifier = modifier,
                 details = state.details,
                 state = state,
-                onEvent = onEvent
+                onEvent = onEvent,
+                mediaType = mediaType
             )
         }
 

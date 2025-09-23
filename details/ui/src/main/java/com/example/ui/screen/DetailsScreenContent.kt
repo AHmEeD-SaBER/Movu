@@ -1,6 +1,6 @@
 package com.example.ui.screen
 
-import android.R.attr.maxWidth
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,10 +29,10 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.core_domain.MediaType
 import com.example.core_ui.components.CustomAppBar
 import com.example.core_ui.components.IMDbLogoRating
 import com.example.core_ui.components.MediaTitle
@@ -41,100 +41,145 @@ import com.example.core_ui.utils.getFullPosterPath
 import com.example.domain.Credits
 import com.example.domain.MediaDetails
 import com.example.domain.Movie
+import com.example.domain.Tv
 import com.example.ui.DetailsContract
 import com.example.ui.R
+import com.example.ui.components.BriefDescriptionSection
 import com.example.core_ui.R as CoreUiR
 import com.example.ui.components.DetailsPoster
+import com.example.ui.components.DetailsSection
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun DetailsScreenContent(
     modifier: Modifier = Modifier,
     details: MediaDetails,
     state: DetailsContract.State,
-    onEvent: (DetailsContract.Events) -> Unit
+    onEvent: (DetailsContract.Events) -> Unit,
+    mediaType: MediaType
 ) {
 
     var backgroundColor by remember { mutableStateOf(Color.Black) }
-
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(backgroundColor.copy(alpha = 0.8f))
+    DetailsSection(
+        mediaDetails = details
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(horizontal = dimensionResource(CoreUiR.dimen.padding_8)),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(backgroundColor.copy(alpha = 0.8f))
         ) {
-            CustomAppBar(showNavigation = true, navigationIcon = {
-                IconButton(
-                    onClick = { onEvent(DetailsContract.Events.BackButtonClicked) },
-                    modifier = Modifier.size(
-                        dimensionResource(CoreUiR.dimen.icon_size_48)
-                    )
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back_button_description),
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-
-            }, actions = {
-                IconButton(
-                    onClick = { },
-                    modifier = Modifier.size(
-                        dimensionResource(CoreUiR.dimen.icon_size_48)
-                    ),
-
-                    ) {
-                    Icon(
-                        painter = painterResource(CoreUiR.drawable.save_outlined),
-                        contentDescription = stringResource(R.string.back_button_description),
-                        tint = Color.White
-                    )
-                }
-            })
-
-            Spacer(
-                modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_medium_8))
-            )
-
-            DetailsPoster(
-                posterPath = details.image.getFullPosterPath(), onColorExtracted = { color ->
-                    backgroundColor = color
-                }
-            )
-
-            Spacer(
-                modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_extra_x_large_48))
-            )
-
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = dimensionResource(CoreUiR.dimen.padding_8)),
-                horizontalArrangement = Arrangement.SpaceBetween
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = dimensionResource(CoreUiR.dimen.padding_8)),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val configuration = LocalConfiguration.current
-                val screenWidthDp = configuration.screenWidthDp
+                CustomAppBar(showNavigation = true, navigationIcon = {
+                    IconButton(
+                        onClick = { onEvent(DetailsContract.Events.BackButtonClicked) },
+                        modifier = Modifier.size(
+                            dimensionResource(CoreUiR.dimen.icon_size_48)
+                        )
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back_button_description),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
 
-                MediaTitle(
-                    modifier = Modifier.widthIn(max = (screenWidthDp * 0.75f).dp).weight(1f), // ✅ 80% of screen width
-                    title = details.title,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    style = AppTypography.sh2.copy(color = Color.White),
+                }, actions = {
+                    IconButton(
+                        onClick = { },
+                        modifier = Modifier.size(
+                            dimensionResource(CoreUiR.dimen.icon_size_48)
+                        ),
+
+                        ) {
+                        Icon(
+                            painter = painterResource(CoreUiR.drawable.save_outlined),
+                            contentDescription = stringResource(R.string.back_button_description),
+                            tint = Color.White
+                        )
+                    }
+                })
+
+                Spacer(
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_medium_8))
                 )
 
-                IMDbLogoRating(
+                DetailsPoster(
+                    posterPath = details.image.getFullPosterPath(), onColorExtracted = { color ->
+                        backgroundColor = color
+                    }
+                )
+
+                Spacer(
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_large_16))
+                )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = dimensionResource(CoreUiR.dimen.padding_12)),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    val configuration = LocalConfiguration.current
+                    val screenWidthDp = configuration.screenWidthDp
+
+                    MediaTitle(
+                        modifier = Modifier
+                            .widthIn(max = (screenWidthDp * 0.75f).dp)
+                            .weight(1f), // ✅ 80% of screen width
+                        title = details.title,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        style = AppTypography.sh2.copy(color = Color.White),
+                    )
+
+                    IMDbLogoRating(
 //                    modifier = Modifier.weight(1f),
-                    rating = details.rating,
-                    color = backgroundColor.copy(alpha = 0.7f),
-                    textColor = Color.White
+                        rating = details.rating,
+                        color = backgroundColor.copy(alpha = 0.7f),
+                        textColor = Color.White
 
+                    )
+                }
+                Spacer(
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_large_16))
                 )
+                BriefDescriptionSection(
+                    data = when (mediaType) {
+                        MediaType.MOVIE -> {
+                            val movie = details as Movie
+                            mapOf(
+                                stringResource(R.string.label_length) to movie.length.toHourMinuteSecondFormat(),
+                                stringResource(R.string.label_languages) to movie.languages.first(),
+                                stringResource(R.string.label_Rating) to "+${movie.voteCount}"
+
+                            )
+                        }
+
+                        MediaType.TV_SHOW -> {
+                            val tvShow = details as Tv
+                            mapOf(
+                                stringResource(R.string.label_episodes) to "${tvShow.numberOfEpisodes}",
+                                stringResource(R.string.label_seasons) to "${tvShow.numberOfSeasons}",
+                                stringResource(R.string.label_languages) to tvShow.languages.first()
+                            )
+                        }
+                    },
+                    modifier = Modifier.padding(horizontal = dimensionResource(CoreUiR.dimen.padding_12))
+                )
+                Spacer(
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_large_16))
+                )
+
             }
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun DetailsScreenContentPreview() {
@@ -144,7 +189,13 @@ fun DetailsScreenContentPreview() {
             title = "Sample Movie",
             image = "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
             genres = listOf("Action", "Adventure", "Sci-Fi"),
-            productionCompanies = listOf("Marvel Studios", "Disney"),
+            productionCompanies = listOf(
+                com.example.domain.ProductionCompany(
+                    id = 1,
+                    name = "Sample Production",
+                    logoPath = "/sample_logo.png",
+                )
+            ),
             length = 142,
             rating = 8.5,
             languages = listOf("English"),
@@ -152,9 +203,22 @@ fun DetailsScreenContentPreview() {
             credits = Credits(
                 cast = emptyList(),
                 crew = emptyList()
-            )
+            ),
+            voteCount = 2567
         ),
         state = DetailsContract.State.Idle,
-        onEvent = { /* Preview - no action needed */ }
+        onEvent = { /* Preview - no action needed */ },
+        mediaType = MediaType.MOVIE
     )
+}
+
+@SuppressLint("DefaultLocale")
+fun Int.toHourMinuteSecondFormat(): String {
+    val hours = this / 60
+    val minutes = this % 60
+    return if (hours > 0) {
+        String.format("%dh %02dm", hours, minutes)
+    } else {
+        String.format("%dm", minutes)
+    }
 }
