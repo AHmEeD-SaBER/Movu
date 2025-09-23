@@ -8,6 +8,7 @@ import com.example.domain.Tv
 import com.example.domain.Credits
 import com.example.domain.CastMember
 import com.example.domain.CrewMember
+import com.example.domain.ProductionCompany
 
 // Convert CreditsResponse to Credits domain model
 fun CreditsResponse.toCredits(): Credits {
@@ -39,12 +40,19 @@ fun MovieDetailsResponse.toDomainModel(credits: Credits): Movie {
         title = title ?: "",
         image = posterPath ?: "",
         genres = genres?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
-        productionCompanies = productionCompanies?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
+        productionCompanies = productionCompanies?.map {
+            ProductionCompany(
+                id = it?.id ?: 0,
+                name = it?.name ?: "",
+                logoPath = it?.logoPath
+            )
+        } ?: emptyList(),
         length = runtime ?: 0,
         rating = voteAverage ?: 0.0,
         languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
         plot = overview ?: "",
-        credits = credits
+        credits = credits,
+        voteCount = voteCount ?: 0
     )
 }
 
@@ -59,6 +67,7 @@ fun TvShowDetails.toDomainModel(credits: Credits): Tv {
                 else -> 0
             }
         }
+
         else -> 0
     }
 
@@ -67,7 +76,13 @@ fun TvShowDetails.toDomainModel(credits: Credits): Tv {
         title = name ?: "",
         image = posterPath ?: "",
         genres = genres?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
-        productionCompanies = productionCompanies?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
+        productionCompanies = productionCompanies?.map {
+            ProductionCompany(
+                id = it?.id ?: 0,
+                name = it?.name ?: "",
+                logoPath = it?.logoPath
+            )
+        } ?: emptyList(),
         rating = voteAverage ?: 0.0,
         languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
         plot = overview ?: "",

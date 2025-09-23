@@ -2,4 +2,13 @@
 <resources>
     <string name="poster_description">Media Poster</string>
     <string name="back_button_description">Back</string>
+    <string name="label_length">Length</string>
+    <string name="label_languages">Language</string>
+    <string name="label_Rating">Rating</string>
+    <string name="label_episodes">Episodes</string>
+    <string name="label_seasons">Seasons</string>
+    <string name="label_description">Description</string>
+    <string name="label_cast">Cast</string>
+    <string name="label_crew">Crew</string>
+    <string name="label_production">Production Companies</string>
 </resources>
