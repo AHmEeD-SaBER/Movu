@@ -61,7 +61,8 @@ fun DetailsScreenContent(
 
     var backgroundColor by remember { mutableStateOf(Color.Black) }
     DetailsSection(
-        mediaDetails = details
+        mediaDetails = details,
+        onEvent = onEvent
     ) {
         Box(
             modifier = modifier
@@ -204,7 +205,8 @@ fun DetailsScreenContentPreview() {
                 cast = emptyList(),
                 crew = emptyList()
             ),
-            voteCount = 2567
+            voteCount = 2567,
+            trailerLink = ""
         ),
         state = DetailsContract.State.Idle,
         onEvent = { /* Preview - no action needed */ },

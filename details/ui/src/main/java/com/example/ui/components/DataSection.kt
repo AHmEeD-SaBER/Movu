@@ -31,7 +31,7 @@ fun DataSection(
     ) {
         Text(
             text = topText,
-            style = AppTypography.bt4.copy(color = Color.White.copy(alpha = 0.5f)),
+            style = AppTypography.bt4.copy(color = Color.White.copy(alpha = 0.75f)),
             textAlign = TextAlign.Start,
             modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_8))
         )

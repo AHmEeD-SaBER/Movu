@@ -38,6 +38,8 @@ interface MediaDetails {
     val languages: List<String>
     val plot: String
     val credits: Credits
+
+    val trailerLink: String?
 }
 
 data class Movie(
@@ -51,7 +53,8 @@ data class Movie(
     override val rating: Double,
     override val languages: List<String>,
     override val plot: String,
-    override val credits: Credits
+    override val credits: Credits,
+    override val trailerLink: String?
 ) : MediaDetails
 
 data class Tv(
@@ -65,7 +68,8 @@ data class Tv(
     override val plot: String,
     val numberOfEpisodes: Int,
     val numberOfSeasons: Int,
-    override val credits: Credits
+    override val credits: Credits,
+    override val trailerLink: String?
 ) : MediaDetails
 
 sealed class DetailsResult<out T> {

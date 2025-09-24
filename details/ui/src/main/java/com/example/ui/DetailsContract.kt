@@ -12,6 +12,7 @@ class DetailsContract {
         data object BackButtonClicked : Events()
         data object Retry : Events()
         data class LoadData(val mediaItemId: Int, val mediaType: MediaType) : Events()
+        data class WatchTrailer(val trailerLink: String) : Events()
 
     }
 
@@ -24,5 +25,6 @@ class DetailsContract {
 
     sealed class Effects : UiEffect {
         data object NavigateBack : Effects()
+        data class OpenTrailer(val trailerLink: String) : Effects()
     }
 }
