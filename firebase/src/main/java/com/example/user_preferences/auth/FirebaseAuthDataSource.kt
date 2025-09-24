@@ -1,4 +1,4 @@
-package com.example.user_preferences
+package com.example.user_preferences.auth
 
 import com.example.user_preferences.models.AuthResult
 import com.example.user_preferences.models.SignInRequest

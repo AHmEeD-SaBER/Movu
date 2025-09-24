@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- General UI strings -->
     <string name="poster_description">Media Poster</string>
     <string name="back_button_description">Back</string>
+
+    <!-- Details labels -->
     <string name="label_length">Length</string>
     <string name="label_languages">Language</string>
     <string name="label_Rating">Rating</string>
@@ -11,4 +14,14 @@
     <string name="label_cast">Cast</string>
     <string name="label_crew">Crew</string>
     <string name="label_production">Production Companies</string>
+
+    <!-- Watchlist functionality -->
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="remove_from_watchlist">Remove from Watchlist</string>
+
+    <!-- Confirmation dialog -->
+    <string name="remove_from_watchlist_title">Remove from Watchlist</string>
+    <string name="remove_from_watchlist_message">Are you sure you want to remove "%1$s" from your watchlist?</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
 </resources>

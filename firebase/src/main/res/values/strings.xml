@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_user_not_authenticated">User not authenticated</string>
+
+    <!-- Watchlist error strings -->
+    <string name="watchlist_error_title">Watchlist Error</string>
+    <string name="watchlist_error_subtitle">Something went wrong with your watchlist</string>
+    <string name="watchlist_auth_error_title">Authentication Required</string>
+    <string name="watchlist_auth_error_subtitle">Please sign in to manage your watchlist</string>
+</resources>
