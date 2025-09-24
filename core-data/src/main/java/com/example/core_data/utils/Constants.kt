@@ -9,6 +9,9 @@ object Constants {
         const val TV_DETAILS = "tv/{tv_id}"
         const val MOVIE_CREDITS = "movie/{movie_id}/credits"
         const val TV_CREDITS = "tv/{tv_id}/credits"
+
+        const val MOVIE_VIDEOS = "movie/{movie_id}/videos"
+        const val TV_VIDEOS = "tv/{tv_id}/videos"
     }
     object QueryParams {
         const val API_KEY = "api_key"

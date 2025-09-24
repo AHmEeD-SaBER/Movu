@@ -6,6 +6,8 @@ import com.example.data.data_sources.tvdetailsdatasource.ITvDetailsDataSource
 import com.example.data.data_sources.tvdetailsdatasource.TvDetailsDataSource
 import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
 import com.example.data.data_sources.creditsdatasource.CreditsDataSource
+import com.example.data.data_sources.videosdatasource.IVideosDataSource
+import com.example.data.data_sources.videosdatasource.VideosDataSource
 import com.example.data.repositories.moviedetailsrepo.MovieDetailsRepository
 import com.example.data.repositories.tvdetailsrepo.TvDetailsRepository
 import com.example.domain.repositories.IMovieDetailsRepository
@@ -25,12 +27,17 @@ val detailsDataModule = module {
         CreditsDataSource(api = get())
     }
 
+    single<IVideosDataSource> {
+        VideosDataSource(api = get())
+    }
+
 
     single<ITvDetailsRepository> {
         TvDetailsRepository(
             dataSource = get(),
             creditsDataSource = get(),
-            networkMonitor = get()
+            networkMonitor = get(),
+            videosDataSource = get()
         )
     }
 
@@ -38,7 +45,8 @@ val detailsDataModule = module {
         MovieDetailsRepository(
             dataSource = get(),
             creditsDataSource = get(),
-            networkMonitor = get()
+            networkMonitor = get(),
+            videosDataSource = get()
         )
     }
 }

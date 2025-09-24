@@ -30,6 +30,7 @@ class DetailsViewModel(
             DetailsContract.Events.BackButtonClicked -> onBackButtonClicked()
             is DetailsContract.Events.LoadData -> loadData(event.mediaItemId, event.mediaType)
             DetailsContract.Events.Retry -> onRetry()
+            is DetailsContract.Events.WatchTrailer -> onWatchTrailer(event.trailerLink)
         }
     }
 
@@ -70,6 +71,12 @@ class DetailsViewModel(
                     )
                 }
             }
+        }
+    }
+
+    private fun onWatchTrailer(trailerLink: String) {
+        viewModelScope.launch {
+            setEffect { DetailsContract.Effects.OpenTrailer(trailerLink) }
         }
     }
 }

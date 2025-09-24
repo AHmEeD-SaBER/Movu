@@ -3,6 +3,7 @@ package com.example.details.data.utils
 import com.example.core_data.models.moviedetails.MovieDetailsResponse
 import com.example.core_data.models.tvdetails.TvShowDetails
 import com.example.core_data.models.credits.CreditsResponse
+import com.example.core_data.models.videos.VideosResponse
 import com.example.domain.Movie
 import com.example.domain.Tv
 import com.example.domain.Credits
@@ -33,8 +34,15 @@ fun CreditsResponse.toCredits(): Credits {
     )
 }
 
+fun VideosResponse.getTrailerLink(): String? {
+    val trailer = results?.firstOrNull { video ->
+        video?.type == "Trailer" && video.site == "YouTube"
+    }
+    return trailer?.key?.let { "https://www.youtube.com/watch?v=$it" }
+}
+
 // Convert MovieDetailsResponse to Movie domain model
-fun MovieDetailsResponse.toDomainModel(credits: Credits): Movie {
+fun MovieDetailsResponse.toDomainModel(credits: Credits, trailer: String? = null): Movie {
     return Movie(
         id = id ?: 0,
         title = title ?: "",
@@ -49,15 +57,16 @@ fun MovieDetailsResponse.toDomainModel(credits: Credits): Movie {
         } ?: emptyList(),
         length = runtime ?: 0,
         rating = voteAverage ?: 0.0,
-        languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
+        languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.englishName } ?: emptyList(),
         plot = overview ?: "",
         credits = credits,
-        voteCount = voteCount ?: 0
+        voteCount = voteCount ?: 0,
+        trailerLink = trailer
     )
 }
 
 // Convert TvShowDetails to Tv domain model
-fun TvShowDetails.toDomainModel(credits: Credits): Tv {
+fun TvShowDetails.toDomainModel(credits: Credits, trailer: String?): Tv {
     val episodeRunTime = when {
         episodeRunTime?.isNotEmpty() == true -> {
             // Try to get the first runtime as Int, fallback to 0
@@ -88,6 +97,7 @@ fun TvShowDetails.toDomainModel(credits: Credits): Tv {
         plot = overview ?: "",
         numberOfEpisodes = numberOfEpisodes ?: 0,
         numberOfSeasons = numberOfSeasons ?: 0,
-        credits = credits
+        credits = credits,
+        trailerLink = trailer
     )
 }

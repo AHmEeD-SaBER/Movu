@@ -7,7 +7,9 @@ import com.example.core_data.models.moviedetails.MovieDetailsResponse
 import com.example.core_data.models.movies.MoviesResponse
 import com.example.core_data.models.tv.TvResponse
 import com.example.core_data.models.tvdetails.TvShowDetails
+import com.example.core_data.models.videos.VideosResponse
 import com.example.core_data.utils.Constants
+import com.example.core_data.utils.Constants.EndPoints.MOVIE_VIDEOS
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -42,4 +44,17 @@ interface IRetrofitService {
         @Path(Constants.QueryParams.TV_ID) tvId: Int,
         @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
     ): CreditsResponse
+
+    @GET(MOVIE_VIDEOS)
+    suspend fun getMovieVideos(
+        @Path(Constants.QueryParams.MOVIE_ID) movieId: Int,
+        @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
+    ): VideosResponse
+
+    // For TV shows
+    @GET(Constants.EndPoints.TV_VIDEOS)
+    suspend fun getTvVideos(
+        @Path(Constants.QueryParams.TV_ID) tvId: Int,
+        @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
+    ): VideosResponse
 }

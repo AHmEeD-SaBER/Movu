@@ -5,8 +5,10 @@ import com.example.core_data.utils.INetworkMonitor
 import com.example.core_data.R
 import com.example.data.data_sources.tvdetailsdatasource.ITvDetailsDataSource
 import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
+import com.example.data.data_sources.videosdatasource.IVideosDataSource
 import com.example.details.data.utils.toDomainModel
 import com.example.details.data.utils.toCredits
+import com.example.details.data.utils.getTrailerLink
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Tv
@@ -18,7 +20,8 @@ import kotlinx.coroutines.flow.combine
 class TvDetailsRepository(
     private val dataSource: ITvDetailsDataSource,
     private val creditsDataSource: ICreditsDataSource,
-    private val networkMonitor: INetworkMonitor
+    private val networkMonitor: INetworkMonitor,
+    private val videosDataSource: IVideosDataSource
 ) : ITvDetailsRepository {
     override fun getTvDetails(tvId: Int): Flow<DetailsResult<Tv>> = flow {
         try {
@@ -30,10 +33,12 @@ class TvDetailsRepository(
                 return@flow
             }
 
-            // Combine TV details and credits
-            dataSource.getTvDetails(tvId).combine(
-                creditsDataSource.getTvCredits(tvId)
-            ) { tvDetailsResponse, creditsResponse ->
+            // Combine TV details, credits, and videos
+            combine(
+                dataSource.getTvDetails(tvId),
+                creditsDataSource.getTvCredits(tvId),
+                videosDataSource.getTvVideos(tvId)
+            ) { tvDetailsResponse, creditsResponse, videosResponse ->
                 if (tvDetailsResponse.id == null || tvDetailsResponse.name.isNullOrEmpty()) {
                     DetailsResult.Error(DetailsError(
                         titleRes = R.string.error_title_no_data,
@@ -41,7 +46,8 @@ class TvDetailsRepository(
                     ))
                 } else {
                     val credits = creditsResponse.toCredits()
-                    val domainTv = tvDetailsResponse.toDomainModel(credits)
+                    val trailerLink = videosResponse.getTrailerLink()
+                    val domainTv = tvDetailsResponse.toDomainModel(credits, trailerLink)
                     DetailsResult.Success(domainTv)
                 }
             }.collect { result ->

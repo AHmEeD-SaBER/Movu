@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core_ui.R as CoreUiR
 import com.example.core_ui.theme.AppTypography
 import com.example.domain.MediaDetails
+import com.example.ui.DetailsContract
 import com.example.ui.R
 
 
@@ -40,13 +41,13 @@ import com.example.ui.R
 @Composable
 fun DraggableSheetContent(
     mediaDetails: MediaDetails,
-    isExpanded: Boolean
+    isExpanded: Boolean,
+    onEvent: (DetailsContract.Events) -> Unit
 ) {
     val maxHeight = LocalConfiguration.current.screenHeightDp.dp * 0.78f
     val lazyListState = rememberLazyListState()
     var preloadContent by remember { mutableStateOf(false) }
 
-    // Preload content when component is first created to avoid lag
     LaunchedEffect(Unit) {
         preloadContent = true
     }
@@ -54,45 +55,45 @@ fun DraggableSheetContent(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(max = if (isExpanded) maxHeight else dimensionResource(CoreUiR.dimen.layout_height_250))
+            .heightIn(max = if (isExpanded) maxHeight else dimensionResource(CoreUiR.dimen.layout_height_350))
             .navigationBarsPadding()
     ) {
         if (!isExpanded) {
-            // Collapsed state - show preview
-            CollapsedContent(mediaDetails = mediaDetails)
+            CollapsedContent(mediaDetails = mediaDetails, onEvent = onEvent)
         } else if (preloadContent) {
-            // Expanded state - show full content with smooth transition
             ExpandedContent(
                 mediaDetails = mediaDetails,
-                lazyListState = lazyListState
+                lazyListState = lazyListState,
+                onEvent = onEvent
             )
         }
     }
 }
 
 @Composable
-private fun CollapsedContent(mediaDetails: MediaDetails) {
+private fun CollapsedContent(
+    mediaDetails: MediaDetails,
+    onEvent: (DetailsContract.Events) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimensionResource(CoreUiR.dimen.layout_height_250))
+            .height(dimensionResource(CoreUiR.dimen.layout_height_350))
             .padding(horizontal = dimensionResource(CoreUiR.dimen.padding_16)),
     ) {
-        Text(
-            text = stringResource(R.string.label_description),
-            style = AppTypography.h7,
-            modifier = Modifier.padding(bottom = dimensionResource(CoreUiR.dimen.padding_8))
+        DescriptionSection(
+            plot = mediaDetails.plot,
+            genres = mediaDetails.genres
         )
-
-        Text(
-            text = mediaDetails.plot,
-            style = AppTypography.bt3.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)),
-            maxLines = 3,
-            overflow = TextOverflow.Ellipsis,
-        )
+        Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
 
         WatchTrailerButton(
-            modifier = Modifier.padding(top = dimensionResource(CoreUiR.dimen.padding_16))
+            modifier = Modifier.padding(top = dimensionResource(CoreUiR.dimen.padding_16)),
+            onClick = {
+                mediaDetails.trailerLink?.let { trailerLink ->
+                    onEvent(DetailsContract.Events.WatchTrailer(trailerLink))
+                }
+            }
         )
     }
 }
@@ -100,7 +101,8 @@ private fun CollapsedContent(mediaDetails: MediaDetails) {
 @Composable
 private fun ExpandedContent(
     mediaDetails: MediaDetails,
-    lazyListState: LazyListState
+    lazyListState: LazyListState,
+    onEvent: (DetailsContract.Events) -> Unit
 ) {
     LazyColumn(
         state = lazyListState,
@@ -108,7 +110,7 @@ private fun ExpandedContent(
             .fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = dimensionResource(CoreUiR.dimen.padding_16))
     ) {
-        item(key = "description") {
+        item() {
             DescriptionSection(
                 plot = mediaDetails.plot,
                 genres = mediaDetails.genres
@@ -117,28 +119,34 @@ private fun ExpandedContent(
         }
 
         if (mediaDetails.credits.cast.isNotEmpty()) {
-            item(key = "cast") {
+            item() {
                 CastSection(cast = mediaDetails.credits.cast)
                 Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
             }
         }
 
         if (mediaDetails.credits.crew.isNotEmpty()) {
-            item(key = "crew") {
+            item() {
                 CrewSection(crew = mediaDetails.credits.crew)
                 Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
             }
         }
 
         if (mediaDetails.productionCompanies.isNotEmpty()) {
-            item(key = "production") {
+            item() {
                 ProductionSection(companies = mediaDetails.productionCompanies)
                 Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
             }
         }
 
-        item(key = "trailer_button") {
-            WatchTrailerButton()
+        item() {
+            WatchTrailerButton(
+                onClick = {
+                    mediaDetails.trailerLink?.let { trailerLink ->
+                        onEvent(DetailsContract.Events.WatchTrailer(trailerLink))
+                    }
+                }
+            )
         }
     }
 }
