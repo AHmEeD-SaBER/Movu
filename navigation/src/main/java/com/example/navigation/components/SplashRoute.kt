@@ -3,7 +3,7 @@ package com.example.navigation.components
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.navigation.navigateToHome
+import com.example.navigation.navigateToMain
 import com.example.navigation.navigateToSignIn
 import com.example.ui.SplashContract
 import com.example.ui.SplashViewModel
@@ -30,7 +30,7 @@ fun SplashRoute(
                     navController.navigateToSignIn()
                 }
                 is SplashContract.Effect.NavigateToHome -> {
-                    navController.navigateToHome()
+                    navController.navigateToMain()
                 }
             }
         }

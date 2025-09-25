@@ -120,6 +120,7 @@ fun DetailsScreenContent(
                             )
                         } else {
                             Icon(
+                                modifier = Modifier.size(dimensionResource(CoreUiR.dimen.icon_size_32)),
                                 painter = painterResource(
                                     if (isInWatchlist) CoreUiR.drawable.save_filled
                                     else CoreUiR.drawable.save_outlined

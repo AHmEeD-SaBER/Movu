@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -110,7 +111,7 @@ fun HomeScreen(
                                     .clickable(
                                         onClick = { /* TODO: Implement search action */ }
                                     )
-                                    .padding(end = dimensionResource(R.dimen.padding_12))
+                                    .padding(end = dimensionResource(R.dimen.padding_12)).size(dimensionResource(R.dimen.icon_size_24))
                             )
                         }
                     )
@@ -139,7 +140,7 @@ fun HomeScreen(
                     )
 
                     Spacer(
-                        modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_24))
+                        modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_48))
                     )
                 }
             }

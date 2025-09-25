@@ -10,13 +10,11 @@ import com.example.core_ui.base.Routes
 
 @Composable
 fun ProfileRoute(
-    navController: NavHostController,
-    userId: String
 ) {
     val context = LocalContext.current
 
     // Placeholder Profile Screen - replace with your actual profile screen implementation
-    Text("Profile Screen for user: $userId - Replace with your ProfileScreen composable")
+    Text("Profile Screen for user: $ - Replace with your ProfileScreen composable")
 
     // Example of how to handle navigation effects when you implement your ProfileViewModel
     /*

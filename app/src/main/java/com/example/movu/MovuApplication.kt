@@ -10,6 +10,7 @@ import com.example.domain.di.authDomainModule
 import com.example.domain.di.detailsDomainModule
 import com.example.domain.di.homeDomainModule
 import com.example.domain.di.splashDomainModule
+import com.example.navigation.di.navigationModule
 import com.example.ui.di.detailsUiModule
 import com.example.ui.di.homeUiModule
 import com.example.ui.di.splashUiModule
@@ -29,7 +30,7 @@ class MovuApplication : Application() {
             modules(
                 // Data layer modules
                 coreDataModule,
-
+                navigationModule,
 
                 firebaseModule,
 

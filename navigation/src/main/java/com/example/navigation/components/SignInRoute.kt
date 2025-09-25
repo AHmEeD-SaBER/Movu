@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.example.core_ui.base.Routes
-import com.example.navigation.navigateToHome
+import com.example.navigation.navigateToMain
 import com.example.navigation.navigateToSignUp
 import com.example.ui.signin.SignInContract
 import com.example.ui.signin.SignInViewModel
@@ -34,9 +34,7 @@ fun SignInRoute(
                     navController.navigateToSignUp()
                 }
                 is SignInContract.Effect.NavigateToHome -> {
-                    navController.navigate(Routes.Home) {
-                        popUpTo<Routes.SignIn> { inclusive = true }
-                    }
+                    navController.navigateToMain()
                 }
                 is SignInContract.Effect.ShowError -> {
                     Toast.makeText(context, context.getString(effect.messageRes), Toast.LENGTH_SHORT).show()
