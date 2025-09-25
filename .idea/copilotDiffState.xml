@@ -20,6 +20,24 @@
             </PendingDiffInfo>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/details/domain/src/main/java/com/example/domain/usecases/watchlist/IWatchlistUseCase.kt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/details/domain/src/main/java/com/example/domain/usecases/watchlist/IWatchlistUseCase.kt" />
+              <option name="originalContent" value="&#10;" />
+              <option name="updatedContent" value="// This file should be deleted - watchlist functionality belongs in repository layer" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/details/domain/src/main/java/com/example/domain/usecases/watchlist/WatchlistUseCase.kt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/details/domain/src/main/java/com/example/domain/usecases/watchlist/WatchlistUseCase.kt" />
+              <option name="originalContent" value="&#10;" />
+              <option name="updatedContent" value="// This file should be deleted - watchlist functionality belongs in repository layer" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

@@ -13,18 +13,26 @@ class DetailsContract {
         data object Retry : Events()
         data class LoadData(val mediaItemId: Int, val mediaType: MediaType) : Events()
         data class WatchTrailer(val trailerLink: String) : Events()
-
+        data object ToggleWatchlist : Events()
+        data object ConfirmRemoveFromWatchlist : Events()
+        data object DismissRemoveConfirmation : Events()
     }
 
     sealed class State : UiState {
         data object Loading : State()
         data class Error(val error: DetailsError) : State()
-        data class Success(val details: MediaDetails) : State()
+        data class Success(
+            val details: MediaDetails,
+            val isInWatchlist: Boolean = false,
+            val watchlistLoading: Boolean = false,
+            val showRemoveConfirmation: Boolean = false
+        ) : State()
         data object Idle : State()
     }
 
     sealed class Effects : UiEffect {
         data object NavigateBack : Effects()
         data class OpenTrailer(val trailerLink: String) : Effects()
+        data class ShowWatchlistError(val error: DetailsError) : Effects()
     }
 }

@@ -1,5 +1,7 @@
 package com.example.navigation.components
 
+import android.content.*
+import android.content.Intent
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
@@ -33,11 +35,13 @@ fun DetailsRoute(
                 }
 
                 is DetailsContract.Effects.OpenTrailer -> {
-                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
                         data = effect.trailerLink.toUri()
                     }
                     context.startActivity(intent)
                 }
+
+                is DetailsContract.Effects.ShowWatchlistError -> TODO()
             }
         }
     }

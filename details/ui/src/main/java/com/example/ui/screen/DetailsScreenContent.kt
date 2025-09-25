@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +49,7 @@ import com.example.ui.components.BriefDescriptionSection
 import com.example.core_ui.R as CoreUiR
 import com.example.ui.components.DetailsPoster
 import com.example.ui.components.DetailsSection
+import com.example.ui.components.RemoveFromWatchlistConfirmationDialog
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -60,6 +62,16 @@ fun DetailsScreenContent(
 ) {
 
     var backgroundColor by remember { mutableStateOf(Color.Black) }
+
+    // Show confirmation dialog when removing from watchlist
+    if (state is DetailsContract.State.Success && state.showRemoveConfirmation) {
+        RemoveFromWatchlistConfirmationDialog(
+            itemTitle = details.title,
+            onConfirm = { onEvent(DetailsContract.Events.ConfirmRemoveFromWatchlist) },
+            onDismiss = { onEvent(DetailsContract.Events.DismissRemoveConfirmation) }
+        )
+    }
+
     DetailsSection(
         mediaDetails = details,
         onEvent = onEvent
@@ -90,18 +102,35 @@ fun DetailsScreenContent(
                     }
 
                 }, actions = {
+                    val isInWatchlist = if (state is DetailsContract.State.Success) state.isInWatchlist else false
+                    val isLoading = if (state is DetailsContract.State.Success) state.watchlistLoading else false
+
                     IconButton(
-                        onClick = { },
+                        onClick = { onEvent(DetailsContract.Events.ToggleWatchlist) },
                         modifier = Modifier.size(
                             dimensionResource(CoreUiR.dimen.icon_size_48)
                         ),
-
-                        ) {
-                        Icon(
-                            painter = painterResource(CoreUiR.drawable.save_outlined),
-                            contentDescription = stringResource(R.string.back_button_description),
-                            tint = Color.White
-                        )
+                        enabled = !isLoading
+                    ) {
+                        if (isLoading) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(24.dp),
+                                color = Color.White,
+                                strokeWidth = 2.dp
+                            )
+                        } else {
+                            Icon(
+                                painter = painterResource(
+                                    if (isInWatchlist) CoreUiR.drawable.save_filled
+                                    else CoreUiR.drawable.save_outlined
+                                ),
+                                contentDescription = stringResource(
+                                    if (isInWatchlist) R.string.remove_from_watchlist
+                                    else R.string.add_to_watchlist
+                                ),
+                                tint = if (isInWatchlist) MaterialTheme.colorScheme.primary else Color.White
+                            )
+                        }
                     }
                 })
 

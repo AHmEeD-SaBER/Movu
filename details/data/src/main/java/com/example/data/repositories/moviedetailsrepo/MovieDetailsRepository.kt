@@ -12,6 +12,10 @@ import com.example.details.data.utils.getTrailerLink
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Movie
+import com.example.domain.WatchlistResult
+import com.example.domain.WatchlistItem
+import com.example.user_preferences.favorites.IWatchlistDataSource
+import com.example.user_preferences.models.FireBaseMediaItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.combine
@@ -20,7 +24,8 @@ class MovieDetailsRepository(
     private val dataSource: IMovieDetailsDataSource,
     private val creditsDataSource: ICreditsDataSource,
     private val networkMonitor: INetworkMonitor,
-    private val videosDataSource: IVideosDataSource
+    private val videosDataSource: IVideosDataSource,
+    private val watchlistDataSource: IWatchlistDataSource
 ) : IMovieDetailsRepository {
     override fun getMovieDetails(movieId: Int): Flow<DetailsResult<Movie>> = flow {
         try {
@@ -56,6 +61,70 @@ class MovieDetailsRepository(
                 titleRes = R.string.error_title_unknown,
                 subtitleRes = R.string.error_subtitle_unknown
             )))
+        }
+    }
+
+    override suspend fun addMovieToWatchlist(watchlistItem: WatchlistItem): WatchlistResult<Unit> {
+        return try {
+            val firebaseItem = FireBaseMediaItem(
+                id = watchlistItem.id,
+                title = watchlistItem.title,
+                rating = watchlistItem.rating,
+                image = watchlistItem.image
+            )
+
+            when (val result = watchlistDataSource.addMovieToWatchlist(firebaseItem)) {
+                is com.example.user_preferences.models.WatchlistResult.Success ->
+                    WatchlistResult.Success(Unit)
+                is com.example.user_preferences.models.WatchlistResult.Error ->
+                    WatchlistResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            WatchlistResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun removeMovieFromWatchlist(movieId: Int): WatchlistResult<Unit> {
+        return try {
+            when (val result = watchlistDataSource.removeMovieFromWatchlist(movieId)) {
+                is com.example.user_preferences.models.WatchlistResult.Success ->
+                    WatchlistResult.Success(Unit)
+                is com.example.user_preferences.models.WatchlistResult.Error ->
+                    WatchlistResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            WatchlistResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun isMovieInWatchlist(movieId: Int): WatchlistResult<Boolean> {
+        return try {
+            when (val result = watchlistDataSource.isMovieInWatchlist(movieId)) {
+                is com.example.user_preferences.models.WatchlistResult.Success ->
+                    WatchlistResult.Success(result.data)
+                is com.example.user_preferences.models.WatchlistResult.Error ->
+                    WatchlistResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            WatchlistResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
         }
     }
 }

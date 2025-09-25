@@ -2,7 +2,7 @@ import com.example.core_data.utils.INetworkMonitor
 import com.example.authentication.data.utils.toData
 import com.example.authentication.data.utils.toDomain
 import com.example.domain.repositories.IAuthRepository
-import com.example.user_preferences.IAuthDataSource
+import com.example.user_preferences.auth.IAuthDataSource
 import com.movu.authentication.data.R
 import com.example.domain.models.DomainAuthResult
 import com.example.domain.models.DomainSignInRequest
