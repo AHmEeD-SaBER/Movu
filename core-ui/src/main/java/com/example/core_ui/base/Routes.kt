@@ -17,7 +17,18 @@ sealed class Routes {
     data object Home : Routes()
 
     @kotlinx.serialization.Serializable
-    data class Profile(val userId: String) : Routes()
+    data object Profile : Routes()
+
+    @kotlinx.serialization.Serializable
+    data object Search : Routes()
+
+
+    @kotlinx.serialization.Serializable
+    data object WatchList : Routes()
+
+    @kotlinx.serialization.Serializable
+    data object Main : Routes()
+
 
     @Serializable
     data class Details(val mediaId: Int, val mediaType: MediaType) : Routes()

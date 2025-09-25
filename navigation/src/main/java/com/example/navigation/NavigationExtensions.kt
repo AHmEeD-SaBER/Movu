@@ -6,9 +6,6 @@ import com.example.core_domain.MediaType
 import com.example.core_ui.base.Routes
 
 // Extension functions for easier navigation using built-in NavController
-fun NavController.navigateToSplash() {
-    navigate(Routes.Splash)
-}
 
 fun NavController.navigateToSignIn() {
     navigate(Routes.SignIn)
@@ -18,15 +15,12 @@ fun NavController.navigateToSignUp() {
     navigate(Routes.SignUp)
 }
 
-fun NavController.navigateToHome() {
-    navigate(Routes.Home) {
+fun NavController.navigateToMain() {
+    navigate(Routes.Main) {
         popUpTo(0) { inclusive = true }
     }
 }
 
-fun NavController.navigateToProfile(userId: String) {
-    navigate(Routes.Profile(userId))
-}
 
 fun NavController.navigateToMovieDetail(mediaId: Int, mediaType: MediaType) {
     navigate(Routes.Details(mediaId, mediaType))
@@ -39,21 +33,3 @@ fun NavController.navigateToSignInFromAuth() {
     }
 }
 
-fun NavController.navigateToSignUpFromAuth() {
-    navigate(Routes.SignUp) {
-        popUpTo(Routes.SignUp) { inclusive = false }
-    }
-}
-
-// Navigation between SignIn and SignUp
-fun NavController.navigateFromSignInToSignUp() {
-    navigate(Routes.SignUp) {
-        popUpTo(Routes.SignIn) { inclusive = true }
-    }
-}
-
-fun NavController.navigateFromSignUpToSignIn() {
-    navigate(Routes.SignIn) {
-        popUpTo(Routes.SignUp) { inclusive = true }
-    }
-}

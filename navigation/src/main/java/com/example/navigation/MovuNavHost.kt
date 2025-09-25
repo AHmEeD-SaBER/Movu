@@ -33,19 +33,10 @@ fun MovuNavHost(
             SignUpRoute(navController = navController)
         }
 
-        // Home Screen
-        composable<Routes.Home> {
-            HomeRoute(navController = navController)
+        composable<Routes.Main>{
+            MainRoute(navController = navController)
         }
 
-        // Profile Screen
-        composable<Routes.Profile> { backStackEntry ->
-            val profile = backStackEntry.toRoute<Routes.Profile>()
-            ProfileRoute(
-                navController = navController,
-                userId = profile.userId
-            )
-        }
 
         composable<Routes.Details> { backStackEntry ->
             val details = backStackEntry.toRoute<Routes.Details>()
