@@ -1,6 +1,7 @@
 package com.example.ui.screen
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,10 +27,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,7 +62,7 @@ fun DetailsScreenContent(
     details: MediaDetails,
     state: DetailsContract.State,
     onEvent: (DetailsContract.Events) -> Unit,
-    mediaType: MediaType
+    mediaType: MediaType,
 ) {
 
     var backgroundColor by remember { mutableStateOf(Color.Black) }
@@ -72,9 +76,10 @@ fun DetailsScreenContent(
         )
     }
 
+
     DetailsSection(
         mediaDetails = details,
-        onEvent = onEvent
+        onEvent = onEvent,
     ) {
         Box(
             modifier = modifier
@@ -102,8 +107,10 @@ fun DetailsScreenContent(
                     }
 
                 }, actions = {
-                    val isInWatchlist = if (state is DetailsContract.State.Success) state.isInWatchlist else false
-                    val isLoading = if (state is DetailsContract.State.Success) state.watchlistLoading else false
+                    val isInWatchlist =
+                        if (state is DetailsContract.State.Success) state.isInWatchlist else false
+                    val isLoading =
+                        if (state is DetailsContract.State.Success) state.watchlistLoading else false
 
                     IconButton(
                         onClick = { onEvent(DetailsContract.Events.ToggleWatchlist) },
@@ -146,36 +153,29 @@ fun DetailsScreenContent(
                 )
 
                 Spacer(
-                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_large_16))
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_extra_large_24))
                 )
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = dimensionResource(CoreUiR.dimen.padding_12)),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    val configuration = LocalConfiguration.current
-                    val screenWidthDp = configuration.screenWidthDp
 
-                    MediaTitle(
-                        modifier = Modifier
-                            .widthIn(max = (screenWidthDp * 0.75f).dp)
-                            .weight(1f), // ✅ 80% of screen width
-                        title = details.title,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = AppTypography.sh2.copy(color = Color.White),
-                    )
-
-                    IMDbLogoRating(
+                MediaTitle(
+                    modifier = Modifier,
+                    title = details.title,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    style = AppTypography.sh2.copy(color = Color.White),
+                    textAlign = TextAlign.Center
+                )
+                Spacer(
+                    modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_medium_8))
+                )
+                IMDbLogoRating(
 //                    modifier = Modifier.weight(1f),
-                        rating = details.rating,
-                        color = backgroundColor.copy(alpha = 0.7f),
-                        textColor = Color.White
+                    rating = details.rating,
+                    color = backgroundColor.copy(alpha = 0.7f),
+                    textColor = Color.White
 
-                    )
-                }
+                )
+
                 Spacer(
                     modifier = Modifier.size(dimensionResource(CoreUiR.dimen.spacing_large_16))
                 )

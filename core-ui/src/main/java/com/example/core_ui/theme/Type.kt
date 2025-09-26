@@ -1,5 +1,7 @@
 package com.example.core_ui.theme
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -16,150 +18,54 @@ val PoppinsFontFamily = FontFamily(
 )
 
 object AppTypography {
+
+    @Composable
+    private fun getScalingFactor(): Float {
+        val screenWidthDp = LocalConfiguration.current.screenWidthDp
+        return when {
+            screenWidthDp >= 600 -> 1.2f  // Tablets
+            screenWidthDp >= 411 -> 1.0f  // Large phones
+            else -> 0.8f                  // Compact phones
+        }
+    }
+
+    @Composable
+    private fun scaledTextStyle(baseFontSize: Float, fontWeight: FontWeight): TextStyle {
+        val scalingFactor = getScalingFactor()
+        return TextStyle(
+            fontFamily = PoppinsFontFamily,
+            fontWeight = fontWeight,
+            fontSize = (baseFontSize * scalingFactor).sp
+        )
+    }
+
     // Headers
-    val h1 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 48.sp
-    )
-
-    val h2 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 36.sp
-    )
-
-    val h3 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 32.sp
-    )
-
-    val h4 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 32.sp
-    )
-
-    val h5 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 28.sp
-    )
-
-    val h6 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 28.sp
-    )
-
-    val h7 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 24.sp
-    )
+    val h1: TextStyle @Composable get() = scaledTextStyle(48f, FontWeight.Bold)
+    val h2: TextStyle @Composable get() = scaledTextStyle(36f, FontWeight.Bold)
+    val h3: TextStyle @Composable get() = scaledTextStyle(32f, FontWeight.Bold)
+    val h4: TextStyle @Composable get() = scaledTextStyle(32f, FontWeight.SemiBold)
+    val h5: TextStyle @Composable get() = scaledTextStyle(28f, FontWeight.Bold)
+    val h6: TextStyle @Composable get() = scaledTextStyle(28f, FontWeight.SemiBold)
+    val h7: TextStyle @Composable get() = scaledTextStyle(24f, FontWeight.Bold)
 
     // Subheaders
-    val sh1 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 24.sp
-    )
-
-    val sh2 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 24.sp
-    )
-
-    val sh3 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 22.sp
-    )
-
-    val sh4 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 22.sp
-    )
-
-    val sh5 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 22.sp
-    )
-
-    val sh6 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 20.sp
-    )
-
-    val sh7 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 20.sp
-    )
-
-    val sh8 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 18.sp
-    )
+    val sh1: TextStyle @Composable get() = scaledTextStyle(24f, FontWeight.SemiBold)
+    val sh2: TextStyle @Composable get() = scaledTextStyle(24f, FontWeight.Medium)
+    val sh3: TextStyle @Composable get() = scaledTextStyle(22f, FontWeight.Bold)
+    val sh4: TextStyle @Composable get() = scaledTextStyle(22f, FontWeight.SemiBold)
+    val sh5: TextStyle @Composable get() = scaledTextStyle(22f, FontWeight.Medium)
+    val sh6: TextStyle @Composable get() = scaledTextStyle(20f, FontWeight.SemiBold)
+    val sh7: TextStyle @Composable get() = scaledTextStyle(20f, FontWeight.Medium)
+    val sh8: TextStyle @Composable get() = scaledTextStyle(18f, FontWeight.SemiBold)
 
     // Body Text
-    val bt1 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 18.sp
-    )
-
-    val bt2 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 18.sp
-    )
-
-    val bt3 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 14.sp
-    )
-
-    val bt4 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
-    )
-
-    val bt5 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 12.sp
-    )
-
-    val bt6 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
-
-    val bt7 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 10.sp
-    )
-
-    val bt8 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 10.sp
-    )
-
-    val bt9 = TextStyle(
-        fontFamily = PoppinsFontFamily,
-        fontWeight = FontWeight.Light,
-        fontSize = 8.sp
-    )
+    val bt1: TextStyle @Composable get() = scaledTextStyle(18f, FontWeight.Medium)
+    val bt2: TextStyle @Composable get() = scaledTextStyle(18f, FontWeight.Normal)
+    val bt3: TextStyle @Composable get() = scaledTextStyle(14f, FontWeight.Medium)
+    val bt4: TextStyle @Composable get() = scaledTextStyle(14f, FontWeight.Normal)
+    val bt5: TextStyle @Composable get() = scaledTextStyle(12f, FontWeight.Medium)
+    val bt6: TextStyle @Composable get() = scaledTextStyle(12f, FontWeight.Normal)
+    val bt7: TextStyle @Composable get() = scaledTextStyle(10f, FontWeight.Medium)
+    val bt8: TextStyle @Composable get() = scaledTextStyle(10f, FontWeight.Normal)
+    val bt9: TextStyle @Composable get() = scaledTextStyle(8f, FontWeight.Light)
 }

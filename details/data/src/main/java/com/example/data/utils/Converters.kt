@@ -93,7 +93,7 @@ fun TvShowDetails.toDomainModel(credits: Credits, trailer: String?): Tv {
             )
         } ?: emptyList(),
         rating = voteAverage ?: 0.0,
-        languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.name } ?: emptyList(),
+        languages = spokenLanguages?.filterNotNull()?.mapNotNull { it.englishName } ?: emptyList(),
         plot = overview ?: "",
         numberOfEpisodes = numberOfEpisodes ?: 0,
         numberOfSeasons = numberOfSeasons ?: 0,

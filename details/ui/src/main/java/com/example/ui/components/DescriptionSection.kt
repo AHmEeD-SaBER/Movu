@@ -16,14 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import com.example.core_ui.R as CoreUiR
 import com.example.core_ui.theme.AppTypography
 import com.example.ui.R
 
 @Composable
 fun DescriptionSection(
+    modifier: Modifier = Modifier,
     plot: String,
-    genres: List<String>
+    genres: List<String>,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     Column {
         Text(
@@ -35,6 +38,9 @@ fun DescriptionSection(
         Text(
             text = plot,
             style = AppTypography.bt3.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)),
+            maxLines = maxLines,
+            overflow = TextOverflow.Ellipsis,
+            modifier = modifier
         )
 
         if (genres.isNotEmpty()) {
