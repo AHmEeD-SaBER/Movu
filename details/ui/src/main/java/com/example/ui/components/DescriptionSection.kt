@@ -23,6 +23,7 @@ import com.example.ui.R
 
 @Composable
 fun DescriptionSection(
+    modifier: Modifier = Modifier,
     plot: String,
     genres: List<String>,
     maxLines: Int = Int.MAX_VALUE,
@@ -38,7 +39,8 @@ fun DescriptionSection(
             text = plot,
             style = AppTypography.bt3.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)),
             maxLines = maxLines,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            modifier = modifier
         )
 
         if (genres.isNotEmpty()) {

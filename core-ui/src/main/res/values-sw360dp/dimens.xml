@@ -1,25 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Optimized dimensions specifically for Realme-type devices -->
-    <!-- This uses a specific screen density + small screen size combination -->
-    <!-- that targets devices like Realme 12 Plus without affecting high-end emulators -->
+    <!-- Padding dimensions -->
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_4">3dp</dimen>
+    <dimen name="padding_6">5dp</dimen>
+    <dimen name="padding_8">6dp</dimen>
+    <dimen name="padding_10">8dp</dimen>
+    <dimen name="padding_12">10dp</dimen>
+    <dimen name="padding_14">11dp</dimen>
+    <dimen name="padding_16">13dp</dimen>
+    <dimen name="padding_20">16dp</dimen>
+    <dimen name="padding_24">19dp</dimen>
+    <dimen name="padding_32">26dp</dimen>
+    <dimen name="padding_48">38dp</dimen>
 
-    <!-- Only override the key dimensions that appear too large on Realme devices -->
-    <dimen name="layout_height_350">298dp</dimen>
-    <dimen name="layout_height_400">340dp</dimen>
-    <dimen name="layout_height_300">255dp</dimen>
-    <dimen name="layout_height_280">238dp</dimen>
-    <dimen name="layout_height_250">213dp</dimen>
-    <dimen name="layout_height_150">128dp</dimen>
-    <dimen name="layout_height_100">85dp</dimen>
+    <!-- Margin dimensions -->
+    <dimen name="margin_4">3dp</dimen>
+    <dimen name="margin_8">6dp</dimen>
+    <dimen name="margin_12">10dp</dimen>
+    <dimen name="margin_16">13dp</dimen>
+    <dimen name="margin_20">16dp</dimen>
+    <dimen name="margin_24">19dp</dimen>
+    <dimen name="margin_32">26dp</dimen>
+    <dimen name="margin_48">38dp</dimen>
 
-    <dimen name="layout_width_250">213dp</dimen>
-    <dimen name="layout_width_200">170dp</dimen>
-    <dimen name="layout_width_180">153dp</dimen>
+    <!-- Button dimensions -->
+    <dimen name="button_height_32">26dp</dimen>
+    <dimen name="button_height_40">32dp</dimen>
+    <dimen name="button_height_48">38dp</dimen>
+    <dimen name="button_height_56">45dp</dimen>
+    <dimen name="button_min_width_64">51dp</dimen>
+    <dimen name="button_min_width_88">70dp</dimen>
+    <dimen name="button_min_width_120">96dp</dimen>
 
-    <dimen name="padding_48">41dp</dimen>
-    <dimen name="padding_32">27dp</dimen>
-    <dimen name="spacing_extra_large_24">20dp</dimen>
-    <dimen name="spacing_extra_x_large_48">41dp</dimen>
+    <!-- Text size dimensions -->
+    <dimen name="text_size_10">8sp</dimen>
+    <dimen name="text_size_12">10sp</dimen>
+    <dimen name="text_size_14">11sp</dimen>
+    <dimen name="text_size_16">13sp</dimen>
+    <dimen name="text_size_18">14sp</dimen>
+    <dimen name="text_size_20">16sp</dimen>
+    <dimen name="text_size_24">19sp</dimen>
+    <dimen name="text_size_28">22sp</dimen>
+    <dimen name="text_size_32">26sp</dimen>
+
+    <!-- Icon dimensions -->
+    <dimen name="icon_size_12">10dp</dimen>
+    <dimen name="icon_size_16">13dp</dimen>
+    <dimen name="icon_size_20">16dp</dimen>
+    <dimen name="icon_size_24">19dp</dimen>
+    <dimen name="icon_size_32">26dp</dimen>
+    <dimen name="icon_size_40">32dp</dimen>
+    <dimen name="icon_size_48">38dp</dimen>
+    <dimen name="icon_size_56">45dp</dimen>
+    <dimen name="icon_size_64">51dp</dimen>
+
+    <!-- Layout dimensions -->
+    <dimen name="layout_width_48">38dp</dimen>
+    <dimen name="layout_width_56">45dp</dimen>
+    <dimen name="layout_width_64">51dp</dimen>
+    <dimen name="layout_height_48">38dp</dimen>
+    <dimen name="layout_height_56">45dp</dimen>
+    <dimen name="layout_height_64">51dp</dimen>
+    <dimen name="layout_height_72">58dp</dimen>
+    <dimen name="layout_height_80">64dp</dimen>
+
+    <!-- Elevation dimensions -->
+    <dimen name="elevation_0">0dp</dimen>
+    <dimen name="elevation_1">1dp</dimen>
+    <dimen name="elevation_2">2dp</dimen>
+    <dimen name="elevation_4">3dp</dimen>
+    <dimen name="elevation_6">5dp</dimen>
+    <dimen name="elevation_8">6dp</dimen>
+    <dimen name="elevation_12">10dp</dimen>
+    <dimen name="elevation_16">13dp</dimen>
+    <dimen name="elevation_24">19dp</dimen>
+
+    <!-- Corner radius dimensions -->
+    <dimen name="corner_radius_2">2dp</dimen>
+    <dimen name="corner_radius_4">3dp</dimen>
+    <dimen name="corner_radius_6">5dp</dimen>
+    <dimen name="corner_radius_8">6dp</dimen>
+    <dimen name="corner_radius_12">10dp</dimen>
+    <dimen name="corner_radius_16">13dp</dimen>
+    <dimen name="corner_radius_24">19dp</dimen>
+    <dimen name="corner_radius_32">26dp</dimen>
+    <dimen name="corner_radius_48">38dp</dimen>
+
+    <!-- Stroke width dimensions -->
+    <dimen name="stroke_width_1">1dp</dimen>
+    <dimen name="stroke_width_2">2dp</dimen>
+    <dimen name="stroke_width_3">2dp</dimen>
+    <dimen name="stroke_width_4">3dp</dimen>
+
+    <!-- Divider dimensions -->
+    <dimen name="divider_height_1">1dp</dimen>
+    <dimen name="divider_height_2">2dp</dimen>
+    <dimen name="divider_width_1">1dp</dimen>
+    <dimen name="divider_width_2">2dp</dimen>
+
+    <!-- Spacing dimensions -->
+    <dimen name="spacing_small_4">3dp</dimen>
+    <dimen name="spacing_medium_8">6dp</dimen>
+    <dimen name="spacing_large_16">13dp</dimen>
+    <dimen name="spacing_extra_large_24">19dp</dimen>
+    <dimen name="spacing_extra_x_large_48">38dp</dimen>
+
+    <!-- Other dimensions -->
+    <dimen name="layout_height_100">80dp</dimen>
+    <dimen name="layout_width_200">160dp</dimen>
+    <dimen name="layout_height_36">29dp</dimen>
+    <dimen name="blur_radius_10">8dp</dimen>
+    <dimen name="blur_radius_15">12dp</dimen>
+    <dimen name="layout_height_150">120dp</dimen>
+    <dimen name="layout_width_250">200dp</dimen>
+    <dimen name="layout_width_32">26dp</dimen>
+    <dimen name="layout_height_17">14dp</dimen>
+    <dimen name="layout_height_300">240dp</dimen>
+    <dimen name="layout_width_180">144dp</dimen>
+    <dimen name="layout_height_250">200dp</dimen>
+    <dimen name="layout_width_100">80dp</dimen>
+    <dimen name="layout_width_75">60dp</dimen>
+    <dimen name="layout_height_400">320dp</dimen>
+    <dimen name="layout_height_280">224dp</dimen>
+    <dimen name="layout_width_60">48dp</dimen>
+    <dimen name="layout_height_350">280dp</dimen>
 </resources>
-

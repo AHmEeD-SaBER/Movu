@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -53,7 +55,13 @@ fun DetailsPoster(
         }
     }
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .shadow(
+                elevation = dimensionResource(CoreUiR.dimen.elevation_16),
+                shape = RoundedCornerShape(dimensionResource(CoreUiR.dimen.corner_radius_16)),
+                ambientColor = MaterialTheme.colorScheme.primary,
+                spotColor = MaterialTheme.colorScheme.primary
+            ),
         shape = RoundedCornerShape(dimensionResource(CoreUiR.dimen.corner_radius_16)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(CoreUiR.dimen.elevation_12),

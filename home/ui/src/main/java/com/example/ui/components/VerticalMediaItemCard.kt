@@ -73,7 +73,7 @@ fun VerticalMediaItemCard(
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
-            style = AppTypography.bt2.copy(color = androidx.compose.ui.graphics.Color.White, fontSize = 15.sp),
+            style = AppTypography.bt3.copy(color = androidx.compose.ui.graphics.Color.White),
 
             )
     }
