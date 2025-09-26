@@ -83,7 +83,8 @@ private fun CollapsedContent(
     ) {
         DescriptionSection(
             plot = mediaDetails.plot,
-            genres = mediaDetails.genres
+            genres = mediaDetails.genres,
+            maxLines = 3
         )
         Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
 

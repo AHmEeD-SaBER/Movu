@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Optimized dimensions specifically for Realme-type devices -->
+    <!-- This uses a specific screen density + small screen size combination -->
+    <!-- that targets devices like Realme 12 Plus without affecting high-end emulators -->
+
+    <!-- Only override the key dimensions that appear too large on Realme devices -->
+    <dimen name="layout_height_350">298dp</dimen>
+    <dimen name="layout_height_400">340dp</dimen>
+    <dimen name="layout_height_300">255dp</dimen>
+    <dimen name="layout_height_280">238dp</dimen>
+    <dimen name="layout_height_250">213dp</dimen>
+    <dimen name="layout_height_150">128dp</dimen>
+    <dimen name="layout_height_100">85dp</dimen>
+
+    <dimen name="layout_width_250">213dp</dimen>
+    <dimen name="layout_width_200">170dp</dimen>
+    <dimen name="layout_width_180">153dp</dimen>
+
+    <dimen name="padding_48">41dp</dimen>
+    <dimen name="padding_32">27dp</dimen>
+    <dimen name="spacing_extra_large_24">20dp</dimen>
+    <dimen name="spacing_extra_x_large_48">41dp</dimen>
+</resources>
+
