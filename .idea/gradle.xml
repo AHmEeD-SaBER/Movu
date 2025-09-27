@@ -44,6 +44,10 @@
             <option value="$PROJECT_DIR$/splash/data" />
             <option value="$PROJECT_DIR$/splash/domain" />
             <option value="$PROJECT_DIR$/splash/ui" />
+            <option value="$PROJECT_DIR$/watchlist" />
+            <option value="$PROJECT_DIR$/watchlist/data" />
+            <option value="$PROJECT_DIR$/watchlist/domain" />
+            <option value="$PROJECT_DIR$/watchlist/ui" />
           </set>
         </option>
       </GradleProjectSettings>

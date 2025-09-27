@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_title_unknown">Unknown Error</string>
+    <string name="error_subtitle_unknown">Retry</string>
+    <string name="label_selected">Selected</string>
+    <string name="label_not_selected">Not selected</string>
+    <!-- Watchlist strings -->
+    <string name="delete_success_message">Items deleted successfully</string>
+    <string name="delete_dialog_title">Delete Items</string>
+    <string name="delete_dialog_message_single">Are you sure you want to delete this item from your watchlist?</string>
+    <string name="delete_dialog_message_multiple">Are you sure you want to delete %1$d items from your watchlist?</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="exit_selection_mode">Exit selection mode</string>
+    <string name="select_all">Select all</string>
+    <string name="deselect_all">Deselect all</string>
+    <string name="delete_selected">Delete selected</string>
+    <string name="delete_selected_items">Delete selected items</string>
+    <string name="selected_count">%1$d selected</string>
+    <string name="no_movies_in_watchlist">No movies in your watchlist yet</string>
+    <string name="add_favorite_movies_prompt">Start exploring and add your favorite movies!</string>
+    <string name="no_tv_shows_in_watchlist">No TV shows in your watchlist yet</string>
+    <string name="add_favorite_tv_shows_prompt">Start exploring and add your favorite shows!</string>
+</resources>

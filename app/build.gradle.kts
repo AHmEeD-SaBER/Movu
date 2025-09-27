@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.json)
 
+
+
     // KOIN dependencies
     implementation(libs.koin.core)
     implementation(libs.koin.android)
@@ -94,6 +96,10 @@ dependencies {
     implementation(projects.details.data)
     implementation(projects.details.domain)
     implementation(projects.details.ui)
+
+    implementation(projects.watchlist.data)
+    implementation(projects.watchlist.domain)
+    implementation(projects.watchlist.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

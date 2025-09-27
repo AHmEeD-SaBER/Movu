@@ -23,7 +23,7 @@ fun HomeRoute(
     LaunchedEffect(viewModel) {
         viewModel.effect.collect { effect ->
             when (effect) {
-                is com.example.ui.home_screen.HomeContract.Effects.NavigateToDetail -> {
+                is com.example.ui.home_screen.HomeContract.Effects.NavigateToDetails -> {
                     navController.navigateToMovieDetail(
                         mediaId = effect.mediaItemId,
                         mediaType = effect.mediaType
