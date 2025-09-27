@@ -25,7 +25,7 @@ class HomeViewModel(
 
     private fun onItemClicked(id: Int, mediaType: MediaType) {
         viewModelScope.launch {
-            setEffect { HomeContract.Effects.NavigateToDetail(id, mediaType) }
+            setEffect { HomeContract.Effects.NavigateToDetails(id, mediaType) }
         }
     }
 

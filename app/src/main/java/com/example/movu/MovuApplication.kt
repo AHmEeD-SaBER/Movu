@@ -6,14 +6,17 @@ import com.example.core_data.di.coreDataModule
 import com.example.data.di.authDataModule
 import com.example.data.di.detailsDataModule
 import com.example.data.di.splashDataModule
+import com.example.data.di.watchlistDataModule
 import com.example.domain.di.authDomainModule
 import com.example.domain.di.detailsDomainModule
 import com.example.domain.di.homeDomainModule
 import com.example.domain.di.splashDomainModule
+import com.example.domain.di.watchlistDomainModule
 import com.example.navigation.di.navigationModule
 import com.example.ui.di.detailsUiModule
 import com.example.ui.di.homeUiModule
 import com.example.ui.di.splashUiModule
+import com.example.ui.di.watchlistUiModule
 import com.example.user_preferences.di.firebaseModule
 import di.homeDataModule
 import org.koin.android.ext.koin.androidContext
@@ -48,7 +51,13 @@ class MovuApplication : Application() {
 
                 detailsDataModule,
                 detailsDomainModule,
-                detailsUiModule
+                detailsUiModule,
+
+                watchlistUiModule,
+                watchlistDomainModule,
+                watchlistDataModule
+
+
 
             )
         }

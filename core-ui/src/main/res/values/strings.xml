@@ -18,4 +18,7 @@
     <string name="welcome">Welcome Back !</string>
     <string name="action_search">Search</string>
     <string name="imdb_logo_description">IMDb Logo</string>
+    <string name="delete_success_message">Deleted Successfully</string>
+
+
 </resources>

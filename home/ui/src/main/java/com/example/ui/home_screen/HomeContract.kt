@@ -23,6 +23,6 @@ class HomeContract {
     }
 
     sealed class Effects : UiEffect {
-        data class NavigateToDetail(val mediaItemId: Int, val mediaType: MediaType) : Effects()
+        data class NavigateToDetails(val mediaItemId: Int, val mediaType: MediaType) : Effects()
     }
 }

@@ -64,7 +64,9 @@ fun MainNavigation(
             }
 
             composable<Routes.WatchList>{
-                WatchlistRoute()
+                WatchlistRoute(
+                    navController = navController
+                )
             }
 
 
