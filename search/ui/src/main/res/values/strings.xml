@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Search Screen -->
+    <string name="search_title">Search</string>
+    <string name="search_placeholder">Search movies and TV shows...</string>
+    <string name="search_icon_content_description">Search</string>
+    <string name="clear_search_content_description">Clear search</string>
+
+    <!-- Search States -->
+    <string name="search_idle_message">Search for your favorite movies and TV shows</string>
+    <string name="search_no_results_title">No results found</string>
+    <string name="search_no_results_message">Try searching with different keywords</string>
+    <string name="label_movie">Movie</string>
+    <string name="label_tv_show">TV Show</string>
+</resources>

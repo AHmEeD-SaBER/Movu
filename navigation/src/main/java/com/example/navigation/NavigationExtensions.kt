@@ -26,10 +26,13 @@ fun NavController.navigateToMovieDetail(mediaId: Int, mediaType: MediaType) {
     navigate(Routes.Details(mediaId, mediaType))
 }
 
+fun NavController.navigateToSearch() {
+    navigate(Routes.Search)
+}
+
 // Navigation from Auth to SignIn/SignUp without clearing back stack
 fun NavController.navigateToSignInFromAuth() {
     navigate(Routes.SignIn) {
         popUpTo(Routes.SignIn) { inclusive = false }
     }
 }
-

@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.home.ui)
     implementation(projects.details.ui)
     implementation(projects.watchlist.ui)
+    implementation(projects.search.ui)
 
     
 

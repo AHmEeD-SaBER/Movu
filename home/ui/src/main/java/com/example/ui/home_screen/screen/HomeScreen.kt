@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -95,24 +96,22 @@ fun HomeScreen(
                                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
                                     contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                 )
-//                            Text(
-//                                text = stringResource(R.string.welcome),
-//
-//                                style = AppTypography.bt2
-//                            )
                             }
                         },
                         actions = {
-                            Icon(
-                                painter = painterResource(R.drawable.search_outlined),
-                                tint = MaterialTheme.colorScheme.primary,
-                                contentDescription = stringResource(R.string.action_search),
-                                modifier = Modifier
-                                    .clickable(
-                                        onClick = { /* TODO: Implement search action */ }
-                                    )
-                                    .padding(end = dimensionResource(R.dimen.padding_12)).size(dimensionResource(R.dimen.icon_size_24))
-                            )
+                            IconButton(
+                                onClick = { onEvent(HomeContract.Events.SearchClicked) },
+                                modifier = Modifier.padding(end = dimensionResource(R.dimen.padding_8))
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.search_outlined),
+                                    tint = MaterialTheme.colorScheme.primary,
+                                    contentDescription = stringResource(R.string.action_search),
+                                    modifier = Modifier
+
+                                        .size(dimensionResource(R.dimen.icon_size_24))
+                                )
+                            }
                         }
                     )
                 }

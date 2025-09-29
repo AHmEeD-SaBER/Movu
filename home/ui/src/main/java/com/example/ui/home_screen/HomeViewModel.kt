@@ -101,8 +101,14 @@ class HomeViewModel(
                 event.mediaItemId,
                 event.mediaType
             )
-
             HomeContract.Events.Retry -> onRetry()
+            HomeContract.Events.SearchClicked -> onSearchClicked()
+        }
+    }
+
+    private fun onSearchClicked() {
+        viewModelScope.launch {
+            setEffect { HomeContract.Effects.NavigateToSearch }
         }
     }
 }

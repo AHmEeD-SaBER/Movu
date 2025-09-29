@@ -101,6 +101,10 @@ dependencies {
     implementation(projects.watchlist.domain)
     implementation(projects.watchlist.ui)
 
+    implementation(projects.search.data)
+    implementation(projects.search.domain)
+    implementation(projects.search.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

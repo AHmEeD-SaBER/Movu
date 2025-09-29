@@ -12,11 +12,15 @@ object Constants {
 
         const val MOVIE_VIDEOS = "movie/{movie_id}/videos"
         const val TV_VIDEOS = "tv/{tv_id}/videos"
+        const val SEARCH_MOVIE = "search/movie"
+        const val SEARCH_TV = "search/tv"
+
     }
     object QueryParams {
         const val API_KEY = "api_key"
         const val MOVIE_ID = "movie_id"
         const val TV_ID = "tv_id"
+        const val QUERY = "query"
     }
     object ErrorMessages {
         const val NETWORK_ERROR = "Please check your internet connection and try again."
