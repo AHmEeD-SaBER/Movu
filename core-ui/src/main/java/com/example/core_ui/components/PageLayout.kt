@@ -69,8 +69,8 @@ fun PageLayout(
                         painter = painterResource(id = R.drawable.movu_logo),
                         contentDescription = stringResource(R.string.app_logo),
                         modifier = Modifier
-                            .height(dimensionResource(R.dimen.layout_height_150))
-                            .width(dimensionResource(R.dimen.layout_width_250))
+                            .height(dimensionResource(R.dimen.layout_height_100))
+                            .width(dimensionResource(R.dimen.layout_width_150))
                     )
                 }
             }
