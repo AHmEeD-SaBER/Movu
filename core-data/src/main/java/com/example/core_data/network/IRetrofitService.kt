@@ -51,10 +51,22 @@ interface IRetrofitService {
         @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
     ): VideosResponse
 
-    // For TV shows
     @GET(Constants.EndPoints.TV_VIDEOS)
     suspend fun getTvVideos(
         @Path(Constants.QueryParams.TV_ID) tvId: Int,
         @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
     ): VideosResponse
+
+    @GET(Constants.EndPoints.SEARCH_MOVIE)
+    suspend fun searchMovies(
+        @Query(Constants.QueryParams.QUERY) query: String,
+        @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
+    ): MoviesResponse
+
+    @GET(Constants.EndPoints.SEARCH_TV)
+    suspend fun searchTvShows(
+        @Query(Constants.QueryParams.QUERY) query: String,
+        @Query(Constants.QueryParams.API_KEY) apiKey: String = Constants.API_KEY
+    ): TvResponse
+
 }

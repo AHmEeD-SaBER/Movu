@@ -22,9 +22,6 @@ class WatchlistViewModel(
         return WatchlistContract.State.Idle
     }
 
-    init {
-        handleLoadData()
-    }
 
     override fun handleEvent(event: WatchlistContract.Events) {
         when (event) {

@@ -12,7 +12,7 @@ class HomeContract {
         data class MediaItemClicked(val mediaItemId: Int, val mediaType: MediaType) : Events()
         data object Retry : Events()
         data object LoadData : Events()
-
+        data object SearchClicked : Events()
     }
 
     sealed class State : UiState {
@@ -24,5 +24,6 @@ class HomeContract {
 
     sealed class Effects : UiEffect {
         data class NavigateToDetails(val mediaItemId: Int, val mediaType: MediaType) : Effects()
+        data object NavigateToSearch : Effects()
     }
 }

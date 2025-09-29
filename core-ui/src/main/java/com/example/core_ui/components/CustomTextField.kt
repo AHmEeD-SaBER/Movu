@@ -40,13 +40,12 @@ fun CustomTextField(
     isPasswordVisible: Boolean = false,
     trailingIcon: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
-    height: Dp = dimensionResource(CoreUiR.dimen.layout_height_36),
+    height: Dp = dimensionResource(CoreUiR.dimen.layout_height_56),
     contentPadding: PaddingValues = PaddingValues(horizontal = dimensionResource(CoreUiR.dimen.padding_12), vertical = dimensionResource(CoreUiR.dimen.padding_4))
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
     Column(modifier) {
-        // Static label above the text field
         if (label != null) {
             Text(
                 text = label,
@@ -60,7 +59,7 @@ fun CustomTextField(
             value = value,
             onValueChange = onValueChange,
             singleLine = true,
-            textStyle = AppTypography.bt4.copy(color = MaterialTheme.colorScheme.onSurface),
+            textStyle = AppTypography.bt3.copy(color = MaterialTheme.colorScheme.onSurface),
             interactionSource = interactionSource,
             visualTransformation = if (isPasswordField && !isPasswordVisible) {
                 PasswordVisualTransformation()
@@ -83,13 +82,12 @@ fun CustomTextField(
                     placeholder = {
                         Text(
                             text = placeholder,
-                            style = AppTypography.bt7,
+                            style = AppTypography.bt3,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = Constants.ALPHA_MEDIUM)
                         )
                     },
                     leadingIcon = leadingIcon,
                     trailingIcon = trailingIcon,
-                    // REMOVE supportingText from here to prevent height jump
                     supportingText = null,
                     interactionSource = interactionSource,
                     label = null,
@@ -122,7 +120,6 @@ fun CustomTextField(
                 .height(height)
         )
 
-        // Error text outside so it doesn't change the text field height
         if (isError && errorMessage != null) {
             Text(
                 text = errorMessage,

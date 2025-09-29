@@ -50,7 +50,11 @@ fun MainNavigation(
             startDestination = Routes.Home
         ) {
             composable<Routes.Home> {
-                HomeRoute(navController = navController)
+                HomeRoute(
+                    navController = navController,
+                    bottomNavController = bottomNavController,
+                    onBottomNavEvent = onEvent
+                )
             }
 
             composable<Routes.Profile> { backStackEntry ->
@@ -59,7 +63,9 @@ fun MainNavigation(
             }
 
             composable<Routes.Search> {
-                SearchRoute()
+                SearchRoute(
+                    navController = navController
+                )
 
             }
 

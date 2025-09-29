@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.style.TextAlign
 import com.example.core_ui.theme.AppTypography
 import com.example.core_ui.R as CoreR
 
@@ -30,13 +31,15 @@ fun EmptyStateMessage(
             Text(
                 text = message,
                 style = AppTypography.sh2,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
+                textAlign = TextAlign.Center
             )
             Text(
                 text = subtitle,
                 style = AppTypography.bt3,
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.padding(top = dimensionResource(CoreR.dimen.padding_8))
+                modifier = Modifier.padding(top = dimensionResource(CoreR.dimen.padding_8)),
+                textAlign = TextAlign.Center
             )
         }
     }

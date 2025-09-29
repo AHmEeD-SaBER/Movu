@@ -28,13 +28,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.example.core_ui.components.CustomAppBar
 import com.example.core_ui.R as CoreR
 import com.example.ui.R
 import com.example.core_ui.theme.AppTypography
 import com.example.ui.WatchlistContract
 import com.example.ui.components.WatchlistMoviesSection
 import com.example.ui.components.WatchlistTvSection
-import com.example.core_ui.components.NormalAppBar
 import com.example.ui.components.EmptyStateMessage
 import com.example.ui.components.SelectionModeAppBar
 
@@ -61,7 +61,16 @@ fun WatchlistScreenContent(
                 }
             )
         } else {
-            NormalAppBar()
+            CustomAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.watchlist_title),
+                        style = AppTypography.h7
+                    )
+                },
+                modifier = Modifier.padding(start = dimensionResource(com.example.core_ui.R.dimen.padding_12), top = dimensionResource(com.example.core_ui.R.dimen.padding_8)),
+                showNavigation = false
+            )
         }
 
 

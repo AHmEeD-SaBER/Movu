@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -41,28 +42,23 @@ fun ErrorSection(
         Text(
             text = stringResource(error.titleRes),
             modifier = Modifier.padding(dimensionResource(R.dimen.padding_16)),
-            style = AppTypography.bt2,
+            style = AppTypography.sh2,
             textAlign = TextAlign.Center
         )
 
         Text(
             text = stringResource(error.subtitleRes),
             modifier = Modifier.padding(dimensionResource(R.dimen.padding_4)),
-            style = AppTypography.bt2,
+            style = AppTypography.bt3,
             color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f),
             textAlign = TextAlign.Center
         )
 
-        Button(
+        CustomButton(
             onClick = { onEvent() },
             modifier = Modifier
-                .padding(dimensionResource(R.dimen.padding_16))
-        ) {
-            Text(
-                text = stringResource(R.string.retry),
-                style = AppTypography.bt2,
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-        }
+                .padding(dimensionResource(R.dimen.padding_16)),
+            text = stringResource(R.string.retry),
+        )
     }
 }
