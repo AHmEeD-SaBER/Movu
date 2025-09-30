@@ -1,6 +1,7 @@
 package com.example.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -21,8 +22,9 @@ fun VerticalGridView(
     onItemLongClick: (Int) -> Unit = {}
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Fixed(3),
         modifier = modifier.fillMaxSize(),
+        contentPadding = PaddingValues(bottom = dimensionResource(R.dimen.padding_64)),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_12)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_12)),
         content = {

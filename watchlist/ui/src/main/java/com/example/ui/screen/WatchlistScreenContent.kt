@@ -48,7 +48,7 @@ fun WatchlistScreenContent(
     var showDeleteDialog by remember { mutableStateOf(false) }
     var itemsToDeleteCount by remember { mutableIntStateOf(0) }
 
-    Column(modifier = modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize().padding(bottom = dimensionResource(CoreR.dimen.padding_64))) {
         if (state.isSelectionMode) {
             SelectionModeAppBar(
                 selectedCount = state.selectedMovieIds.size + state.selectedTvShowIds.size,
@@ -149,7 +149,8 @@ fun WatchlistScreenContent(
                         },
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
-                            .padding(dimensionResource(CoreR.dimen.padding_16)),
+                            .padding(dimensionResource(CoreR.dimen.padding_16))
+                            .padding(bottom = dimensionResource(CoreR.dimen.padding_16)),
                         containerColor = MaterialTheme.colorScheme.error
                     ) {
                         Icon(
@@ -165,6 +166,7 @@ fun WatchlistScreenContent(
 
     if (showDeleteDialog) {
         AlertDialog(
+            containerColor = MaterialTheme.colorScheme.surface,
             onDismissRequest = { showDeleteDialog = false },
             title = { Text(stringResource(R.string.delete_dialog_title)) },
             text = {
@@ -188,7 +190,7 @@ fun WatchlistScreenContent(
             },
             dismissButton = {
                 TextButton(onClick = { showDeleteDialog = false }) {
-                    Text(stringResource(R.string.action_cancel))
+                    Text(stringResource(R.string.action_cancel), color = MaterialTheme.colorScheme.inversePrimary)
                 }
             }
         )

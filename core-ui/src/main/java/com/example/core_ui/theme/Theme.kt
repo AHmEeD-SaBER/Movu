@@ -19,7 +19,8 @@ private val LightColors = lightColorScheme(
     onBackground = SlateGray,
     surface = BackgroundLight,
     onSurface = SlateGray,
-    inversePrimary = AccentSecondary
+    inversePrimary = AccentSecondary,
+    error = Color.Red
 )
 
 private val DarkColors = darkColorScheme(
@@ -35,7 +36,8 @@ private val DarkColors = darkColorScheme(
     onBackground = White,
     surface = BackgroundDark,
     onSurface = White,
-    inversePrimary = AccentSecondary
+    inversePrimary = AccentSecondary,
+    error = Color.Red
 )
 
 @Composable

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Padding dimensions -->
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_4">5dp</dimen>
+    <dimen name="padding_6">7dp</dimen>
+    <dimen name="padding_8">10dp</dimen>
+    <dimen name="padding_10">12dp</dimen>
+    <dimen name="padding_12">14dp</dimen>
+    <dimen name="padding_14">17dp</dimen>
+    <dimen name="padding_16">19dp</dimen>
+    <dimen name="padding_20">24dp</dimen>
+    <dimen name="padding_24">29dp</dimen>
+    <dimen name="padding_32">38dp</dimen>
+    <dimen name="padding_48">58dp</dimen>
+    <dimen name="padding_64">77dp</dimen>
+
+    <!-- Margin dimensions -->
+    <dimen name="margin_4">5dp</dimen>
+    <dimen name="margin_8">10dp</dimen>
+    <dimen name="margin_12">14dp</dimen>
+    <dimen name="margin_16">19dp</dimen>
+    <dimen name="margin_20">24dp</dimen>
+    <dimen name="margin_24">29dp</dimen>
+    <dimen name="margin_32">38dp</dimen>
+    <dimen name="margin_48">58dp</dimen>
+
+    <!-- Spacing dimensions -->
+    <dimen name="spacing_small_4">5dp</dimen>
+    <dimen name="spacing_medium_8">10dp</dimen>
+    <dimen name="spacing_large_16">19dp</dimen>
+    <dimen name="spacing_extra_large_24">29dp</dimen>
+    <dimen name="spacing_extra_x_large_48">58dp</dimen>
+
+    <!-- Text size dimensions -->
+    <dimen name="text_size_10">12sp</dimen>
+    <dimen name="text_size_12">14sp</dimen>
+    <dimen name="text_size_14">17sp</dimen>
+    <dimen name="text_size_16">19sp</dimen>
+    <dimen name="text_size_18">22sp</dimen>
+    <dimen name="text_size_20">24sp</dimen>
+    <dimen name="text_size_24">29sp</dimen>
+    <dimen name="text_size_28">34sp</dimen>
+    <dimen name="text_size_32">38sp</dimen>
+
+    <!-- Icon dimensions -->
+    <dimen name="icon_size_12">14dp</dimen>
+    <dimen name="icon_size_16">19dp</dimen>
+    <dimen name="icon_size_20">24dp</dimen>
+    <dimen name="icon_size_24">29dp</dimen>
+    <dimen name="icon_size_32">38dp</dimen>
+    <dimen name="icon_size_40">48dp</dimen>
+    <dimen name="icon_size_48">58dp</dimen>
+    <dimen name="icon_size_56">67dp</dimen>
+    <dimen name="icon_size_64">77dp</dimen>
+
+    <!-- Button dimensions -->
+    <dimen name="button_height_32">38dp</dimen>
+    <dimen name="button_height_40">48dp</dimen>
+    <dimen name="button_height_48">58dp</dimen>
+    <dimen name="button_height_56">67dp</dimen>
+    <dimen name="button_min_width_64">77dp</dimen>
+    <dimen name="button_min_width_88">106dp</dimen>
+    <dimen name="button_min_width_120">144dp</dimen>
+
+    <!-- Layout width dimensions -->
+    <dimen name="layout_width_32">38dp</dimen>
+    <dimen name="layout_width_48">58dp</dimen>
+    <dimen name="layout_width_56">67dp</dimen>
+    <dimen name="layout_width_60">72dp</dimen>
+    <dimen name="layout_width_64">77dp</dimen>
+    <dimen name="layout_width_75">90dp</dimen>
+    <dimen name="layout_width_80">96dp</dimen>
+    <dimen name="layout_width_100">120dp</dimen>
+    <dimen name="layout_width_150">180dp</dimen>
+    <dimen name="layout_width_180">216dp</dimen>
+    <dimen name="layout_width_200">240dp</dimen>
+    <dimen name="layout_width_250">300dp</dimen>
+
+    <!-- Layout height dimensions -->
+    <dimen name="layout_height_17">20dp</dimen>
+    <dimen name="layout_height_36">43dp</dimen>
+    <dimen name="layout_height_48">58dp</dimen>
+    <dimen name="layout_height_56">67dp</dimen>
+    <dimen name="layout_height_64">77dp</dimen>
+    <dimen name="layout_height_72">86dp</dimen>
+    <dimen name="layout_height_80">96dp</dimen>
+    <dimen name="layout_height_100">120dp</dimen>
+    <dimen name="layout_height_120">144dp</dimen>
+    <dimen name="layout_height_150">180dp</dimen>
+    <dimen name="layout_height_250">300dp</dimen>
+    <dimen name="layout_height_280">336dp</dimen>
+    <dimen name="layout_height_300">360dp</dimen>
+    <dimen name="layout_height_350">420dp</dimen>
+    <dimen name="layout_height_400">480dp</dimen>
+
+    <!-- Corner radius dimensions -->
+    <dimen name="corner_radius_2">2dp</dimen>
+    <dimen name="corner_radius_4">5dp</dimen>
+    <dimen name="corner_radius_6">7dp</dimen>
+    <dimen name="corner_radius_8">10dp</dimen>
+    <dimen name="corner_radius_12">14dp</dimen>
+    <dimen name="corner_radius_16">19dp</dimen>
+    <dimen name="corner_radius_24">29dp</dimen>
+    <dimen name="corner_radius_32">38dp</dimen>
+    <dimen name="corner_radius_48">58dp</dimen>
+
+    <!-- Elevation dimensions -->
+    <dimen name="elevation_0">0dp</dimen>
+    <dimen name="elevation_1">1dp</dimen>
+    <dimen name="elevation_2">2dp</dimen>
+    <dimen name="elevation_4">5dp</dimen>
+    <dimen name="elevation_6">7dp</dimen>
+    <dimen name="elevation_8">10dp</dimen>
+    <dimen name="elevation_12">14dp</dimen>
+    <dimen name="elevation_16">19dp</dimen>
+    <dimen name="elevation_24">29dp</dimen>
+
+    <!-- Stroke width dimensions -->
+    <dimen name="stroke_width_1">1dp</dimen>
+    <dimen name="stroke_width_2">2dp</dimen>
+    <dimen name="stroke_width_3">4dp</dimen>
+    <dimen name="stroke_width_4">5dp</dimen>
+
+    <!-- Divider dimensions -->
+    <dimen name="divider_height_1">1dp</dimen>
+    <dimen name="divider_height_2">2dp</dimen>
+    <dimen name="divider_width_1">1dp</dimen>
+    <dimen name="divider_width_2">2dp</dimen>
+
+    <!-- Blur radius dimensions -->
+    <dimen name="blur_radius_10">12dp</dimen>
+    <dimen name="blur_radius_15">18dp</dimen>
+</resources>
