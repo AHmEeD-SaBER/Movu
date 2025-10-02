@@ -18,8 +18,7 @@ dependencies {
     implementation(projects.watchlist.ui)
     implementation(projects.search.ui)
     implementation(projects.profile.ui)
-
-    
+    implementation(projects.profile.domain)
 
     // Navigation dependencies
     implementation(libs.androidx.navigation.compose)
