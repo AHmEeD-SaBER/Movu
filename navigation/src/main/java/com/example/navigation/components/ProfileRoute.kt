@@ -1,30 +1,22 @@
 package com.example.navigation.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.navigation.logout
-import com.example.navigation.navigateToSignIn
 import com.example.ui.ProfileContract
 import com.example.ui.ProfileViewModel
 import com.example.ui.screen.ProfileScreen
-import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProfileRoute(
     navHostController: NavHostController
 ) {
+    val context = LocalContext.current
     val viewModel: ProfileViewModel = koinViewModel()
     val state = viewModel.uiState.collectAsState()
 
@@ -39,12 +31,18 @@ fun ProfileRoute(
                 ProfileContract.Effects.NavigateToAuth -> {
                     navHostController.logout()
                 }
-                is ProfileContract.Effects.ShowError -> TODO()
+                is ProfileContract.Effects.ShowError -> {
+                    val errorTitle = context.getString(effect.error.titleRes)
+                    val errorSubtitle = context.getString(effect.error.subtitleRes)
+                    val errorMessage = "$errorTitle: $errorSubtitle"
+
+                    Toast.makeText(
+                        context,
+                        errorMessage,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }
 }
-
-
-
-
