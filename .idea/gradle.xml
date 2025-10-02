@@ -40,6 +40,10 @@
             <option value="$PROJECT_DIR$/home/domain" />
             <option value="$PROJECT_DIR$/home/ui" />
             <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/data" />
+            <option value="$PROJECT_DIR$/profile/domain" />
+            <option value="$PROJECT_DIR$/profile/ui" />
             <option value="$PROJECT_DIR$/search" />
             <option value="$PROJECT_DIR$/search/data" />
             <option value="$PROJECT_DIR$/search/domain" />

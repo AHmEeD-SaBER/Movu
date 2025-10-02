@@ -30,7 +30,7 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(Unit)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -57,7 +57,7 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(Unit)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -87,7 +87,7 @@ class FirebaseWatchlistDataSource(
             }
 
             WatchlistResult.Success(mediaItems)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -114,7 +114,7 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(document.exists())
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -141,7 +141,7 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(Unit)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -168,7 +168,7 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(Unit)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -198,7 +198,7 @@ class FirebaseWatchlistDataSource(
             }
 
             WatchlistResult.Success(mediaItems)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,
@@ -225,7 +225,92 @@ class FirebaseWatchlistDataSource(
                 .await()
 
             WatchlistResult.Success(document.exists())
-        } catch (e: Exception) {
+        } catch (_: Exception) {
+            WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_error_title,
+                    com.example.core_data.R.string.watchlist_error_subtitle
+                )
+            )
+        }
+    }
+
+    override suspend fun getUserMovieWatchlistCount(): WatchlistResult<Int> {
+        return try {
+            val userId = getCurrentUserId() ?: return WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_auth_error_title,
+                    com.example.core_data.R.string.watchlist_auth_error_subtitle
+                )
+            )
+
+            val snapshot = firestore.collection(FirebaseConstants.USER_MOVIES_COLLECTION)
+                .document(userId)
+                .collection(FirebaseConstants.MOVIES_SUB_COLLECTION)
+                .get()
+                .await()
+
+            WatchlistResult.Success(snapshot.size())
+        } catch (_: Exception) {
+            WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_error_title,
+                    com.example.core_data.R.string.watchlist_error_subtitle
+                )
+            )
+        }
+    }
+
+    override suspend fun getUserTvShowWatchlistCount(): WatchlistResult<Int> {
+        return try {
+            val userId = getCurrentUserId() ?: return WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_auth_error_title,
+                    com.example.core_data.R.string.watchlist_auth_error_subtitle
+                )
+            )
+
+            val snapshot = firestore.collection(FirebaseConstants.USER_TV_SHOWS_COLLECTION)
+                .document(userId)
+                .collection(FirebaseConstants.TV_SHOWS_SUB_COLLECTION)
+                .get()
+                .await()
+
+            WatchlistResult.Success(snapshot.size())
+        } catch (_: Exception) {
+            WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_error_title,
+                    com.example.core_data.R.string.watchlist_error_subtitle
+                )
+            )
+        }
+    }
+
+    override suspend fun getUserTotalWatchlistCount(): WatchlistResult<Pair<Int, Int>> {
+        return try {
+            val userId = getCurrentUserId() ?: return WatchlistResult.Error(
+                WatchlistError(
+                    com.example.core_data.R.string.watchlist_auth_error_title,
+                    com.example.core_data.R.string.watchlist_auth_error_subtitle
+                )
+            )
+
+            // Get both counts in parallel for better performance
+            val moviesSnapshot = firestore.collection(FirebaseConstants.USER_MOVIES_COLLECTION)
+                .document(userId)
+                .collection(FirebaseConstants.MOVIES_SUB_COLLECTION)
+                .get()
+                .await()
+
+            val tvShowsSnapshot = firestore.collection(FirebaseConstants.USER_TV_SHOWS_COLLECTION)
+                .document(userId)
+                .collection(FirebaseConstants.TV_SHOWS_SUB_COLLECTION)
+                .get()
+                .await()
+
+            WatchlistResult.Success(Pair(moviesSnapshot.size(), tvShowsSnapshot.size()))
+        } catch (_: Exception) {
             WatchlistResult.Error(
                 WatchlistError(
                     com.example.core_data.R.string.watchlist_error_title,

@@ -105,6 +105,10 @@ dependencies {
     implementation(projects.search.domain)
     implementation(projects.search.ui)
 
+    implementation(projects.profile.data)
+    implementation(projects.profile.domain)
+    implementation(projects.profile.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

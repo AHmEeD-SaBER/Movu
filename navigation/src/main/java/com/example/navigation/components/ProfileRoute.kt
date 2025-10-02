@@ -6,80 +6,45 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.navigation.logout
+import com.example.navigation.navigateToSignIn
+import com.example.ui.ProfileContract
+import com.example.ui.ProfileViewModel
+import com.example.ui.screen.ProfileScreen
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProfileRoute(
+    navHostController: NavHostController
 ) {
-    val context = LocalContext.current
-    DraggableBottomSheetScaffoldDemo()
-}
+    val viewModel: ProfileViewModel = koinViewModel()
+    val state = viewModel.uiState.collectAsState()
 
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DraggableBottomSheetScaffoldDemo() {
-    val scope = rememberCoroutineScope()
-
-    val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = rememberStandardBottomSheetState(
-            initialValue = SheetValue.PartiallyExpanded // start collapsed
-        )
+    ProfileScreen(
+        state = state.value,
+        onEvent = viewModel::handleEvent,
     )
 
-    BottomSheetScaffold(
-        scaffoldState = scaffoldState,
-        sheetPeekHeight = 280.dp, // 👈 collapsed height you control
-        sheetShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
-        sheetContainerColor = MaterialTheme.colorScheme.surface,
-        sheetContent = {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items((1..30).toList()) { item ->
-                    Surface(
-                        tonalElevation = 2.dp,
-                        shape = MaterialTheme.shapes.medium,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            text = "Sheet Item #$item",
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
+    LaunchedEffect(viewModel) {
+        viewModel.effect.collect { effect ->
+            when(effect){
+                ProfileContract.Effects.NavigateToAuth -> {
+                    navHostController.logout()
                 }
-            }
-        }
-    ) { innerPadding ->
-        // Main screen content
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            repeat(5) {
-                Surface(
-                    tonalElevation = 2.dp,
-                    shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Main Content #$it",
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
+                is ProfileContract.Effects.ShowError -> TODO()
             }
         }
     }
 }
+
+
 
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Profile Error Messages - Titles -->
+    <string name="error_title_generic">Error</string>
+
+    <!-- Profile Error Messages - Subtitles -->
+    <string name="error_subtitle_generic">Something went wrong. Please try again.</string>
+
+    <!-- Profile Screen Labels -->
+    <string name="profile_title">Profile</string>
+    <string name="user_information">User Information</string>
+    <string name="watchlist_statistics">Watchlist Statistics</string>
+    <string name="username_label">Username</string>
+    <string name="email_label">Email</string>
+    <string name="user_id_label">User ID</string>
+    <string name="member_since_label">Member Since</string>
+    <string name="movies_label">Movies</string>
+    <string name="tv_shows_label">TV Shows</string>
+    <string name="total_items_label">Total Items</string>
+
+    <!-- Profile Actions -->
+    <string name="logout_button">Logout</string>
+    <string name="logout_dialog_title">Logout</string>
+    <string name="logout_dialog_message">Are you sure you want to logout?</string>
+    <string name="logout_confirm">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="label_profile">Your Profile</string>
+    <string name="label_logout">Logout</string>
+    <string name="logout_confirmation_message">Are you sure you want to logout?</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="label_username">Username</string>
+    <string name="label_email">Email</string>
+    <string name="label_id">User ID</string>
+    <string name="label_account_created">Member Since</string>
+    <string name="label_movies">Movies</string>
+    <string name="label_tv_shows">TV Shows</string>
+    <string name="label_total">Total Items</string>
+</resources>

@@ -30,6 +30,12 @@ fun NavController.navigateToSearch() {
     navigate(Routes.Search)
 }
 
+fun NavController.logout(){
+    navigate(Routes.SignIn) {
+        popUpTo(0) { inclusive = true }
+    }
+}
+
 // Navigation from Auth to SignIn/SignUp without clearing back stack
 fun NavController.navigateToSignInFromAuth() {
     navigate(Routes.SignIn) {

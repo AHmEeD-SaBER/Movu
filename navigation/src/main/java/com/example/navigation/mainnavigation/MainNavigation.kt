@@ -59,6 +59,7 @@ fun MainNavigation(
 
             composable<Routes.Profile> { backStackEntry ->
                 ProfileRoute(
+                    navHostController = navController
                 )
             }
 
