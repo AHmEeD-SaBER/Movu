@@ -2,11 +2,14 @@
 <resources>
     <string name="no_internet_connection">No internet connection available</string>
     <string name="unexpected_error">An unexpected error occurred</string>
+
     <!-- Media Error Messages - Titles -->
     <string name="error_title_network">No Internet Connection</string>
     <string name="error_title_no_data">No Data Available</string>
     <string name="error_title_unknown">Something Went Wrong</string>
     <string name="error_title_empty_watchlist">Empty Watchlist</string>
+    <string name="error_title_generic">Error</string>
+    <string name="error_title_auth">Authentication Required</string>
 
     <!-- Media Error Messages - Subtitles -->
     <string name="error_subtitle_network">Please check your network connection and try again.</string>
@@ -14,4 +17,14 @@
     <string name="error_subtitle_unknown">An unexpected error occurred. Please try again.</string>
     <string name="error_subtitle_empty_movie_watchlist">You haven\'t added any movies to your watchlist yet. Start exploring and add your favorite movies!</string>
     <string name="error_subtitle_empty_tvshow_watchlist">You haven\'t added any TV shows to your watchlist yet. Start exploring and add your favorite shows!</string>
+    <string name="error_subtitle_generic">Something went wrong. Please try again.</string>
+    <string name="error_subtitle_auth">Please log in to continue.</string>
+
+    <!-- Watchlist Error Messages - Titles -->
+    <string name="watchlist_error_title">Watchlist Error</string>
+    <string name="watchlist_auth_error_title">Authentication Required</string>
+
+    <!-- Watchlist Error Messages - Subtitles -->
+    <string name="watchlist_error_subtitle">Unable to update your watchlist. Please try again.</string>
+    <string name="watchlist_auth_error_subtitle">Please log in to manage your watchlist.</string>
 </resources>

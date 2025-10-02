@@ -5,6 +5,7 @@ import authUiModule
 import com.example.core_data.di.coreDataModule
 import com.example.data.di.authDataModule
 import com.example.data.di.detailsDataModule
+import com.example.data.di.profileDataModule
 import com.example.data.di.splashDataModule
 import com.example.data.di.watchlistDataModule
 import com.example.domain.di.authDomainModule
@@ -22,6 +23,8 @@ import com.example.ui.di.watchlistUiModule
 import com.example.user_preferences.di.firebaseModule
 import di.homeDataModule
 import com.example.data.di.searchDataModule
+import com.example.domain.di.profileDomainModule
+import com.example.ui.di.profileUiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -62,7 +65,11 @@ class MovuApplication : Application() {
 
                 searchUiModule,
                 searchDomainModule,
-                searchDataModule
+                searchDataModule,
+
+                profileDataModule,
+                profileDomainModule,
+                profileUiModule
 
 
 
