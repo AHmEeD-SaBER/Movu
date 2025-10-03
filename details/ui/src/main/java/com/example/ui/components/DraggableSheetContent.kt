@@ -39,7 +39,9 @@ fun DraggableSheetContent(
     state: DetailsContract.State
 ) {
     LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.9f),
         contentPadding = PaddingValues(horizontal = dimensionResource(CoreUiR.dimen.padding_16))
     ) {
         item {

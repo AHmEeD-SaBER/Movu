@@ -329,7 +329,37 @@ Kotlin StateFlow and Contracts for reactive UI updates with immutable states
 
 ## 📸 Screenshots
 
-> *Add screenshots of your app here to showcase its beautiful UI*
+### 🌙 Dark Mode
+
+<div align="center">
+
+#### Authentication & Home
+<img src="Screenshots/Dark/signin.png" width="250"/> <img src="Screenshots/Dark/signup.png" width="250"/> <img src="Screenshots/Dark/home.png" width="250"/>
+
+#### Movie Details & TV Shows
+<img src="Screenshots/Dark/movie.png" width="250"/> <img src="Screenshots/Dark/tv.png" width="250"/> <img src="Screenshots/Dark/search.png" width="250"/>
+
+#### Watchlist & Profile
+<img src="Screenshots/Dark/watchlist.png" width="250"/> <img src="Screenshots/Dark/profile.png" width="250"/>
+
+</div>
+
+---
+
+### ☀️ Light Mode
+
+<div align="center">
+
+#### Authentication & Home
+<img src="Screenshots/Light/signin.png" width="250"/> <img src="Screenshots/Light/signup.png" width="250"/> <img src="Screenshots/Light/home.png" width="250"/>
+
+#### Movie Details & TV Shows
+<img src="Screenshots/Light/movie.png" width="250"/> <img src="Screenshots/Light/tv.png" width="250"/> <img src="Screenshots/Light/search.png" width="250"/>
+
+#### Watchlist & Profile
+<img src="Screenshots/Light/watchlist.png" width="250"/> <img src="Screenshots/Light/profile.png" width="250"/>
+
+</div>
 
 ---
 
