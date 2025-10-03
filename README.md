@@ -333,14 +333,11 @@ Kotlin StateFlow and Contracts for reactive UI updates with immutable states
 
 <div align="center">
 
-#### Authentication & Home
-<img src="Screenshots/Dark/signin.png" width="250"/> <img src="Screenshots/Dark/signup.png" width="250"/> <img src="Screenshots/Dark/home.png" width="250"/>
-
-#### Movie Details & TV Shows
-<img src="Screenshots/Dark/movie.png" width="250"/> <img src="Screenshots/Dark/tv.png" width="250"/> <img src="Screenshots/Dark/search.png" width="250"/>
-
-#### Watchlist & Profile
-<img src="Screenshots/Dark/watchlist.png" width="250"/> <img src="Screenshots/Dark/profile.png" width="250"/>
+| Authentication & Home | Search & Details | Watchlist & Profile |
+|:---:|:---:|:---:|
+| <img src="Screenshots/Dark/signin.png" alt="Sign In Dark" width="250"/> | <img src="Screenshots/Dark/search.png" alt="Search Dark" width="250"/> | <img src="Screenshots/Dark/watchlist.png" alt="Watchlist Dark" width="250"/> |
+| <img src="Screenshots/Dark/signup.png" alt="Sign Up Dark" width="250"/> | <img src="Screenshots/Dark/movie.png" alt="Movie Details Dark" width="250"/> | <img src="Screenshots/Dark/profile.png" alt="Profile Dark" width="250"/> |
+| <img src="Screenshots/Dark/home.png" alt="Home Dark" width="250"/> | <img src="Screenshots/Dark/tv.png" alt="TV Show Details Dark" width="250"/> | |
 
 </div>
 
@@ -350,14 +347,11 @@ Kotlin StateFlow and Contracts for reactive UI updates with immutable states
 
 <div align="center">
 
-#### Authentication & Home
-<img src="Screenshots/Light/signin.png" width="250"/> <img src="Screenshots/Light/signup.png" width="250"/> <img src="Screenshots/Light/home.png" width="250"/>
-
-#### Movie Details & TV Shows
-<img src="Screenshots/Light/movie.png" width="250"/> <img src="Screenshots/Light/tv.png" width="250"/> <img src="Screenshots/Light/search.png" width="250"/>
-
-#### Watchlist & Profile
-<img src="Screenshots/Light/watchlist.png" width="250"/> <img src="Screenshots/Light/profile.png" width="250"/>
+| Authentication & Home | Search & Details | Watchlist & Profile |
+|:---:|:---:|:---:|
+| <img src="Screenshots/Light/signin.png" alt="Sign In Light" width="250"/> | <img src="Screenshots/Light/search.png" alt="Search Light" width="250"/> | <img src="Screenshots/Light/watchlist.png" alt="Watchlist Light" width="250"/> |
+| <img src="Screenshots/Light/signup.png" alt="Sign Up Light" width="250"/> | <img src="Screenshots/Light/movie.png" alt="Movie Details Light" width="250"/> | <img src="Screenshots/Light/profile.png" alt="Profile Light" width="250"/> |
+| <img src="Screenshots/Light/home.png" alt="Home Light" width="250"/> | <img src="Screenshots/Light/tv.png" alt="TV Show Details Light" width="250"/> | |
 
 </div>
 
