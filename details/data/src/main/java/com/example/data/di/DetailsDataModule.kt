@@ -38,7 +38,8 @@ val detailsDataModule = module {
             creditsDataSource = get(),
             networkMonitor = get(),
             videosDataSource = get(),
-            watchlistDataSource = get()
+            watchlistDataSource = get(),
+            reviewDataSource = get()
         )
     }
 
@@ -48,7 +49,8 @@ val detailsDataModule = module {
             creditsDataSource = get(),
             networkMonitor = get(),
             videosDataSource = get(),
-            watchlistDataSource = get()
+            watchlistDataSource = get(),
+            reviewDataSource = get()
         )
     }
 }

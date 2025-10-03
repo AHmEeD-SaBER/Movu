@@ -5,7 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,19 +24,22 @@ fun UserInfoSection(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(dimensionResource(CoreUiR.dimen.padding_16)),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiary
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(CoreUiR.dimen.padding_4))
     ) {
         Column(
             modifier = Modifier.padding(dimensionResource(CoreUiR.dimen.padding_12)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(CoreUiR.dimen.padding_8))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(CoreUiR.dimen.padding_16))
         ) {
             Text(
                 text = stringResource(R.string.user_information),
                 style = AppTypography.h7,
+                color = MaterialTheme.colorScheme.onSurface
             )
-
-            Spacer(modifier = Modifier.padding(dimensionResource(CoreUiR.dimen.padding_4)))
-
             InfoRow(label = stringResource(R.string.label_username), value = user.username)
             InfoRow(label = stringResource(R.string.label_email), value = user.email)
             InfoRow(label = stringResource(R.string.label_id), value = user.id)

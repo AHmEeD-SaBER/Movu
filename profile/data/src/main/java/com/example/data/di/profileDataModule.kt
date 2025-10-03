@@ -5,5 +5,12 @@ import com.example.domain.repositories.IUserRepository
 import org.koin.dsl.module
 
 val profileDataModule = module {
-    single<IUserRepository> { UserRepository(get(), get(), get()) }
+    single<IUserRepository> {
+        UserRepository(
+            authDataSource = get(),
+            watchlistDataSource = get(),
+            reviewDataSource = get(),
+            networkMonitor = get()
+        )
+    }
 }

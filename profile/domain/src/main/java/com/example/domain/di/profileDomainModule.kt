@@ -6,11 +6,13 @@ import com.example.domain.use_cases.get_user.GetWatchlistCount
 import com.example.domain.use_cases.get_user.IGetWatchlistCount
 import com.example.domain.usecases.logout.ILogoutUseCase
 import com.example.domain.usecases.logout.LogoutUseCase
+import com.example.domain.usecases.reviews.GetUserReviewStatisticsUseCase
+import com.example.domain.usecases.reviews.IGetUserReviewStatisticsUseCase
 import org.koin.dsl.module
 
 val profileDomainModule = module {
     factory<IGetWatchlistCount> { GetWatchlistCount(get()) }
     factory<IGetUserUseCase> { GetUserUseCase(get()) }
-
     factory<ILogoutUseCase> { LogoutUseCase(get()) }
+    factory<IGetUserReviewStatisticsUseCase> { GetUserReviewStatisticsUseCase(get()) }
 }

@@ -5,5 +5,11 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val profileUiModule = module {
-    viewModel { ProfileViewModel(get(), get()) }
+    viewModel {
+        ProfileViewModel(
+            userRepository = get(),
+            logoutUseCase = get(),
+            getUserReviewStatisticsUseCase = get()
+        )
+    }
 }

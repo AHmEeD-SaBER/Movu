@@ -41,7 +41,22 @@ fun DetailsRoute(
                     context.startActivity(intent)
                 }
 
-                is DetailsContract.Effects.ShowWatchlistError -> TODO()
+                is DetailsContract.Effects.ShowWatchlistError -> {
+                    // Handle watchlist error - could show a snackbar or toast
+                    // For now, we'll just log the error
+                    android.util.Log.e("DetailsRoute", "Watchlist error: ")
+                }
+
+                DetailsContract.Effects.ReviewSubmittedSuccessfully -> {
+                    // Handle successful review submission
+                    // Could show a success message or refresh the data
+                    android.util.Log.d("DetailsRoute", "Review submitted successfully")
+                }
+
+                is DetailsContract.Effects.ShowReviewError -> {
+                    // Handle review submission error
+                    android.util.Log.e("DetailsRoute", "Review error:")
+                }
             }
         }
     }

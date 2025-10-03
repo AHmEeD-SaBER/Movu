@@ -6,15 +6,19 @@ import com.example.core_data.R
 import com.example.data.data_sources.moviedetailsdatasource.IMovieDetailsDataSource
 import com.example.data.data_sources.creditsdatasource.ICreditsDataSource
 import com.example.data.data_sources.videosdatasource.IVideosDataSource
-import com.example.details.data.utils.toDomainModel
-import com.example.details.data.utils.toCredits
-import com.example.details.data.utils.getTrailerLink
+import com.example.data.utils.toDomainModel
+import com.example.data.utils.toCredits
+import com.example.data.utils.getTrailerLink
 import com.example.domain.DetailsError
 import com.example.domain.DetailsResult
 import com.example.domain.Movie
 import com.example.domain.WatchlistResult
 import com.example.domain.WatchlistItem
+import com.example.domain.ReviewResult
+import com.example.domain.Review
+import com.example.domain.ReviewItem
 import com.example.user_preferences.favorites.IWatchlistDataSource
+import com.example.user_preferences.reviews.IReviewDataSource
 import com.example.user_preferences.models.FireBaseMediaItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -25,7 +29,8 @@ class MovieDetailsRepository(
     private val creditsDataSource: ICreditsDataSource,
     private val networkMonitor: INetworkMonitor,
     private val videosDataSource: IVideosDataSource,
-    private val watchlistDataSource: IWatchlistDataSource
+    private val watchlistDataSource: IWatchlistDataSource,
+    private val reviewDataSource: IReviewDataSource
 ) : IMovieDetailsRepository {
     override fun getMovieDetails(movieId: Int): Flow<DetailsResult<Movie>> = flow {
         try {
@@ -122,6 +127,113 @@ class MovieDetailsRepository(
             }
         } catch (e: Exception) {
             WatchlistResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun addMovieReview(reviewItem: ReviewItem): ReviewResult<Unit> {
+        return try {
+            when (val result = reviewDataSource.addMovieReview(
+                mediaId = reviewItem.mediaId,
+                rating = reviewItem.rating,
+                reviewText = reviewItem.reviewText
+            )) {
+                is com.example.user_preferences.models.ReviewResult.Success ->
+                    ReviewResult.Success(Unit)
+                is com.example.user_preferences.models.ReviewResult.Error ->
+                    ReviewResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            ReviewResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun updateMovieReview(reviewItem: ReviewItem): ReviewResult<Unit> {
+        return try {
+            when (val result = reviewDataSource.updateMovieReview(
+                mediaId = reviewItem.mediaId,
+                rating = reviewItem.rating,
+                reviewText = reviewItem.reviewText
+            )) {
+                is com.example.user_preferences.models.ReviewResult.Success ->
+                    ReviewResult.Success(Unit)
+                is com.example.user_preferences.models.ReviewResult.Error ->
+                    ReviewResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            ReviewResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun deleteMovieReview(movieId: Int): ReviewResult<Unit> {
+        return try {
+            when (val result = reviewDataSource.deleteMovieReview(movieId)) {
+                is com.example.user_preferences.models.ReviewResult.Success ->
+                    ReviewResult.Success(Unit)
+                is com.example.user_preferences.models.ReviewResult.Error ->
+                    ReviewResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            ReviewResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun getMovieReviews(movieId: Int): ReviewResult<List<Review>> {
+        return try {
+            when (val result = reviewDataSource.getMovieReviews(movieId)) {
+                is com.example.user_preferences.models.ReviewResult.Success -> {
+                    val reviews = result.data.map { it.toDomainModel() }
+                    ReviewResult.Success(reviews)
+                }
+                is com.example.user_preferences.models.ReviewResult.Error ->
+                    ReviewResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            ReviewResult.Error(DetailsError(
+                titleRes = R.string.error_title_unknown,
+                subtitleRes = R.string.error_subtitle_unknown
+            ))
+        }
+    }
+
+    override suspend fun getUserMovieReview(movieId: Int): ReviewResult<Review?> {
+        return try {
+            when (val result = reviewDataSource.getUserMovieReview(movieId)) {
+                is com.example.user_preferences.models.ReviewResult.Success -> {
+                    val review = result.data?.toDomainModel()
+                    ReviewResult.Success(review)
+                }
+                is com.example.user_preferences.models.ReviewResult.Error ->
+                    ReviewResult.Error(DetailsError(
+                        titleRes = result.error.titleRes,
+                        subtitleRes = result.error.subtitleRes
+                    ))
+            }
+        } catch (e: Exception) {
+            ReviewResult.Error(DetailsError(
                 titleRes = R.string.error_title_unknown,
                 subtitleRes = R.string.error_subtitle_unknown
             ))

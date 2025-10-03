@@ -5,6 +5,7 @@ import com.example.core_ui.base.UiEvent
 import com.example.core_ui.base.UiState
 import com.example.domain.models.ProfileDomainUser
 import com.example.domain.models.UserError
+import com.example.domain.models.ReviewStatistics
 
 class ProfileContract {
     sealed class Events : UiEvent {
@@ -21,6 +22,7 @@ class ProfileContract {
         data class Success(
             val user: ProfileDomainUser,
             val watchlistCounts: Pair<Int, Int>, // (moviesCount, tvShowsCount)
+            val reviewStatistics: ReviewStatistics? = null,
             val showLogoutConfirmation: Boolean = false
         ) : State()
         data object Idle : State()

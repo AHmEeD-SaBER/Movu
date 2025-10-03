@@ -5,11 +5,13 @@ import com.example.core_ui.base.BaseViewModel
 import com.example.domain.models.UserResult
 import com.example.domain.repositories.IUserRepository
 import com.example.domain.usecases.logout.ILogoutUseCase
+import com.example.domain.usecases.reviews.IGetUserReviewStatisticsUseCase
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     private val userRepository: IUserRepository,
-    private val logoutUseCase: ILogoutUseCase
+    private val logoutUseCase: ILogoutUseCase,
+    private val getUserReviewStatisticsUseCase: IGetUserReviewStatisticsUseCase
 ) : BaseViewModel<ProfileContract.Events, ProfileContract.State, ProfileContract.Effects>() {
 
     init {
@@ -67,18 +69,15 @@ class ProfileViewModel(
                 userRepository.getUserWatchListCount().collect { countsResult ->
                     when (countsResult) {
                         is UserResult.Success -> {
-                            setState {
-                                ProfileContract.State.Success(
-                                    user = user,
-                                    watchlistCounts = countsResult.data
-                                )
-                            }
+                            // Now load review statistics
+                            loadReviewStatistics(user, countsResult.data)
                         }
                         is UserResult.Error -> {
                             setState {
                                 ProfileContract.State.Success(
                                     user = user,
-                                    watchlistCounts = Pair(0, 0)
+                                    watchlistCounts = Pair(0, 0),
+                                    reviewStatistics = null
                                 )
                             }
                         }
@@ -88,7 +87,49 @@ class ProfileViewModel(
                 setState {
                     ProfileContract.State.Success(
                         user = user,
-                        watchlistCounts = Pair(0, 0)
+                        watchlistCounts = Pair(0, 0),
+                        reviewStatistics = null
+                    )
+                }
+            }
+        }
+    }
+
+    private fun loadReviewStatistics(
+        user: com.example.domain.models.ProfileDomainUser,
+        watchlistCounts: Pair<Int, Int>
+    ) {
+        viewModelScope.launch {
+            try {
+                getUserReviewStatisticsUseCase().collect { reviewResult ->
+                    when (reviewResult) {
+                        is UserResult.Success -> {
+                            setState {
+                                ProfileContract.State.Success(
+                                    user = user,
+                                    watchlistCounts = watchlistCounts,
+                                    reviewStatistics = reviewResult.data
+                                )
+                            }
+                        }
+                        is UserResult.Error -> {
+                            // Show user data without review stats if review fetch fails
+                            setState {
+                                ProfileContract.State.Success(
+                                    user = user,
+                                    watchlistCounts = watchlistCounts,
+                                    reviewStatistics = null
+                                )
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                setState {
+                    ProfileContract.State.Success(
+                        user = user,
+                        watchlistCounts = watchlistCounts,
+                        reviewStatistics = null
                     )
                 }
             }
@@ -98,7 +139,6 @@ class ProfileViewModel(
     private fun onRetry() {
         loadUserData()
     }
-
 
     private fun onLogoutClicked() {
         val currentState = uiState.value

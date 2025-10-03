@@ -6,10 +6,19 @@ import com.example.domain.usecases.moviedetails.GetMovieDetailsUseCase
 import com.example.domain.usecases.moviedetails.IGetMovieDetailsUseCase
 import com.example.domain.usecases.tvdetails.GetTvDetailsUseCase
 import com.example.domain.usecases.tvdetails.IGetTvDetailsUseCase
+import com.example.domain.usecases.reviews.*
 import org.koin.dsl.module
 
 val detailsDomainModule = module {
     factory<IGetTvDetailsUseCase> { GetTvDetailsUseCase(get()) }
     factory<IGetMediaDetailsUseCase> { GetMediaDetailsUseCase(get(), get()) }
     factory<IGetMovieDetailsUseCase> { GetMovieDetailsUseCase(get()) }
+
+    factory<IAddMovieReviewUseCase> { AddMovieReviewUseCase(get()) }
+    factory<IGetMovieReviewsUseCase> { GetMovieReviewsUseCase(get()) }
+    factory<IGetUserMovieReviewUseCase> { GetUserMovieReviewUseCase(get()) }
+
+    factory<IAddTvReviewUseCase> { AddTvReviewUseCase(get()) }
+    factory<IGetTvReviewsUseCase> { GetTvReviewsUseCase(get()) }
+    factory<IGetUserTvReviewUseCase> { GetUserTvReviewUseCase(get()) }
 }

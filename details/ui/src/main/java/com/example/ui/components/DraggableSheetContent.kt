@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,7 +35,8 @@ import com.example.ui.DetailsContract
 @Composable
 fun DraggableSheetContent(
     mediaDetails: MediaDetails,
-    onEvent: (DetailsContract.Events) -> Unit
+    onEvent: (DetailsContract.Events) -> Unit,
+    state: DetailsContract.State
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
@@ -48,27 +50,47 @@ fun DraggableSheetContent(
             Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
         }
 
+        // Review Action Button
+        if (state is DetailsContract.State.Success) {
+            item {
+                val showReviewDialog = remember(onEvent) {
+                    { onEvent(DetailsContract.Events.ShowAddReviewDialog) }
+                }
+                ReviewActionButton(
+                    userReview = state.userReview,
+                    onClick = showReviewDialog
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
+            }
+        }
+
+        // Reviews Section
+        if (state is DetailsContract.State.Success) {
+            item {
+                ReviewsSection(
+                    reviews = state.reviews,
+                    currentUserId = state.userReview?.userId,
+                    isLoading = state.reviewsLoading,
+                    onDeleteReview = { onEvent(DetailsContract.Events.DeleteReview) }
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
+            }
+        }
 
         item {
             CastSection(cast = mediaDetails.credits.cast)
             Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
         }
 
-
-
         item {
             CrewSection(crew = mediaDetails.credits.crew)
             Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
         }
 
-
-
         item {
             ProductionSection(companies = mediaDetails.productionCompanies)
             Spacer(modifier = Modifier.height(dimensionResource(CoreUiR.dimen.spacing_extra_large_24)))
         }
-
-
 
         item {
             WatchTrailerButton(
@@ -85,4 +107,3 @@ fun DraggableSheetContent(
         }
     }
 }
-

@@ -8,8 +8,11 @@ import com.example.core_ui.base.Routes
 import com.example.domain.DetailsResult
 import com.example.domain.WatchlistResult
 import com.example.domain.WatchlistItem
+import com.example.domain.ReviewResult
+import com.example.domain.ReviewItem
 import com.example.domain.repositories.IMovieDetailsRepository
 import com.example.domain.repositories.ITvDetailsRepository
+import com.example.domain.usecases.reviews.*
 import kotlinx.coroutines.launch
 import androidx.navigation.toRoute
 
@@ -17,6 +20,12 @@ class DetailsViewModel(
     private val getMediaDetailsUseCase: com.example.domain.usecases.mediadetails.IGetMediaDetailsUseCase,
     private val movieDetailsRepository: IMovieDetailsRepository,
     private val tvDetailsRepository: ITvDetailsRepository,
+    private val addMovieReviewUseCase: IAddMovieReviewUseCase,
+    private val getMovieReviewsUseCase: IGetMovieReviewsUseCase,
+    private val getUserMovieReviewUseCase: IGetUserMovieReviewUseCase,
+    private val addTvReviewUseCase: IAddTvReviewUseCase,
+    private val getTvReviewsUseCase: IGetTvReviewsUseCase,
+    private val getUserTvReviewUseCase: IGetUserTvReviewUseCase,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<DetailsContract.Events, DetailsContract.State, DetailsContract.Effects>() {
 
@@ -41,6 +50,14 @@ class DetailsViewModel(
             DetailsContract.Events.ToggleWatchlist -> onToggleWatchlist()
             DetailsContract.Events.ConfirmRemoveFromWatchlist -> onConfirmRemoveFromWatchlist()
             DetailsContract.Events.DismissRemoveConfirmation -> onDismissRemoveConfirmation()
+            DetailsContract.Events.LoadReviews -> loadReviews()
+            DetailsContract.Events.ShowAddReviewDialog -> onShowReviewDialog()
+            DetailsContract.Events.DismissReviewDialog -> onDismissReviewDialog()
+            is DetailsContract.Events.SubmitReview -> onSubmitReview(event.rating, event.reviewText)
+            is DetailsContract.Events.UpdateReview -> onUpdateReview(event.rating, event.reviewText)
+            DetailsContract.Events.DeleteReview -> onDeleteReview()
+            DetailsContract.Events.ConfirmDeleteReview -> onConfirmDeleteReview()
+            DetailsContract.Events.DismissDeleteConfirmation -> onDismissDeleteConfirmation()
         }
     }
 
@@ -100,6 +117,9 @@ class DetailsViewModel(
                         watchlistLoading = false
                     )
                 }
+                // Load reviews after details are loaded
+                loadReviews()
+                loadUserReview()
             }
             is WatchlistResult.Error -> {
                 setState {
@@ -109,6 +129,9 @@ class DetailsViewModel(
                         watchlistLoading = false
                     )
                 }
+                // Still load reviews even if watchlist check fails
+                loadReviews()
+                loadUserReview()
             }
         }
     }
@@ -195,6 +218,203 @@ class DetailsViewModel(
                     }
                     setEffect { DetailsContract.Effects.ShowWatchlistError(result.error) }
                 }
+            }
+        }
+    }
+
+    // Review Methods
+    private fun loadReviews() {
+        val currentState = uiState.value
+        if (currentState !is DetailsContract.State.Success) return
+
+        viewModelScope.launch {
+            setState { currentState.copy(reviewsLoading = true) }
+
+            val result = when (mediaType) {
+                MediaType.MOVIE -> getMovieReviewsUseCase(mediaItemId)
+                MediaType.TV_SHOW -> getTvReviewsUseCase(mediaItemId)
+            }
+
+            when (result) {
+                is ReviewResult.Success -> {
+                    val latestState = uiState.value
+                    if (latestState is DetailsContract.State.Success) {
+                        setState {
+                            latestState.copy(
+                                reviews = result.data,
+                                reviewsLoading = false
+                            )
+                        }
+                    }
+                }
+                is ReviewResult.Error -> {
+                    val latestState = uiState.value
+                    if (latestState is DetailsContract.State.Success) {
+                        setState {
+                            latestState.copy(
+                                reviews = emptyList(),
+                                reviewsLoading = false
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun loadUserReview() {
+        val currentState = uiState.value
+        if (currentState !is DetailsContract.State.Success) return
+
+        viewModelScope.launch {
+            val result = when (mediaType) {
+                MediaType.MOVIE -> getUserMovieReviewUseCase(mediaItemId)
+                MediaType.TV_SHOW -> getUserTvReviewUseCase(mediaItemId)
+            }
+
+            when (result) {
+                is ReviewResult.Success -> {
+                    val latestState = uiState.value
+                    if (latestState is DetailsContract.State.Success) {
+                        setState {
+                            latestState.copy(userReview = result.data)
+                        }
+                    }
+                }
+                is ReviewResult.Error -> {
+                    // Silently fail - user just hasn't reviewed yet
+                }
+            }
+        }
+    }
+
+    private fun onShowReviewDialog() {
+        val currentState = uiState.value
+        if (currentState is DetailsContract.State.Success) {
+            setState {
+                currentState.copy(showReviewDialog = true)
+            }
+        }
+    }
+
+    private fun onDismissReviewDialog() {
+        val currentState = uiState.value
+        if (currentState is DetailsContract.State.Success) {
+            setState {
+                currentState.copy(showReviewDialog = false)
+            }
+        }
+    }
+
+    private fun onSubmitReview(rating: Float, reviewText: String) {
+        val currentState = uiState.value
+        if (currentState !is DetailsContract.State.Success) return
+
+        viewModelScope.launch {
+            setState { currentState.copy(reviewSubmitting = true) }
+
+            val reviewItem = ReviewItem(
+                mediaId = mediaItemId,
+                rating = rating,
+                reviewText = reviewText
+            )
+
+            val result = when (mediaType) {
+                MediaType.MOVIE -> addMovieReviewUseCase(reviewItem)
+                MediaType.TV_SHOW -> addTvReviewUseCase(reviewItem)
+            }
+
+            when (result) {
+                is ReviewResult.Success -> {
+                    setState {
+                        currentState.copy(
+                            reviewSubmitting = false,
+                            showReviewDialog = false
+                        )
+                    }
+                    setEffect { DetailsContract.Effects.ReviewSubmittedSuccessfully }
+                    // Reload reviews and user review
+                    loadReviews()
+                    loadUserReview()
+                }
+                is ReviewResult.Error -> {
+                    setState {
+                        currentState.copy(reviewSubmitting = false)
+                    }
+                    setEffect { DetailsContract.Effects.ShowReviewError(result.error) }
+                }
+            }
+        }
+    }
+
+    private fun onUpdateReview(rating: Float, reviewText: String) {
+        // Update uses the same logic as submit (Firebase set() overwrites)
+        onSubmitReview(rating, reviewText)
+    }
+
+    private fun onDeleteReview() {
+        val currentState = uiState.value
+        if (currentState is DetailsContract.State.Success) {
+            setState {
+                currentState.copy(showDeleteReviewConfirmation = true)
+            }
+        }
+    }
+
+    private fun onConfirmDeleteReview() {
+        val currentState = uiState.value
+        if (currentState !is DetailsContract.State.Success) return
+
+        viewModelScope.launch {
+            setState {
+                currentState.copy(
+                    showDeleteReviewConfirmation = false,
+                    reviewSubmitting = true
+                )
+            }
+
+            val result = when (mediaType) {
+                MediaType.MOVIE -> movieDetailsRepository.deleteMovieReview(mediaItemId)
+                MediaType.TV_SHOW -> tvDetailsRepository.deleteTvReview(mediaItemId)
+            }
+
+            when (result) {
+                is ReviewResult.Success -> {
+                    val latestState = uiState.value
+                    if (latestState is DetailsContract.State.Success) {
+                        setState {
+                            latestState.copy(
+                                reviewSubmitting = false,
+                                userReview = null,
+                                showDeleteReviewConfirmation = false // Ensure dialog stays dismissed
+                            )
+                        }
+                    }
+                    setEffect { DetailsContract.Effects.ReviewSubmittedSuccessfully }
+                    // Reload reviews
+                    loadReviews()
+                }
+                is ReviewResult.Error -> {
+                    val latestState = uiState.value
+                    if (latestState is DetailsContract.State.Success) {
+                        setState {
+                            latestState.copy(
+                                reviewSubmitting = false,
+                                showDeleteReviewConfirmation = false // Ensure dialog is dismissed even on error
+                            )
+                        }
+                    }
+                    setEffect { DetailsContract.Effects.ShowReviewError(result.error) }
+                }
+            }
+        }
+    }
+
+    private fun onDismissDeleteConfirmation() {
+        val currentState = uiState.value
+        if (currentState is DetailsContract.State.Success) {
+            setState {
+                currentState.copy(showDeleteReviewConfirmation = false)
             }
         }
     }

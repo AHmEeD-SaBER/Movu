@@ -20,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -54,6 +55,8 @@ import com.example.core_ui.R as CoreUiR
 import com.example.ui.components.DetailsPoster
 import com.example.ui.components.DetailsSection
 import com.example.ui.components.RemoveFromWatchlistConfirmationDialog
+import com.example.ui.components.AddReviewDialog
+import com.example.ui.components.DeleteReviewConfirmationDialog
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -67,6 +70,11 @@ fun DetailsScreenContent(
 
     var backgroundColor by remember { mutableStateOf(Color.Black) }
 
+    // Load reviews immediately when screen content is displayed
+    LaunchedEffect(details.id, mediaType) {
+        onEvent(DetailsContract.Events.LoadReviews)
+    }
+
     // Show confirmation dialog when removing from watchlist
     if (state is DetailsContract.State.Success && state.showRemoveConfirmation) {
         RemoveFromWatchlistConfirmationDialog(
@@ -76,9 +84,34 @@ fun DetailsScreenContent(
         )
     }
 
+    // Show Add/Edit Review Dialog
+    if (state is DetailsContract.State.Success && state.showReviewDialog) {
+        AddReviewDialog(
+            existingReview = state.userReview,
+            isSubmitting = state.reviewSubmitting,
+            onDismiss = { onEvent(DetailsContract.Events.DismissReviewDialog) },
+            onSubmit = { rating, text ->
+                if (state.userReview != null) {
+                    onEvent(DetailsContract.Events.UpdateReview(rating, text))
+                } else {
+                    onEvent(DetailsContract.Events.SubmitReview(rating, text))
+                }
+            }
+        )
+    }
+
+    // Show Delete Review Confirmation Dialog
+    if (state is DetailsContract.State.Success && state.showDeleteReviewConfirmation) {
+        DeleteReviewConfirmationDialog(
+            onConfirm = { onEvent(DetailsContract.Events.ConfirmDeleteReview) },
+            onDismiss = { onEvent(DetailsContract.Events.DismissDeleteConfirmation) }
+        )
+    }
+
 
     DetailsSection(
         mediaDetails = details,
+        state = state,
         onEvent = onEvent,
     ) {
         Box(
@@ -185,7 +218,7 @@ fun DetailsScreenContent(
                             val movie = details as Movie
                             mapOf(
                                 stringResource(R.string.label_length) to movie.length.toHourMinuteSecondFormat(),
-                                stringResource(R.string.label_languages) to movie.languages.first(),
+                                stringResource(R.string.label_languages) to (movie.languages.takeIf { it.isNotEmpty() }?.firstOrNull() ?: "N/A"),
                                 stringResource(R.string.label_Rating) to "+${movie.voteCount}"
 
                             )
@@ -196,7 +229,7 @@ fun DetailsScreenContent(
                             mapOf(
                                 stringResource(R.string.label_episodes) to "${tvShow.numberOfEpisodes}",
                                 stringResource(R.string.label_seasons) to "${tvShow.numberOfSeasons}",
-                                stringResource(R.string.label_languages) to tvShow.languages.first()
+                                stringResource(R.string.label_languages) to (tvShow.languages.takeIf { it.isNotEmpty() }?.firstOrNull() ?: "N/A")
                             )
                         }
                     },
