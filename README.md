@@ -329,29 +329,115 @@ Kotlin StateFlow and Contracts for reactive UI updates with immutable states
 
 ## 📸 Screenshots
 
+<div align="center">
+  
 ### 🌙 Dark Mode
 
-<div align="center">
-
-| Authentication & Home | Search & Details | Watchlist & Profile |
-|:---:|:---:|:---:|
-| <img src="Screenshots/Dark/signin.png" alt="Sign In Dark" height="500"/> | <img src="Screenshots/Dark/search.png" alt="Search Dark" height="500"/> | <img src="Screenshots/Dark/watchlist.png" alt="Watchlist Dark" height="500"/> |
-| <img src="Screenshots/Dark/signup.png" alt="Sign Up Dark" height="500"/> | <img src="Screenshots/Dark/movie.png" alt="Movie Details Dark" height="500"/> | <img src="Screenshots/Dark/profile.png" alt="Profile Dark" height="500"/> |
-| <img src="Screenshots/Dark/home.png" alt="Home Dark" height="500"/> | <img src="Screenshots/Dark/tv.png" alt="TV Show Details Dark" height="500"/> | |
-
-</div>
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/signin.jpg" alt="Sign In - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Sign In</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/signup.jpg" alt="Sign Up - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Sign Up</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/home.jpg" alt="Home - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Home</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/search.jpg" alt="Search - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Search</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/movie.jpg" alt="Movie Details - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Movie Details</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/tv.jpg" alt="TV Show Details - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>TV Show Details</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/watchlist.jpg" alt="Watchlist - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Watchlist</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Dark/profile.jpg" alt="Profile - Dark Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Profile</b></sub>
+    </td>
+    <td align="center" width="33%">
+    </td>
+  </tr>
+</table>
 
 ---
 
 ### ☀️ Light Mode
 
-<div align="center">
-
-| Authentication & Home | Search & Details | Watchlist & Profile |
-|:---:|:---:|:---:|
-| <img src="Screenshots/Light/signin.png" alt="Sign In Light" height="500"/> | <img src="Screenshots/Light/search.png" alt="Search Light" height="500"/> | <img src="Screenshots/Light/watchlist.png" alt="Watchlist Light" height="500"/> |
-| <img src="Screenshots/Light/signup.png" alt="Sign Up Light" height="500"/> | <img src="Screenshots/Light/movie.png" alt="Movie Details Light" height="500"/> | <img src="Screenshots/Light/profile.png" alt="Profile Light" height="500"/> |
-| <img src="Screenshots/Light/home.png" alt="Home Light" height="500"/> | <img src="Screenshots/Light/tv.png" alt="TV Show Details Light" height="500"/> | |
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/signin.jpg" alt="Sign In - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Sign In</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/signup.jpg" alt="Sign Up - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Sign Up</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/home.jpg" alt="Home - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Home</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/search.jpg" alt="Search - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Search</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/movie.jpg" alt="Movie Details - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Movie Details</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/tv.jpg" alt="TV Show Details - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>TV Show Details</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/watchlist.jpg" alt="Watchlist - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Watchlist</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Screenshots/Light/profile.jpg" alt="Profile - Light Mode" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      <br/>
+      <sub><b>Profile</b></sub>
+    </td>
+    <td align="center" width="33%">
+    </td>
+  </tr>
+</table>
 
 </div>
 
