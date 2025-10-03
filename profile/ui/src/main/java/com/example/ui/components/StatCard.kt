@@ -40,6 +40,7 @@ fun StatCard(
                 text = title,
                 style = AppTypography.bt2,
                 textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
             Text(

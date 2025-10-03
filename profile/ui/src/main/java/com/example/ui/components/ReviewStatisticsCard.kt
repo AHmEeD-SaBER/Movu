@@ -138,7 +138,7 @@ private fun StatItem(
         modifier = modifier,
         shape = RoundedCornerShape(dimensionResource(CoreUiR.dimen.padding_12)),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.tertiary
+            containerColor = MaterialTheme.colorScheme.background
         )
     ) {
         Column(
@@ -152,7 +152,7 @@ private fun StatItem(
                 text = value,
                 style = AppTypography.h2,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface,
+                color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center
             )
             Text(
