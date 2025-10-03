@@ -24,4 +24,29 @@
     <string name="remove_from_watchlist_message">Are you sure you want to remove "%1$s" from your watchlist?</string>
     <string name="remove">Remove</string>
     <string name="cancel">Cancel</string>
+
+    <!-- Review functionality -->
+    <string name="reviews">Reviews</string>
+    <string name="add_your_review">Add Your Review</string>
+    <string name="edit_your_review">Edit Your Review</string>
+    <string name="your_rating">Your Rating</string>
+    <string name="tap_to_rate">Tap to rate</string>
+    <string name="rating_format">%.1f / 5.0</string>
+    <string name="your_review_optional">Your Review (Optional)</string>
+    <string name="share_thoughts_placeholder">Share your thoughts about this movie…</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+    <string name="delete_review_title">Delete Review</string>
+    <string name="delete_review_message">Are you sure you want to delete your review? This action cannot be undone.</string>
+    <string name="delete">Delete</string>
+    <string name="no_reviews_yet">No reviews yet</string>
+    <string name="be_first_to_review">Be the first to review!</string>
+    <string name="star_description">Star %1$d</string>
+    <string name="rating_description">Rating</string>
+    <string name="your_rating_description">Your rating</string>
+    <string name="delete_review_description">Delete review</string>
+    <string name="just_now">Just now</string>
+    <string name="minutes_ago">%1$dm ago</string>
+    <string name="hours_ago">%1$dh ago</string>
+    <string name="days_ago">%1$dd ago</string>
 </resources>

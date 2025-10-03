@@ -26,7 +26,7 @@ import com.example.core_ui.theme.MovuTheme
 
 @Composable
 fun CustomGradientButton(
-    text: String,
+    text: String = "",
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
@@ -46,6 +46,7 @@ fun CustomGradientButton(
             MaterialTheme.colorScheme.tertiary.copy(alpha = 0.6f)
         )
     ),
+    content: (@Composable () -> Unit)? = null
 ) {
     Box(
         modifier = modifier
@@ -59,11 +60,15 @@ fun CustomGradientButton(
         contentAlignment = Alignment.Center
     ) {
         if (!isLoading) {
-            Text(
-                text = text,
-                color = MaterialTheme.colorScheme.onTertiary,
-                style = AppTypography.bt4.copy(fontWeight = FontWeight.Bold, fontSize = 14.sp),
-            )
+            if (content != null) {
+                content()
+            } else {
+                Text(
+                    text = text,
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    style = AppTypography.bt4.copy(fontWeight = FontWeight.Bold, fontSize = 14.sp),
+                )
+            }
         } else {
             CircularProgressIndicator(
                 color = MaterialTheme.colorScheme.primary,

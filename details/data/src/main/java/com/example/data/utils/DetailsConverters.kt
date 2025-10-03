@@ -1,4 +1,4 @@
-package com.example.details.data.utils
+package com.example.data.utils
 
 import com.example.core_data.models.moviedetails.MovieDetailsResponse
 import com.example.core_data.models.tvdetails.TvShowDetails
@@ -10,8 +10,10 @@ import com.example.domain.Credits
 import com.example.domain.CastMember
 import com.example.domain.CrewMember
 import com.example.domain.ProductionCompany
+import com.example.domain.Review
+import com.example.user_preferences.models.FirebaseReview
 
-// Convert CreditsResponse to Credits domain model
+
 fun CreditsResponse.toCredits(): Credits {
     return Credits(
         cast = cast?.filterNotNull()?.map { castItem ->
@@ -41,7 +43,6 @@ fun VideosResponse.getTrailerLink(): String? {
     return trailer?.key?.let { "https://www.youtube.com/watch?v=$it" }
 }
 
-// Convert MovieDetailsResponse to Movie domain model
 fun MovieDetailsResponse.toDomainModel(credits: Credits, trailer: String? = null): Movie {
     return Movie(
         id = id ?: 0,
@@ -65,7 +66,6 @@ fun MovieDetailsResponse.toDomainModel(credits: Credits, trailer: String? = null
     )
 }
 
-// Convert TvShowDetails to Tv domain model
 fun TvShowDetails.toDomainModel(credits: Credits, trailer: String?): Tv {
     val episodeRunTime = when {
         episodeRunTime?.isNotEmpty() == true -> {
@@ -99,5 +99,16 @@ fun TvShowDetails.toDomainModel(credits: Credits, trailer: String?): Tv {
         numberOfSeasons = numberOfSeasons ?: 0,
         credits = credits,
         trailerLink = trailer
+    )
+}
+
+fun FirebaseReview.toDomainModel(): Review {
+    return Review(
+        userId = userId,
+        userName = userName,
+        mediaId = mediaId,
+        rating = rating,
+        reviewText = reviewText,
+        timestamp = timestamp
     )
 }

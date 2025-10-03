@@ -15,6 +15,7 @@ import com.example.core_ui.R as CoreUiR
 @Composable
 fun DetailsSection(
     mediaDetails: MediaDetails,
+    state: DetailsContract.State,
     onEvent: (DetailsContract.Events) -> Unit,
     sheetPeekHeight: Dp = dimensionResource(CoreUiR.dimen.layout_height_350),
     detailsScreenContent: @Composable () -> Unit
@@ -35,7 +36,8 @@ fun DetailsSection(
         sheetContent = {
             DraggableSheetContent(
                 mediaDetails = mediaDetails,
-                onEvent = onEvent
+                onEvent = onEvent,
+                state = state
             )
         },
         content = {

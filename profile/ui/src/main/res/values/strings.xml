@@ -36,4 +36,14 @@
     <string name="label_movies">Movies</string>
     <string name="label_tv_shows">TV Shows</string>
     <string name="label_total">Total Items</string>
+
+    <!-- Review Statistics -->
+    <string name="review_statistics">Review Statistics</string>
+    <string name="total_reviews">Total</string>
+    <string name="movie_reviews">Movies</string>
+    <string name="tv_reviews">TV Shows</string>
+    <string name="average_rating">Average Rating</string>
+    <string name="rating_out_of">/ 5.0</string>
+    <string name="no_reviews_yet_profile">No Reviews Yet</string>
+    <string name="start_reviewing">Start reviewing movies and TV shows!</string>
 </resources>

@@ -7,14 +7,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.core_ui.theme.AppTypography
 import com.example.ui.R
@@ -27,15 +31,24 @@ fun WatchlistStatsSection(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(dimensionResource(CoreUiR.dimen.padding_16)),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiary
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(CoreUiR.dimen.padding_4))
     ) {
         Column(
             modifier = Modifier.padding(dimensionResource(CoreUiR.dimen.padding_16)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(CoreUiR.dimen.padding_8))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(CoreUiR.dimen.padding_8)),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = stringResource(R.string.watchlist_statistics),
                 style = AppTypography.h7,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Start,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Spacer(modifier = Modifier.padding(dimensionResource(CoreUiR.dimen.padding_4)))
 
